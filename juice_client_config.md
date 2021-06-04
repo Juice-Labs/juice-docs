@@ -16,3 +16,7 @@ juice.cfg is a very simple text file (subject to change in the future) with each
 
 **p\<port\>**
 : The GPU host port. Default 12345
+
+So if the IP address of your GPU host were `123.45.678.90`, your config file would contain exactly:
+
+`h123.45.678.90 p12345`
