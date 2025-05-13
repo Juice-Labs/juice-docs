@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-juice/user-guide/cli-app/reference/index" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.7.0">
+<title data-rh="true">CLI Reference | Juice</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://juice-labs.github.io/juice-docs/docs/juice/user-guide/cli-app/reference"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="CLI Reference | Juice"><meta data-rh="true" name="description" content="This section documents all available CLI commands in the Juice CLI tool."><meta data-rh="true" property="og:description" content="This section documents all available CLI commands in the Juice CLI tool."><link data-rh="true" rel="icon" href="https://app.juicelabs.co/Juice@64px.png"><link data-rh="true" rel="canonical" href="https://juice-labs.github.io/juice-docs/docs/juice/user-guide/cli-app/reference"><link data-rh="true" rel="alternate" href="https://juice-labs.github.io/juice-docs/docs/juice/user-guide/cli-app/reference" hreflang="en"><link data-rh="true" rel="alternate" href="https://juice-labs.github.io/juice-docs/docs/juice/user-guide/cli-app/reference" hreflang="x-default"><link rel="stylesheet" href="/juice-docs/assets/css/styles.b08d167d.css">
+<script src="/juice-docs/assets/js/runtime~main.809622b2.js" defer="defer"></script>
+<script src="/juice-docs/assets/js/main.46effccb.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();t(null!==e?e:"dark")}(),function(){try{const n=new URLSearchParams(window.location.search).entries();for(var[t,e]of n)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><link rel="preload" as="image" href="/juice-docs/img/juice-logo.png"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="navbar navbar--fixed-top"><div class="navbar__inner"><div class="navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/juice-docs/docs/juice/intro"><div class="navbar__logo"><img src="/juice-docs/img/juice-logo.png" alt="Juice Logo" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/juice-docs/img/juice-logo.png" alt="Juice Logo" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate"></b></a><a href="https://juicelabs.co" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">Juice<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></div><div class="navbar__items navbar__items--right"><a href="https://github.com/juice-labs/juice-docs" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a><div class="navbarSearchContainer_Bca1"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" href="/juice-docs/docs/juice/intro">Juice Documentation</a></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/juice-docs/docs/juice/intro">Welcome to Juice</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" tabindex="0" href="/juice-docs/docs/juice/user-guide/setup/systerm-reqs">User Guide</a></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-3 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/juice-docs/docs/juice/user-guide/setup/systerm-reqs">Setup</a></div></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/juice-docs/docs/juice/user-guide/getting-started">Getting Started</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-3 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" tabindex="0" href="/juice-docs/docs/juice/user-guide/juice-for-compute">Juice for Compute</a><button aria-label="Expand sidebar category &#x27;Juice for Compute&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-3 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" tabindex="0" href="/juice-docs/docs/juice/user-guide/juice-for-graphics">Juice for Graphics</a><button aria-label="Expand sidebar category &#x27;Juice for Graphics&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-3 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--active" tabindex="0" href="/juice-docs/docs/juice/user-guide/cli-app">Using the CLI App (Linux, Windows, &amp; WSL)</a><button aria-label="Collapse sidebar category &#x27;Using the CLI App (Linux, Windows, &amp; WSL)&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/juice-docs/docs/juice/user-guide/cli-app/cli-login">CLI App Login</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/juice-docs/docs/juice/user-guide/cli-app/reference">CLI Reference</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/juice-docs/docs/juice/user-guide/cli-app/remote-gpu">Running an Application on a Remote GPU</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/juice-docs/docs/juice/user-guide/cli-app/concurrent-workloads">Running Concurrent Workloads</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/juice-docs/docs/juice/user-guide/cli-app/manual-sessions">Manually Managing Sessions</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/juice-docs/docs/juice/user-guide/cli-app/gpu-sharing">Sharing a GPU</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-4 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" tabindex="0" href="/juice-docs/docs/juice/user-guide/cli-app/advanced-cli">Advanced CLI Processes</a><button aria-label="Expand sidebar category &#x27;Advanced CLI Processes&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/juice-docs/docs/juice/user-guide/cli-app/m2m-tokens">M2M Tokens</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/juice-docs/docs/juice/user-guide/cli-app/cache">Cache</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/juice-docs/docs/juice/user-guide/cli-app/cuda-compatibility">CUDA Compatibility</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/juice-docs/docs/juice/user-guide/cli-app/known-issues">Known Issues</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/juice-docs/docs/juice/user-guide/cli-app/troubleshooting">Troubleshooting</a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-3 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/juice-docs/docs/juice/user-guide/performance-latency/example">Performance and Latency</a></div></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/juice-docs/docs/juice/user-guide/docker-and-juice">Docker and Juice</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/juice-docs/docs/juice/user-guide/multiple-gpus">Multiple GPUs</a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/juice-docs/docs/juice/admin/inviting-users">Admin Guides</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/juice-docs/docs/juice/other-juice-docs/cli-glossary">Other Juice</a></div></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/juice-docs/docs/juice/faq">FAQ</a></li></ul></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/juice-docs/docs/contributing">Contributing to Documentation</a></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs" itemscope="" itemtype="https://schema.org/BreadcrumbList"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/juice-docs/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Juice Documentation</span><meta itemprop="position" content="1"></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">User Guide</span><meta itemprop="position" content="2"></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item"><a class="breadcrumbs__link" itemprop="item" href="/juice-docs/docs/juice/user-guide/cli-app"><span itemprop="name">Using the CLI App (Linux, Windows, &amp; WSL)</span></a><meta itemprop="position" content="3"></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link" itemprop="name">CLI Reference</span><meta itemprop="position" content="4"></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>CLI Reference</h1></header>
+<p>This section documents all available CLI commands in the Juice CLI tool.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="core-commands">Core Commands<a href="#core-commands" class="hash-link" aria-label="Direct link to Core Commands" title="Direct link to Core Commands">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="check">check<a href="#check" class="hash-link" aria-label="Direct link to check" title="Direct link to check">​</a></h3>
+<p><strong>Command</strong>: <code>check [options]</code></p>
+<p><strong>Description</strong>: Checks the installation for common issues</p>
+<p><strong>Parameters</strong>:</p>
+<ul>
+<li><code>--json</code>: Format output as JSON</li>
+</ul>
+<p><strong>Details</strong>:</p>
+<ul>
+<li>Checks installation in the default install directory</li>
+<li>Verifies NVIDIA driver versions and compatibility</li>
+<li>Reports any failures that would prevent GPU sharing</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="login">login<a href="#login" class="hash-link" aria-label="Direct link to login" title="Direct link to login">​</a></h3>
+<p><strong>Command</strong>: <code>login [controller]</code></p>
+<p><strong>Description</strong>: Log in to a controller</p>
+<p><strong>Parameters</strong>:</p>
+<ul>
+<li><code>--insecure-skip-tls-verify, -k</code>: Skip verification of TLS certificates</li>
+<li><code>--token, -t</code>: Token to use for authentication (must be empty or start with &quot;m2m&quot;)</li>
+<li><code>controller</code> (optional): The controller to connect to. Can be:<!-- -->
+<ul>
+<li>A predefined environment name</li>
+<li>An HTTP/HTTPS URL</li>
+<li>If omitted, uses the first environment from vendor configuration</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="logout">logout<a href="#logout" class="hash-link" aria-label="Direct link to logout" title="Direct link to logout">​</a></h3>
+<p><strong>Command</strong>: <code>logout</code></p>
+<p><strong>Description</strong>: Log the current user out of the controller</p>
+<p><strong>Note</strong>: Cannot logout while having an active session - must release the session first using <code>session release</code></p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="agent-management">Agent Management<a href="#agent-management" class="hash-link" aria-label="Direct link to Agent Management" title="Direct link to Agent Management">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="agent-list">agent list<a href="#agent-list" class="hash-link" aria-label="Direct link to agent list" title="Direct link to agent list">​</a></h3>
+<p><strong>Command</strong>: <code>agent list</code> (alias: <code>agent ls</code>)</p>
+<p><strong>Description</strong>: List all the agents accessible to the user</p>
+<p><strong>Parameters</strong>:</p>
+<ul>
+<li><code>--json</code>: Output in JSON format</li>
+<li><code>--fields</code>: Specify fields to display (default fields: state, hostname, pool.name, id, numgpus)</li>
+<li><code>--sort</code>: Sort output (default sort column: 1)</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="agent-info">agent info<a href="#agent-info" class="hash-link" aria-label="Direct link to agent info" title="Direct link to agent info">​</a></h3>
+<p><strong>Command</strong>: <code>agent info &lt;id&gt;</code></p>
+<p><strong>Description</strong>: Gets the information of a specific agent</p>
+<p><strong>Parameters</strong>:</p>
+<ul>
+<li><code>--json</code>: Output in JSON format</li>
+<li><code>--fields</code>: Specify fields to display (default fields: state, hostname, pool.name, id, numgpus)</li>
+<li><code>--sort</code>: Sort output (default sort column: 1)</li>
+<li><code>id</code> (required): The ID of the agent to get information about</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="agent-run">agent run<a href="#agent-run" class="hash-link" aria-label="Direct link to agent run" title="Direct link to agent run">​</a></h3>
+<p><strong>Command</strong>: <code>agent run [pool_id]</code></p>
+<p><strong>Description</strong>: Run the GPU Sharing agent in the foreground, sharing your GPU to a specified pool (not available in WSL)</p>
+<p><strong>Parameters</strong>:</p>
+<ul>
+<li><code>pool_id</code> (required): ID of the pool to share GPUs with</li>
+<li><code>--exit-on-stdin</code>: Exit when stdin is closed</li>
+<li><code>--disable-gpu-metrics</code>: Disable GPU metrics collection</li>
+<li><code>--gpu-metrics-interval-ms</code>: GPU metrics collection interval in milliseconds</li>
+<li><code>--listen-ip</code>: IP address to listen on</li>
+<li><code>--cache-size</code>: Size of the cache</li>
+<li><code>--gpu-ids</code>: Comma-separated list of GPU UUIDs to share</li>
+<li><code>--labels</code>: Comma-separated list of key=value labels</li>
+<li><code>--taints</code>: Comma-separated list of key=value taints</li>
+<li><code>--stun-server</code>: Comma-separated list of STUN servers</li>
+<li><code>--relay-server</code>: Relay server address</li>
+<li><code>--force-relay</code>: Force using relay server</li>
+<li><code>--gateway-port</code>: Gateway port number (1-65535)</li>
+<li><code>--gateway-ips</code>: Comma-separated list of gateway IP addresses</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="agent-service">agent service<a href="#agent-service" class="hash-link" aria-label="Direct link to agent service" title="Direct link to agent service">​</a></h3>
+<p><strong>Command</strong>: <code>agent service</code></p>
+<p><strong>Description</strong>: Manage the agent service (not available in WSL). These commands manage the agent service on Windows or Linux (via systemd).</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="agent-service-install">agent service install<a href="#agent-service-install" class="hash-link" aria-label="Direct link to agent service install" title="Direct link to agent service install">​</a></h4>
+<p><strong>Command</strong>: <code>agent service install [pool-id]</code></p>
+<p><strong>Description</strong>: Install the GPU Sharing agent as a service (not available in WSL)</p>
+<p><strong>Parameters</strong>:</p>
+<ul>
+<li><code>pool-id</code> (required): ID of the pool to share GPUs with</li>
+<li>All parameters from <code>agent run</code> command are supported</li>
+<li><code>--cache-size</code>: Size of the cache</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="gpu-management">GPU Management<a href="#gpu-management" class="hash-link" aria-label="Direct link to GPU Management" title="Direct link to GPU Management">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="gpu-list">gpu list<a href="#gpu-list" class="hash-link" aria-label="Direct link to gpu list" title="Direct link to gpu list">​</a></h3>
+<p><strong>Command</strong>: <code>gpu list</code> (alias: <code>gpu ls</code>)</p>
+<p><strong>Description</strong>: List all the GPUs accessible to the user</p>
+<p><strong>Parameters</strong>:</p>
+<ul>
+<li><code>--json</code>: Output in JSON format</li>
+<li><code>--fields</code>: Specify fields to display (default fields: hostname, name, uuid, agentVersion, vram-h)</li>
+<li><code>--sort</code>: Sort output (default sort columns: 3,2,1)</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="token-management">Token Management<a href="#token-management" class="hash-link" aria-label="Direct link to Token Management" title="Direct link to Token Management">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="m2m-list">m2m list<a href="#m2m-list" class="hash-link" aria-label="Direct link to m2m list" title="Direct link to m2m list">​</a></h3>
+<p><strong>Command</strong>: <code>m2m list [id]</code> (alias: <code>m2m ls</code>)</p>
+<p><strong>Description</strong>: Lists all M2M tokens</p>
+<p><strong>Parameters</strong>:</p>
+<ul>
+<li><code>--json</code>: Output in JSON format</li>
+<li><code>--fields</code>: Specify fields to display (default fields: description, token, id, expiresAt)</li>
+<li><code>--sort</code>: Sort output (default sort column: 1)</li>
+<li><code>id</code> (optional): ID of a specific token to list</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="m2m-create">m2m create<a href="#m2m-create" class="hash-link" aria-label="Direct link to m2m create" title="Direct link to m2m create">​</a></h3>
+<p><strong>Command</strong>: <code>m2m create</code></p>
+<p><strong>Description</strong>: Creates a Machine-2-Machine authentication token for use on servers. Once you have created a M2M token pass it as a flag to the login command to authenticate with your token instead of going through a web based authentication flow.</p>
+<p><strong>Parameters</strong>:</p>
+<ul>
+<li><code>--description, -d</code> (required): Description for this token</li>
+<li><code>--expire-days, -e</code>: The number of days the token will be valid for (default: 30)</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="m2m-remove">m2m remove<a href="#m2m-remove" class="hash-link" aria-label="Direct link to m2m remove" title="Direct link to m2m remove">​</a></h3>
+<p><strong>Command</strong>: <code>m2m remove &lt;id&gt;</code></p>
+<p><strong>Description</strong>: Removes a M2M token</p>
+<p><strong>Parameters</strong>:</p>
+<ul>
+<li><code>id</code> (required): ID of the token to remove</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="pool-management">Pool Management<a href="#pool-management" class="hash-link" aria-label="Direct link to Pool Management" title="Direct link to Pool Management">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="pool-list">pool list<a href="#pool-list" class="hash-link" aria-label="Direct link to pool list" title="Direct link to pool list">​</a></h3>
+<p><strong>Command</strong>: <code>pool list</code> (alias: <code>pool ls</code>)</p>
+<p><strong>Description</strong>: List all the pools accessible to the user</p>
+<p><strong>Parameters</strong>:</p>
+<ul>
+<li><code>--json</code>: Output in JSON format</li>
+<li><code>--fields</code>: Specify fields to display (default fields: organization.name, name, id, sessions, gpuCount)</li>
+<li><code>--sort</code>: Sort output (default sort columns: 3,2,5,4,1)</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="release-management">Release Management<a href="#release-management" class="hash-link" aria-label="Direct link to Release Management" title="Direct link to Release Management">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="release-list">release list<a href="#release-list" class="hash-link" aria-label="Direct link to release list" title="Direct link to release list">​</a></h3>
+<p><strong>Command</strong>: <code>release list</code> (alias: <code>release ls</code>)</p>
+<p><strong>Description</strong>: List releases</p>
+<p><strong>Parameters</strong>:</p>
+<ul>
+<li><code>--json</code>: Output in JSON format</li>
+<li><code>--fields</code>: Specify fields to display (default fields: version, notes)</li>
+<li><code>--sort</code>: Sort output</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="release-download">release download<a href="#release-download" class="hash-link" aria-label="Direct link to release download" title="Direct link to release download">​</a></h3>
+<p><strong>Command</strong>: <code>release download &lt;version&gt;</code> (alias: <code>release dl</code>)</p>
+<p><strong>Description</strong>: Download a specific release</p>
+<p><strong>Parameters</strong>:</p>
+<ul>
+<li><code>version</code> (required): Version of the release to download. If only a partial version is provided (without build info), it will match the first release that starts with that version.</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="application-management">Application Management<a href="#application-management" class="hash-link" aria-label="Direct link to Application Management" title="Direct link to Application Management">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="run">run<a href="#run" class="hash-link" aria-label="Direct link to run" title="Direct link to run">​</a></h3>
+<p><strong>Command</strong>: <code>run [flags] &lt;application&gt; [&lt;application args&gt;]</code></p>
+<p><strong>Description</strong>: Starts an application using the GPU(s) available to the user</p>
+<p><strong>Parameters</strong>:</p>
+<ul>
+<li><code>application</code> (required): The application to run</li>
+<li><code>--ephemeral</code>: Always requests a new session for the application</li>
+<li><code>--on-queue-timeout</code>: When a queue timeout happens, [fail, continue] (default: fail)</li>
+<li><code>--on-connection-error</code>: When a connection error happens, [fail, continue] (default: fail)</li>
+<li><code>--disable-compression</code>: Disables compression</li>
+<li><code>--disable-cache</code>: Disables caching</li>
+<li><code>--relaxed-api</code>: Enables a relaxed API conformance mode which allows for greater performance at expense of compatibility</li>
+<li><code>--listen-ip</code>: IPv4 address to bind to when listening for connections</li>
+<li><code>--disable-uvm-kernel-synchronization</code>: Disable synchronizing UVM memory before/after kernel launches</li>
+</ul>
+<p><strong>Note</strong>: The following options are mutually exclusive: session, query, gpu-ids, pool-ids, match-labels, tolerates, num-gpus, ephemeral</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="session-management">Session Management<a href="#session-management" class="hash-link" aria-label="Direct link to Session Management" title="Direct link to Session Management">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="session-list">session list<a href="#session-list" class="hash-link" aria-label="Direct link to session list" title="Direct link to session list">​</a></h3>
+<p><strong>Command</strong>: <code>session list</code> (alias: <code>session ls</code>)</p>
+<p><strong>Description</strong>: List all the user&#x27;s sessions</p>
+<p><strong>Parameters</strong>:</p>
+<ul>
+<li><code>--all</code>: List all sessions (by default only shows active session)</li>
+<li><code>--json</code>: Output in JSON format</li>
+<li><code>--fields</code>: Specify fields to display (default fields: state, id, expiresAt, latencyMs, uploadMbps, downloadMbps)</li>
+<li><code>--sort</code>: Sort output (default sort column: 1)</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="session-release">session release<a href="#session-release" class="hash-link" aria-label="Direct link to session release" title="Direct link to session release">​</a></h3>
+<p><strong>Command</strong>: <code>session release</code></p>
+<p><strong>Description</strong>: Releases the active session</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="session-request">session request<a href="#session-request" class="hash-link" aria-label="Direct link to session request" title="Direct link to session request">​</a></h3>
+<p><strong>Command</strong>: <code>session request</code></p>
+<p><strong>Description</strong>: Requests a new session</p>
+<p><strong>Parameters</strong>:</p>
+<ul>
+<li><code>--gpu-ids</code>: Comma separated list of GPU IDs to allocate</li>
+<li><code>--pool-ids</code>: Comma separated list of pool IDs from which to allocate the session resources</li>
+<li><code>--match-labels</code>: Comma separated list of key=value pairs</li>
+<li><code>--tolerates</code>: Comma separated list of key=value pairs</li>
+<li><code>--wait-for</code>: Maximum number of seconds to wait for a GPU (default: 0)</li>
+<li><code>--no-version-check</code>: Disables version checking when allocating the session requirements</li>
+<li><code>--num-gpus</code>: Number of GPUs required (default: 1)</li>
+<li><code>--session-timeout</code>: Time for the session to be automatically returned to the pool if not in use (default: -1)</li>
+<li><code>--watch-pid</code>: Watch the specified process and stop the session when it exits (default: -1)</li>
+<li><code>--dump-config</code>: Dumps the client configuration to the console in JSON format</li>
+</ul>
+<p><strong>Note</strong>: The following options are mutually exclusive: gpu-ids, query</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="user-management">User Management<a href="#user-management" class="hash-link" aria-label="Direct link to User Management" title="Direct link to User Management">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="user-info">user info<a href="#user-info" class="hash-link" aria-label="Direct link to user info" title="Direct link to user info">​</a></h3>
+<p><strong>Command</strong>: <code>user info [id]</code></p>
+<p><strong>Description</strong>: Retrieves user information</p>
+<p><strong>Parameters</strong>:</p>
+<ul>
+<li><code>--json</code>: Output in JSON format</li>
+<li><code>--fields</code>: Specify fields to display (default fields: name, email, id)</li>
+<li><code>--sort</code>: Sort output (default sort column: 1)</li>
+<li><code>id</code> (optional): ID of the user to get information about. If not provided, gets current user&#x27;s information.</li>
+</ul></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col"><a href="https://github.com/juice-labs/juice-docs/edit/master/docs/juice/user-guide/cli-app/reference/index.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_JAkA"></div></div></footer><div class="editContainer_J_vw"><h3 class="editTitle_a5oD">Help Improve This Page</h3><div class="editButtons_KmSt"><a href="https://github.com/juice-labs/juice-docs/edit/master/docs/juice/user-guide/cli-app/reference.md" target="_blank" rel="noopener noreferrer" class="editButton_lY0N"><style data-emotion="css q7mezt">.css-q7mezt{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;width:1em;height:1em;display:inline-block;-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;-webkit-transition:fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;fill:currentColor;font-size:1.5rem;}</style><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium editIcon_fK6T css-q7mezt" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="EditIcon"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.996.996 0 0 0-1.41 0l-1.83 1.83 3.75 3.75z"></path></svg>Edit on GitHub</a><a class="editButton_lY0N editButtonSecondary_KBun" href="/juice-docs/edit?path=juice/user-guide/cli-app/reference">More Editing Options</a></div><p class="editDescription_PDbf">Found a mistake? Want to contribute? Edit this page on GitHub or explore more editing options.</p></div></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/juice-docs/docs/juice/user-guide/cli-app/cli-login"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">CLI App Login</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/juice-docs/docs/juice/user-guide/cli-app/remote-gpu"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Running an Application on a Remote GPU</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#core-commands" class="table-of-contents__link toc-highlight">Core Commands</a><ul><li><a href="#check" class="table-of-contents__link toc-highlight">check</a></li><li><a href="#login" class="table-of-contents__link toc-highlight">login</a></li><li><a href="#logout" class="table-of-contents__link toc-highlight">logout</a></li></ul></li><li><a href="#agent-management" class="table-of-contents__link toc-highlight">Agent Management</a><ul><li><a href="#agent-list" class="table-of-contents__link toc-highlight">agent list</a></li><li><a href="#agent-info" class="table-of-contents__link toc-highlight">agent info</a></li><li><a href="#agent-run" class="table-of-contents__link toc-highlight">agent run</a></li><li><a href="#agent-service" class="table-of-contents__link toc-highlight">agent service</a></li></ul></li><li><a href="#gpu-management" class="table-of-contents__link toc-highlight">GPU Management</a><ul><li><a href="#gpu-list" class="table-of-contents__link toc-highlight">gpu list</a></li></ul></li><li><a href="#token-management" class="table-of-contents__link toc-highlight">Token Management</a><ul><li><a href="#m2m-list" class="table-of-contents__link toc-highlight">m2m list</a></li><li><a href="#m2m-create" class="table-of-contents__link toc-highlight">m2m create</a></li><li><a href="#m2m-remove" class="table-of-contents__link toc-highlight">m2m remove</a></li></ul></li><li><a href="#pool-management" class="table-of-contents__link toc-highlight">Pool Management</a><ul><li><a href="#pool-list" class="table-of-contents__link toc-highlight">pool list</a></li></ul></li><li><a href="#release-management" class="table-of-contents__link toc-highlight">Release Management</a><ul><li><a href="#release-list" class="table-of-contents__link toc-highlight">release list</a></li><li><a href="#release-download" class="table-of-contents__link toc-highlight">release download</a></li></ul></li><li><a href="#application-management" class="table-of-contents__link toc-highlight">Application Management</a><ul><li><a href="#run" class="table-of-contents__link toc-highlight">run</a></li></ul></li><li><a href="#session-management" class="table-of-contents__link toc-highlight">Session Management</a><ul><li><a href="#session-list" class="table-of-contents__link toc-highlight">session list</a></li><li><a href="#session-release" class="table-of-contents__link toc-highlight">session release</a></li><li><a href="#session-request" class="table-of-contents__link toc-highlight">session request</a></li></ul></li><li><a href="#user-management" class="table-of-contents__link toc-highlight">User Management</a><ul><li><a href="#user-info" class="table-of-contents__link toc-highlight">user info</a></li></ul></li></ul></div></div></div></div></main></div></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2025 Juice Labs</div></div></div></footer></div>
+</body>
+</html>
