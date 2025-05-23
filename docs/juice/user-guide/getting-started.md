@@ -81,12 +81,12 @@ juice session request ...
 ... session created successfully example ...
 ~~~
 
-Once you have a session any executable launched that is beneath an active path or is listed as an active path itself will be launched to use the Juice GPU as part of the current session.  This removes the need to use the command line to launch the exectuable explicitly and is especially useful for applications that use an intermediate launcher or have complicated command lines.
+Once you have a session any executable launched that is beneath an active path or is listed as an active path itself will be launched to use the Juice GPU as part of the current session.  This removes the need to use the command line to launch the executable explicitly and is especially useful for applications that use an intermediate launcher or have complicated command lines.
 
 ## More Examples
 
-See [Juice for Compute](#juice-for-compute) for examples of running CUDA-based applications like [ResNet](#resnet), [YOLO](#yolo), and [Stable Diffusion](#stable-diffusion) with Juice.
+See [Juice for Compute](juice-for-compute/) for examples of running CUDA-based applications like [Stable Diffusion](juice-for-compute/stable-diffusion.md) with Juice.
 
-See [Juice for Graphics](#juice-for-graphics) for examples of running graphical applications like [3DMark](#3dmark), [Superposition](#superposition), and [Maya](#maya) through Juice.
+See [Juice for Graphics](juice-for-graphics/) for examples of running graphical applications like [3DMark](juice-for-graphics/3dmark.md), [Superposition](juice-for-graphics/superposition.md), and [Maya](juice-for-graphics/maya.md) through Juice.
 
 Graphics workloads are currently only supported from the Windows client.  NOTE: This is a client-side restriction only -- the Juice client on Windows can connect to a machine running the Agent on Linux or Windows to serve graphics workloads.
