@@ -31,8 +31,9 @@ In Juice, Machine-to-Machine (M2M) tokens provide a secure way to authenticate a
 
 3. Remove an M2M token:
     ```powershell
-    ./juice m2m remove '<token name>'
+    ./juice m2m remove '<token id*>' 
     ```
+    \* to retrieve token id `run juice m2m list`
 
 By default a token will last 30 days, but by specifying the --expire-days parameter on creation you can extend this out to a maximum of 365 days.
 
