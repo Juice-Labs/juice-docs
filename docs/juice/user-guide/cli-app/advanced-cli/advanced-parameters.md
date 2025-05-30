@@ -123,9 +123,10 @@ Juice offers several advanced parameters to fine-tune your GPU sessions and appl
 - --log-file
 
     Directs CLI output to a specified file instead of standard output. Useful for debugging, creating audit trails, or when you need to review operation logs later.
-
-    **Example**: juice --log-file=/path/to/juice.log run my_app.py
-
+  **Example**:
+  ```powershell
+  juice --log-file=/path/to/juice.log run my_app.py
+  ```
 
 - --log-level
 
@@ -158,16 +159,6 @@ Juice offers several advanced parameters to fine-tune your GPU sessions and appl
     ```powershell
     juice --no-banner run my_app.py 
     ```
- 
 
-- --controller
-
-    Specifies a non-default controller URL for the Juice system. Use in complex setups with multiple Juice environments or when using a custom controller.
-
-    **Example**:
-
-    ```powershell
-    juice --controller=https://custom-controller.example.com run my_app.py 
-    ```
 
 These advanced parameters provide fine-grained control over Juice's behavior, allowing users to optimize their workflows for specific use cases and environments.
