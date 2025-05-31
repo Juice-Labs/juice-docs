@@ -1,6 +1,6 @@
 ---
 title:   'M2M Tokens'
-sidebar_position: 8
+sidebar_position: 9
 ---
 # Machine-to-Machine Tokens
 

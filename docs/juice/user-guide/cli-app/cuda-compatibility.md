@@ -1,6 +1,6 @@
 ---
 title:   'CUDA Compatibility'
-sidebar_position: 10
+sidebar_position: 11
 ---
 # CUDA Compatibility
 
