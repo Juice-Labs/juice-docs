@@ -59,7 +59,3 @@ _Yes, watch this space for imminent developments!_
 |Windows|Server|`/agent/log/`|
 
 _*alternate locations for client log can be configured in the `logFile` parameter in `juice.cfg`_
-
-### This is cool! Can I use Juice for commercial purposes?
-
-_You're using the Community Version of Juice, which is limited to non-commercial use according to the_ [Terms and Conditions](https://github.com/Juice-Labs/juice-hub/wiki/Terms-and-Conditions) _.  To license Juice for your organization or business, reach out to us at_ `info@juicelabs.co` 
