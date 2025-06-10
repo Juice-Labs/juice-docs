@@ -10,11 +10,36 @@ You can also manage sessions yourself, without the run command. This could prove
 
     - Connect to a specific GPU 
 
-Appending session request to a command will connect you to a GPU in one of your pools, and you will remain connected until you run session release. You can use the session request command to create multiple processes on a single machine.
+Use 
+
+```powershell
+juice session request 
+```
+to connect you to a GPU in one of your pools. You will remain connected until you run session release. You can use this command to run multiple processes under a single session a single machine.
 
 A client system cannot maintain multiple sessions simultaneously. At any given time it will have one, and only one, *active* session. Trying to request a session while one is already active will result in an error message. 
 
 Use session list to see your current session if any, adding --all to see all sessions in pools you have access to.
+
+### Enabling applications to automatically run with Juice **Windows only**
+
+When you have an active session, you can use these commands to force applications to always run with Juice:
+
+```powershell
+juice session add-path <path>
+```
+
+```powershell
+juice session remove-path <path>
+```
+
+You can use either the full path to the executable or a folder path. Using a folder path will automatically enable all executables under that folder to use Juice.
+
+The commands are applied only for the *current active session*. When the session is released, the paths are reset and will have to be added again.
+
+  :::tip
+  `add-path` and `remove-path` are only available under Windows.
+  :::
 
 ### Choosing a Specific GPU
 
