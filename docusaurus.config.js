@@ -9,9 +9,9 @@ const path = require('path');
 const config = {
   title: 'Juice',
   tagline: 'Application Documentation',
-  url: 'https://juice-labs.github.io',
+  url: 'https://docs.juicelabs.co',
 
-  baseUrl: '/juice-docs/',
+  baseUrl: '/',
   trailingSlash: false,
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
