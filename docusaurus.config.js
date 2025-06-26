@@ -72,6 +72,9 @@ const config = {
         disableSwitch: true,
         respectPrefersColorScheme: false,
       },
+      meta: [
+        {name: "google-site-verification", content: "Q2Jau5IJ5jerq6GeucbDY4Lj6CsMDv"},
+      ]
     }),
   themes: [
   ]
