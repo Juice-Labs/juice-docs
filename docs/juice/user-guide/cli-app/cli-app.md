@@ -15,9 +15,9 @@ For example, assuming the `juice` tool is included in the `PATH` the following w
 juice run <application>
 ~~~
 
-See [Juice for Compute](#juice-for-compute) for examples of running CUDA-based applications like [ResNet](#resnet), [YOLO](#yolo), and [Stable Diffusion](#stable-diffusion) with Juice.
+See [Juice for Compute](../juice-for-compute/index.md) for examples of running CUDA-based applications like [Jupyterlab](../juice-for-compute/jupyterlab.md), [Ollama](../juice-for-compute/ollama.md), and [Stable Diffusion](../juice-for-compute/stable-diffusion.md) with Juice.
 
-See [Juice for Graphics](#juice-for-graphics) for examples of running graphical applications like [3DMark](#3dmark), [Superposition](#superposition), [Maya](#maya) through Juice.
+See [Juice for Graphics](../juice-for-graphics/index.md) for examples of running graphical applications like [3DMark](../juice-for-graphics/3dmark.md), [Superposition](../juice-for-graphics/superposition.md), [Maya](../juice-for-graphics/maya.md) through Juice.
 
 Graphics workloads are currently only supported from the Windows client.  NOTE: This is a client-side restriction only -- the Juice client on Windows can connect to a machine running the Agent on Linux or Windows to serve graphics workloads.
 
