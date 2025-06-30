@@ -13,7 +13,7 @@ function EditPage() {
     // Check if we have a path parameter in the URL
     const params = new URLSearchParams(location.search);
     const pathParam = params.get('path');
-    
+
     if (pathParam) {
       setPath(pathParam);
       // Construct GitHub edit URL - using the correct format for GitHub editing
@@ -31,7 +31,7 @@ function EditPage() {
         <div className="row">
           <div className="col col--8 col--offset-2">
             <h1>Edit Documentation</h1>
-            
+
             <div className={styles.editSection}>
               <h2>Current Page</h2>
               {path ? (
@@ -39,15 +39,15 @@ function EditPage() {
               ) : (
                 <p>No specific page selected. Please select a page to edit from the documentation.</p>
               )}
-              
+
               {githubUrl && (
                 <div className={styles.editOptions}>
                   <h2>Editing Options</h2>
-                  
+
                   <div className={styles.editOption}>
                     <h3>Option 1: Edit directly on GitHub</h3>
                     <p>
-                      The easiest way to edit this page is directly on GitHub. 
+                      The easiest way to edit this page is directly on GitHub.
                       GitHub provides a web-based editor where you can make changes and submit them for review.
                     </p>
                     <Link
@@ -59,7 +59,7 @@ function EditPage() {
                       Edit on GitHub
                     </Link>
                   </div>
-                  
+
                   <div className={styles.editOption}>
                     <h3>Option 2: Clone the repository</h3>
                     <p>
@@ -76,12 +76,12 @@ function EditPage() {
                   </div>
                 </div>
               )}
-              
+
               <div className={styles.helpSection}>
                 <h2>Need Help?</h2>
                 <p>
-                  If you need assistance with editing the documentation, please refer to our 
-                  <Link to="/juice-docs/docs/contributing"> Contributing Guide</Link> or 
+                  If you need assistance with editing the documentation, please refer to our
+                  <Link to="/docs/contributing"> Contributing Guide</Link> or
                   <Link to="https://github.com/juice-labs/juice-docs/issues/new"> open an issue</Link> on GitHub.
                 </p>
               </div>
@@ -93,4 +93,4 @@ function EditPage() {
   );
 }
 
-export default EditPage; 
+export default EditPage;
