@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkjuice_docs=self.webpackChunkjuice_docs||[]).push([[2634],{9179:(c,e,u)=>{u.r(e),u.d(e,{default:()=>i});u(6540);var s=u(6347),d=u(4848);function i(){return(0,d.jsx)(s.rd,{to:"/juice-docs/docs/juice/intro"})}}}]);
