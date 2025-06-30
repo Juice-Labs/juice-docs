@@ -44,7 +44,7 @@ const config = {
           alt: 'Juice Logo',
           src: 'img/juice-logo.png',
           srcDark: 'img/juice-logo.png',
-          href: '/juice-docs/docs/juice/intro'
+          href: '/docs/juice/intro'
         },
         items: [
           {
