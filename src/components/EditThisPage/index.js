@@ -8,14 +8,14 @@ import styles from './styles.module.css';
 export default function EditThisPage() {
   const location = useLocation();
   const {siteConfig} = useDocusaurusContext();
-  
+
   // Get the current path and convert it to a GitHub edit URL
   const currentPath = location.pathname;
-  const docPath = currentPath.replace('/juice-docs/docs/', '');
-  
+  const docPath = currentPath.replace('/docs/', '');
+
   // Safely access the editUrl with fallback
   const editUrl = siteConfig.presets?.[0]?.[1]?.docs?.editUrl || 'https://github.com/juice-labs/juice-docs/edit/master/';
-  
+
   // Construct the edit URLs
   const githubEditUrl = `${editUrl.replace('/blob/', '/edit/')}docs/${docPath}.md`;
   const customEditUrl = `/juice-docs/edit?path=${docPath}`;
@@ -45,4 +45,4 @@ export default function EditThisPage() {
       </p>
     </div>
   );
-} 
+}
