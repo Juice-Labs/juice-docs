@@ -1,6 +1,6 @@
 ---
 title: 'Multiple GPUs'
-position: 16
+position: 9
 ---
 
 # Multiple GPUs
