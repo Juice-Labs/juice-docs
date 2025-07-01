@@ -13,7 +13,7 @@ If the path `C:\AI` is added to the **Connect GPU** section, any application tha
 ![Add Paths](/img/juice/connect_gpu_nopaths.png)
 
 
-## Auto-Detecting Paths 🕵️
+## Auto-Detecting Paths
 
 Juice can automatically find common supported application paths on your machine.
 
@@ -24,7 +24,7 @@ Juice can automatically find common supported application paths on your machine.
 ![Auto-Detect Paths](/img/juice/connect_gpu_paths_autodetect.png)
 
 
-## Manually Adding a Path ✍️
+## Manually Adding a Path
 
 1.  Click **Edit** in the **Paths** panel of the **Connect GPU** section.
 2.  Add a specific application or entire folder by entering the file path in the space provided. Alternatively, click the folder icon to browse for the path.
