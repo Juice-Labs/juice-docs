@@ -44,4 +44,4 @@ juice run --help      # Help with running applications
 Example commands are formatted for Linux machines. For Windows commands, substitute `./juice` for either `juice.exe` or `juice`.
 :::
 
-For more information on advanced CLI capabilities, see the guides on [Advanced CLI Processes](/docs/juice/pro-users/cli-app/advanced-cli/advanced-cli.md).
+For more information on advanced CLI capabilities, see the guides on [Advanced CLI Processes](./advanced-cli/advanced-cli.md).

@@ -11,7 +11,7 @@ You can run the Juice client within a Docker container to leverage remote GPUs w
 
 - **Docker**: Ensure you have Docker installed and running on your system. 
 - **Active Account**: You'll need an active Juice account and access to a pool with available GPUs. 
-- **M2M Token**: Generate an M2M token from your juice account to enable automated login within the container.<br/>See the [Machine-to-Machine (M2M) Tokens](/docs/juice/user-guide/cli-app/m2m-tokens.md) section of the Juice (Pro) User Guide for instructions. 
+- **M2M Token**: Generate an M2M token from your juice account to enable automated login within the container.<br/>See the [Machine-to-Machine (M2M) Tokens](/docs/juice/user-guide/cli-app/m2m-tokens.md) section of the Juice User Guide for instructions. 
 - **Juice Tarball**: Download the latest juice Linux tarball from [app.juicelabs.co](https://app.juicelabs.co)
 
 ## Creating the Docker image:

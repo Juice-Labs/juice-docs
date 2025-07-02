@@ -43,7 +43,7 @@ Our documentation is organized as follows:
 
 - **docs/juice/intro.md**: Main introduction page
 - **docs/juice/admin/**: Documentation for administrators
-- **docs/juice/pro-users/**: Documentation for professional users
+- **docs/juice/user-guide/**: Documentation for professional users
 - **docs/juice/other-juice-docs/**: Additional documentation
 
 ## Writing Guidelines
