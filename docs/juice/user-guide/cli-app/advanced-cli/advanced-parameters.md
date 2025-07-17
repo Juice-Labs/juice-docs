@@ -82,7 +82,7 @@ Juice offers several advanced parameters to fine-tune your GPU sessions and appl
     **Example**:
 
     ```powershell
-    juice run --on-queue-timeout continue --queue-timeout 300 my_long_running_job.py 
+    juice run --on-queue-timeout continue --wait-for 300 my_long_running_job.py 
     ```
  
 
@@ -97,14 +97,14 @@ Juice offers several advanced parameters to fine-tune your GPU sessions and appl
     ```
  
 
-- --queue-timeout \<uint\>
+- --wait-for \<uint\>
 
     Sets the maximum time (in seconds) to wait for GPU availability. Use to prevent indefinite waits in resource-constrained environments or for time-sensitive applications.  
 
     **Example**:
 
     ```powershell
-    juice run --queue-timeout 600 my_time_sensitive_app.py 
+    juice run --wait-for 600 my_time_sensitive_app.py 
     ```
  
 
