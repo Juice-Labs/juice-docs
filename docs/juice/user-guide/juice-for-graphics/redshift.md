@@ -4,30 +4,22 @@ sidebar_label: Redshift
 sidebar_position: 2
 ---
 
-## Introduction
-
-**Redshift by Maxon** is a powerful, GPU-accelerated renderer designed to meet the specific demands of contemporary high-end production rendering. Integrating Redshift with the **Juice** platform allows you to leverage a distributed network of GPUs, dramatically accelerating render times for complex scenes in applications like Houdini, Blender, and Maya.
-
-
 ## Prerequisites
 
-Before proceeding, ensure the following requirements are met:
-
-* **Juice Client:** The Juice client application must be installed and configured on your local workstation.
-* **Juice Agent:** The Juice agent must be installed and running on all remote machines that will participate in rendering tasks.
+* **Juice Agent:** The Juice Agent must be installed, configured, and running. This makes the GPU visible to your Juice Client.
+* **Juice Client:** The Juice client application must be installed. This is the control center for sending jobs to your remote Agent. 
 * **Redshift Installer:** You must have the appropriate Redshift installer executable (`.exe` for Windows) downloaded from your Maxon account.
 
 ***
 
 ## Installation and Configuration
 
-A critical aspect of Redshift's performance is its use of kernel files specifically compiled for the GPU hardware it runs on. To ensure successful rendering on the Juice network, you must run the Redshift installer on the specific GPU you intend to use for your workload.
+A critical aspect of Redshift's performance is its use of kernel files specifically compiled for the GPU hardware it runs on. To ensure successful rendering, you must run the Redshift installer on the specific GPU you intend to use for your workload.
 
 This installation only needs to be performed once per unique GPU hardware configuration. If you later connect to an agent with a different type of GPU, you will need to repeat this process for that hardware.
 
-### Installation Steps
 
-1.  **Connect to Target GPU:** Use the Juice client to establish a connection to the remote agent(s) equipped with the GPUs you will be rendering on.
+1.  **Connect to Target GPU:** Use the Juice client to establish a connection to the remote agent equipped with the GPUs you will be rendering on.
 
 2.  **Run the Installer via Juice:** Open a command-line terminal or PowerShell and execute the `juice run` command to launch the Redshift installer.
 

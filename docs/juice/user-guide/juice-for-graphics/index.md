@@ -18,3 +18,4 @@ The Juice server runs equally well on Windows and Linux, and clients from either
 - [Doom](doom.md)
 - [Maya](maya.md)
 - [Steam](steam.md)
+- [Redshift](redshift.md)
