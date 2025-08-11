@@ -10,6 +10,21 @@ Before you begin, you must be part of the Juice Telemetry collection program. Yo
 
 ---
 
+## What We Collect
+
+To provide insights into your hardware's performance and health, the Juice agent collects operational metadata. **We do not collect any personal files, source code, or other customer content.** The agent only sends system-level information.
+
+Here’s a summary of the data we collect and how often it's sent:
+
+| Category  | Examples                                                                                                                                    | Frequency          |
+| :-------- | :------------------------------------------------------------------------------------------------------------------------------------------ | :----------------- |
+| **Host** | `hostname`, `os`, `osVersion`, `systemManufacturer`, `systemModel`, `systemType`, `CPUmodel`, `systemStorage`, `systemRam`   | On agent start     |
+| **GPU** | `utilizationGpu`, `vramUsed`, `temperatureGpu`, `powerDraw`, `fanSpeed`, `clockCore`, **`clockThrottling`**, **`pState`** | Every **5 seconds** |
+| **Agent** | `version`, `lastCheckinStatus`, `errors`   | On agent start |     
+
+
+
+
 ## Setup Instructions
 
 
