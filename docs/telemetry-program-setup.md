@@ -43,7 +43,7 @@ Make sure to replace `[token]` with the M2M token you created in Step 2.
 :::
 
 ```bash
-curl [https://get.juicelabs.co](https://get.juicelabs.co) | \
+curl https://get.juicelabs.co | \
 INSTALL_JUICE_TOKEN=[token] \
 INSTALL_JUICE_POOL=telemetry \
 sh -
