@@ -1,5 +1,6 @@
 ---
 title: 'Collecting Telemetry Data'
+sidebar_class_name: 'hidden'
 ---
 
 # Collecting Telemetry Data
