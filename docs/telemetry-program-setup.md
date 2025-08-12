@@ -6,7 +6,7 @@ sidebar_class_name: 'hidden'
 # Collecting Telemetry Data
 
 
-Before you begin, you must be part of the Juice Telemetry collection program. You should have received an **email invitation** to join. If you haven't received an invite, [please contact our support team](mailto:help@juicelabs.co).
+Before you begin, you must be part of a Juice Telemetry collection program. You should have received an **email invitation** to join. If you haven't received an invitation, [please contact our support team](mailto:help@juicelabs.co).
 
 ---
 
@@ -19,7 +19,7 @@ Here’s a summary of the data we collect and how often it's sent:
 | Category  | Examples                                                                                                                                    | Frequency          |
 | :-------- | :------------------------------------------------------------------------------------------------------------------------------------------ | :----------------- |
 | **Host** | `hostname`, `os`, `osVersion`, `systemManufacturer`, `systemModel`, `systemType`, `CPUmodel`, `systemStorage`, `systemRam`   | On agent start     |
-| **GPU** | `utilizationGpu`, `vramUsed`, `temperatureGpu`, `powerDraw`, `fanSpeed`, `clockCore`, **`clockThrottling`**, **`pState`** | Every **5 seconds** |
+| **GPU** | `utilizationGpu`, `vramUsed`, `temperatureGpu`, `powerDraw`, `fanSpeed`, `clockCore`, `clockThrottling`, `pState` | Every 5 seconds |
 | **Agent** | `version`, `lastCheckinStatus`, `errors`   | On agent start |     
 
 
@@ -30,7 +30,7 @@ Here’s a summary of the data we collect and how often it's sent:
 
 ### Step 1: Accept Your Invitation
 
-First, find the telemetry program invitation in your email inbox and accept it. Follow the link and create your account 
+First, find the telemetry program invitation in your email inbox and accept it. Follow the link and create your account. 
 
 
 ### Step 2: Create an M2M Token
@@ -39,7 +39,7 @@ The agent requires a secure Machine-to-Machine (M2M) token to authenticate with 
 
 1.  Log in to the Juice admin interface at [**app.juicelabs.co**](https://app.juicelabs.co/).
 2.  Navigate to the **M2M Tokens** page. 
-3.  Click **Create Token** and give it a name (e.g., `telemetry-agent-token`).
+3.  Click **Create Token** and give the token a name (e.g., `telemetry-agent-token`).
 4.  Copy the generated token immediately and store it somewhere safe. You won't be able to see it again after you navigate away from the page.
 
 :::danger Important
@@ -86,4 +86,4 @@ If you run into any issues during setup or have questions, don't hesitate to rea
 
 Email: Send a detailed message to help@juicelabs.co.
 
-Help Widget: Click the Feedback widget on the [**app.juicelabs.co**](https://app.juicelabs.co/) website.
+Help Widget: Click the Feedback widget in the lower right of the [**app.juicelabs.co**](https://app.juicelabs.co/) website.
