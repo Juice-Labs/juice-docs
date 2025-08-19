@@ -1,4 +1,3 @@
-// UPDATED: Import Link from Docusaurus
 import React, { useState, useMemo, useEffect, useRef } from 'react';
 import Link from '@docusaurus/Link';
 import { compatibleApps, statusDefs } from '../../data/compatibleApps';
@@ -18,36 +17,13 @@ export default function CompatibilityMatrix() {
         )
       : compatibleApps;
 
-    // Define the custom sort order for statuses
-    const statusOrder = {
-      'Verified': 1,
-      'Community Tested': 2,
-      'In Progress': 3,
-      'Known Issues': 4
-    };
+    return filtered.sort((a, b) => a.name.localeCompare(b.name));
 
-    return filtered.sort((a, b) => {
-      // 1. Primary sort by category
-      const categoryCompare = a.category.localeCompare(b.category);
-      if (categoryCompare !== 0) {
-        return categoryCompare;
-      }
-
-      // 2. Secondary sort by status using the custom order
-      const statusCompare = statusOrder[a.status] - statusOrder[b.status];
-      if (statusCompare !== 0) {
-        return statusCompare;
-      }
-
-      // 3. Tertiary sort by name
-      return a.name.localeCompare(b.name);
-    });
   }, [searchTerm]);
 
 
   useEffect(() => {
     setCurrentPage(1);
-    // ...this logic is unchanged...
   }, [searchTerm, itemsPerPage]);
 
   const indexOfLastItem = currentPage * itemsPerPage;
@@ -55,7 +31,6 @@ export default function CompatibilityMatrix() {
   const currentItems = sortedAndFilteredApps.slice(indexOfFirstItem, indexOfLastItem);
 
   const paginate = (pageNumber) => {
-    // ...this logic is unchanged...
     if (pageNumber !== currentPage) {
       setCurrentPage(pageNumber);
       if (containerRef.current) {
@@ -66,7 +41,6 @@ export default function CompatibilityMatrix() {
 
   return (
     <div ref={containerRef}>
-      {/* ...search input and legend are unchanged... */}
       <input
         type="text"
         placeholder="🔍 Search for an application..."
@@ -80,7 +54,7 @@ export default function CompatibilityMatrix() {
       </div>
       
       <table className={styles.appTable}>
-       <thead>
+        <thead>
           <tr>
             <th>Application</th>
             <th>Supported Versions</th>
@@ -92,7 +66,6 @@ export default function CompatibilityMatrix() {
         <tbody>
           {currentItems.map((app) => (
             <tr key={`${app.name}-${app.versions.join('-')}`}>
-              {/* UPDATED: This cell now conditionally renders a link */}
               <td>
                 <strong>
                   {app.docLink ? (
