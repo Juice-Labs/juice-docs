@@ -52,7 +52,7 @@ This section documents all available CLI commands in the Juice CLI tool.
 **Parameters**:
 - `--json`: Output in JSON format
 - `--fields`: Specify fields to display (default fields: state, hostname, pool.name, id, numgpus)
-- `--sort`: Sort output (default sort column: 1)
+- `--sort-cols`: Sorts the output by a comma-separated list of column numbers (1-indexed). Use negative numbers for descending order. (Default: 1)
 
 ### agent info
 **Command**: `agent info <id>`
@@ -62,7 +62,7 @@ This section documents all available CLI commands in the Juice CLI tool.
 **Parameters**:
 - `--json`: Output in JSON format
 - `--fields`: Specify fields to display (default fields: state, hostname, pool.name, id, numgpus)
-- `--sort`: Sort output (default sort column: 1)
+- `--sort-cols`: Sorts the output by a comma-separated list of column numbers (1-indexed). Use negative numbers for descending order. (Default: 1)
 - `id` (required): The ID of the agent to get information about
 
 ### agent run
@@ -111,7 +111,7 @@ This section documents all available CLI commands in the Juice CLI tool.
 **Parameters**:
 - `--json`: Output in JSON format
 - `--fields`: Specify fields to display (default fields: hostname, name, uuid, agentVersion, vram-h)
-- `--sort`: Sort output (default sort columns: 3,2,1)
+- `--sort-cols`: Sorts the output by a comma-separated list of column numbers (1-indexed). Use negative numbers for descending order. (Default: 3,2,1)
 
 ## Token Management
 
@@ -123,7 +123,7 @@ This section documents all available CLI commands in the Juice CLI tool.
 **Parameters**:
 - `--json`: Output in JSON format
 - `--fields`: Specify fields to display (default fields: description, token, id, expiresAt)
-- `--sort`: Sort output (default sort column: 1)
+- `--sort-cols`: Sorts the output by a comma-separated list of column numbers (1-indexed). Use negative numbers for descending order. (Default: 1)
 - `id` (optional): ID of a specific token to list
 
 ### m2m create
@@ -153,7 +153,7 @@ This section documents all available CLI commands in the Juice CLI tool.
 **Parameters**:
 - `--json`: Output in JSON format
 - `--fields`: Specify fields to display (default fields: organization.name, name, id, sessions, gpuCount)
-- `--sort`: Sort output (default sort columns: 3,2,5,4,1)
+- `--sort-cols`: Sorts the output by a comma-separated list of column numbers (1-indexed). Use negative numbers for descending order. (default sort columns: 3,2,5,4,1)
 
 ## Release Management
 
@@ -165,7 +165,7 @@ This section documents all available CLI commands in the Juice CLI tool.
 **Parameters**:
 - `--json`: Output in JSON format
 - `--fields`: Specify fields to display (default fields: version, notes)
-- `--sort`: Sort output
+- `--sort-cols`: Sorts the output by a comma-separated list of column numbers (1-indexed). Use negative numbers for descending order. 
 
 ### release download
 **Command**: `release download <version>` (alias: `release dl`)
@@ -206,7 +206,7 @@ This section documents all available CLI commands in the Juice CLI tool.
 - `--all`: List all sessions (by default only shows active session)
 - `--json`: Output in JSON format
 - `--fields`: Specify fields to display (default fields: state, id, expiresAt, latencyMs, uploadMbps, downloadMbps)
-- `--sort`: Sort output (default sort column: 1)
+- `--sort-cols`: Sorts the output by a comma-separated list of column numbers (1-indexed). Use negative numbers for descending order. (Default: 1)
 
 ### session release
 **Command**: `session release`
@@ -242,5 +242,5 @@ This section documents all available CLI commands in the Juice CLI tool.
 **Parameters**:
 - `--json`: Output in JSON format
 - `--fields`: Specify fields to display (default fields: name, email, id)
-- `--sort`: Sort output (default sort column: 1)
+- `--sort-cols`: Sorts the output by a comma-separated list of column numbers (1-indexed). Use negative numbers for descending order. (Default: 1)
 - `id` (optional): ID of the user to get information about. If not provided, gets current user's information.
