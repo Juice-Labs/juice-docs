@@ -1,3 +1,4 @@
+/* --- Main Layout & Controls --- */
 .searchInput {
   width: 100%;
   padding: 12px;
@@ -7,16 +8,68 @@
   font-size: 1rem;
 }
 
+.controlsContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.filterControls {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  flex-grow: 1;
+}
+
+.filterSelect {
+  padding: 8px 12px;
+  font-family: inherit;
+  font-size: 1rem;
+  color: var(--ifm-font-color-base);
+  background-color: var(--ifm-background-color);
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 4px;
+  cursor: pointer;
+  flex-grow: 1;
+}
+
+.viewToggle {
+  display: flex;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.viewToggle button {
+  padding: 8px 16px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  color: var(--ifm-font-color-base);
+  font-size: 1rem;
+}
+
+.viewToggle button:disabled {
+  background-color: var(--ifm-color-primary);
+  color: white;
+  cursor: not-allowed;
+}
+
 .legend {
   margin-bottom: 24px;
   padding: 16px;
   background-color: var(--ifm-background-color-secondary);
   border-radius: 8px;
 }
+
 .legend p {
   margin: 4px 0;
 }
 
+/* --- Table View Styles --- */
 .appTable {
   width: 100%;
   border-collapse: collapse;
@@ -29,25 +82,80 @@
   vertical-align: middle; 
 }
 
-.appTable td:nth-child(3) {
-  text-align: center;
-}
-
 .appTable th {
   background-color: var(--ifm-background-color-secondary);
   font-weight: bold;
 }
 
-.statusBadge {
-  color: white;
-  padding: 4px 8px;
-  border-radius: 12px;
-  font-size: 0.8rem;
-  font-weight: bold;
-  display: inline-block;
+.appTable td:nth-child(3) {
   text-align: center;
 }
 
+.appTable tbody tr:hover {
+  background-color: var(--ifm-color-emphasis-100);
+}
+
+.osCell {
+  width: 90px;
+  min-width: 90px;
+}
+
+/* --- Card View Styles --- */
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px;
+}
+
+.appCard {
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 8px;
+  padding: 16px;
+  background-color: var(--ifm-background-surface-color);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.appCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+
+.cardTitle {
+  font-size: 1.25rem;
+  margin: 0;
+  margin-right: 8px;
+}
+
+.cardCategory {
+  font-size: 0.9rem;
+  color: var(--ifm-color-secondary-darkest);
+  margin-top: -8px;
+  margin-bottom: 16px;
+}
+
+.cardBody {
+  font-size: 0.95rem;
+}
+
+.cardBody p {
+  margin: 4px 0;
+}
+
+.cardNotes {
+  color: var(--ifm-color-content-secondary);
+  font-style: italic;
+}
+
+/* --- Pagination Styles --- */
 .paginationControls {
   display: flex;
   align-items: center;
@@ -86,11 +194,40 @@
   font-weight: bold;
 }
 
-/* .itemsPerPageSelect {
+.itemsPerPageSelect {
   appearance: none;
   background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23e3e3e3%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E');
   background-repeat: no-repeat;
   background-position: right 12px center;
   background-size: 10px;
   padding-right: 30px;
-} */
+}
+
+.statusBadge {
+  color: white;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  display: inline-block;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.osIconContainer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.osIconImg {
+  width: 20px;
+  height: 20px;
+  display: block;
+}
+
+.cardOsRow {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
