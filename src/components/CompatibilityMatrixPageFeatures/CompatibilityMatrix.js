@@ -14,28 +14,19 @@ export default function CompatibilityMatrix() {
   const [selectedStatus, setSelectedStatus] = useState('All');
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [viewMode, setViewMode] = useState('Table');
-  const [sortBy, setSortBy] = useState('category');
+  const [sortBy, setSortBy] = useState('name');
   
-  // State to track if the screen is mobile-sized
   const [isMobile, setIsMobile] = useState(false);
 
   // detect screen size
   useEffect(() => {
     const checkScreenSize = () => {
-      // You can adjust the 768px breakpoint as needed
       setIsMobile(window.innerWidth < 768);
     };
-
-    // Check on initial load
     checkScreenSize();
-
-    // Add event listener for screen resize
     window.addEventListener('resize', checkScreenSize);
-
-    // Cleanup listener on component unmount
     return () => window.removeEventListener('resize', checkScreenSize);
   }, []);
-
 
   const categories = useMemo(() => {
     return ['All', ...new Set(compatibleApps.map(app => app.category).sort())];
@@ -82,7 +73,6 @@ export default function CompatibilityMatrix() {
     }
   };
 
-  // Determine which view to show. On mobile, it's always 'Card'.
   const shouldShowCards = isMobile || viewMode === 'Card';
 
   return (
@@ -109,13 +99,13 @@ export default function CompatibilityMatrix() {
               </option>
             ))}
           </select>
+
           <select value={sortBy} onChange={(e) => setSortBy(e.target.value)} className={styles.filterSelect}>
-            <option value="category">Sort by Category</option>
             <option value="name">Sort by Name (A-Z)</option>
+            <option value="category">Sort by Category</option>
           </select>
         </div>
 
-        {/* Conditionally render the view toggle only on non-mobile screens */}
         {!isMobile && (
           <div className={styles.viewToggle}>
             <button onClick={() => setViewMode('Table')} disabled={viewMode === 'Table'}>Table</button>
