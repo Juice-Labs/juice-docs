@@ -11,6 +11,14 @@ export const compatibleApps = [
     docLink: '/docs/juice/user-guide/juice-for-graphics/3dmark'
   },
   {
+    name: 'Adobe After Effects',
+    category: 'VFX & Compositing',
+    versions: ['Latest'],
+    status: 'Known Issues',
+    os: ['Windows'],
+    notes: 'Currently incompatible with Juice. Contact our support team to request prioritization for this application.'
+  },
+  {
     name: 'Aimtastic',
     category: 'Gaming',
     versions: ['Latest'],
@@ -218,7 +226,6 @@ export const compatibleApps = [
     os: ['Windows', 'Linux'],
     notes: 'An open source machine learning framework for building and training neural networks.'
   },
-  
   {
     name: 'Rhino 3D',
     category: 'CAD / 3D VModeling',
@@ -226,7 +233,15 @@ export const compatibleApps = [
     status: 'Known Issues',
     os: ['Windows'],
     notes: 'Currently incompatible with Juice. Contact our support team to request prioritization for this application.'
-    },
+  },
+  {
+    name: 'Rocket League',
+    category: 'Gaming',
+    versions: ['Latest'],
+    status: 'Verified',
+    os: ['Windows'],
+    notes: 'Competitive vehicular soccer video game.'
+  },
   {
     name: 'Sid Meier\'s Civilization VI',
     category: 'Gaming',
