@@ -234,6 +234,14 @@ export const compatibleApps = [
     os: ['Windows'],
     notes: 'Currently incompatible with Juice. Contact our support team to request prioritization for this application.'
   },
+   {
+    name: 'Roblox Studio',
+    category: 'Game Development',
+    versions: ['Latest'],
+    status: 'Verified',
+    os: ['Windows'],
+    notes: 'Create and publish 3D experiences and games on the Roblox platform.'
+  },
   {
     name: 'Rocket League',
     category: 'Gaming',
@@ -314,7 +322,7 @@ export const compatibleApps = [
     versions: ['Latest'],
     status: 'Verified',
     os: ['Windows'],
-    notes: 'A GPU stress-test and benchmarking tool based on the UNIGINE engine.',
+    notes: 'Please ensure you select the DirectX API for this benchmark. OpenGL is not currently supported.',
     docLink: '/docs/juice/user-guide/juice-for-graphics/superposition'
   },
   {
