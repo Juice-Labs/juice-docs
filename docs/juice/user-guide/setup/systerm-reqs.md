@@ -12,7 +12,7 @@ Both the **Client** and **GPU Agent** are supported on Windows 10 and Windows 11
 
 ### Linux
 
-The client and GPU agent are supported on Debian-based distributions (version 11 and greater, like Ubuntu 20.04) and Red Hat Enterprise Linux (RHEL) 9-based distributions, such as AlmaLinux 9 or greater. Other distributions with similar or newer release dates are also likely supported.
+The client and GPU agent are supported on Debian-based distributions (version 10 and greater, like Ubuntu 18.04) and Red Hat Enterprise Linux (RHEL) 8-based distributions, such as AlmaLinux 8 or greater. Other distributions with similar or newer release dates are also likely supported.
 
 :::note
 Currently, only the client is supported when running in WSL on Windows.
@@ -34,7 +34,7 @@ If you're running on a virtual machine with graphics drivers that don't support 
 
 ### Linux 
 
-#### Ubuntu 20.04 or greater, Debian 11 or greater. 
+#### Ubuntu 18.04 or greater, Debian 10 or greater. 
 - The following packages must be installed: 
 
     - libatomic1 
@@ -48,7 +48,7 @@ If you're running on a virtual machine with graphics drivers that don't support 
         sudo apt update && sudo apt install libatomic1 libnuma1
         ```
     :::
-#### AlmaLinux 9 or greater, (RHEL)-based. 
+#### AlmaLinux 8 or greater, (RHEL)-based. 
 - The following packages must be installed: 
 
   - libatomic
@@ -65,7 +65,7 @@ If you're running on a virtual machine with graphics drivers that don't support 
 
 ## Agent Device Prerequisites for GPU Hosting
 
-On all platforms an NVIDIA GPU with an installed driver version 535 or greater, and a CUDA driver version 12.2 through to 12.9. 
+On all platforms an NVIDIA GPU with an installed driver version 535 or greater, and a CUDA driver version 12.2 through to 13.0. 
 
 ### Windows 
 
@@ -73,7 +73,7 @@ On all platforms an NVIDIA GPU with an installed driver version 535 or greater, 
 
 ### Linux 
 
-#### Ubuntu 20.04 or greater, Debian 11 or greater. 
+#### Ubuntu 18.04 or greater, Debian 10 or greater. 
 - The following packages must be installed: 
 
     - libatomic1 
@@ -95,7 +95,7 @@ On all platforms an NVIDIA GPU with an installed driver version 535 or greater, 
         ```
     :::
 
-#### AlmaLinux 9 or greater, (RHEL)-based. 
+#### AlmaLinux 8 or greater, (RHEL)-based. 
 - The following packages must be installed: 
 
   - libatomic
