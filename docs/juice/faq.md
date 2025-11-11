@@ -5,7 +5,7 @@ position: 10
 
 ### How can I get help or provide feedback?
 
-_Join the [Juice Labs Discord Server](https://discord.gg/xWHXNX8b3V), and ask in the #feedback-and-questions channel._
+_Email [support@juicelabs.co](mailto:support@juicelabs.co)._
 
 ### What uses are supported by Juice across operating systems?
 
@@ -31,7 +31,7 @@ _Yes, this is called Loopback Mode.  Just point the client to_ `127.0.0.1`_.  Of
 
 ### Can I run the Juice Client inside a virtual machine or a container?
 
-_Yes!  Take a look at the [instructions for Docker](https://github.com/Juice-Labs/Juice-Labs/wiki/Juice-Client-for-Docker-(Ubuntu-22-Based))._
+_Yes!  Take a look at the [instructions for Docker](./user-guide/docker/docker-client.md)._
 
 ### Can I run the Juice Server inside a virtual machine or a container?
 
@@ -45,17 +45,31 @@ _No, you can run any combination of Client and Server (Windows or Ubuntu, physic
 
 _In_ `JuiceServer-*\agent\juicecache` _, you will see a directory for each application you've tried via Juice. You can safely clear or remove these directories, and the cache will refill as needed through usage._
 
-### Is there a way to aggregate or manage multiple GPU instances at once?
+### I'm behind a proxy or firewall, which hosts should I add to my allow list?
 
-_Yes, watch this space for imminent developments!_
+_You will need to add the following domains to your allow list:_
+
+#### Juice Agent and Client
+```
+https://electra.juicelabs.co
+```
+#### Juice Web Portal
+```
+https://login.juicelabs.co
+https://app.juicelabs.co
+```
+#### Download software
+```
+https://juice-artifacts.s3.us-east-2.amazonaws.com
+```
 
 ### Where do I find logs?
 
 | OS | Client/Server | Log location |
 |:---:|:---:|---|
-|Ubuntu|Client|`/juice.log`*|
-|Ubuntu|Server|`/agent/log/`|
-|Windows|Client|`/juice.log`*|
-|Windows|Server|`/agent/log/`|
+|Linux|Client|`~/.config/Juice GPU/logs/client-<session-id>.log`|
+|Linux|Server|`~/.config/Juice GPU/logs/agent-<session-id>.log`, `~/.config/Juice GPU/logs/agent_service.log`|
+|Windows|Client|`%APPDATA%\Juice GPU\logs\client-<session-id>.log`|
+|Windows|Server|`%APPDATA%\Juice GPU\logs\agent-<session-id>.log`, `%APPDATA%\Juice GPU\logs\agent_service.log`|
 
-_*alternate locations for client log can be configured in the `logFile` parameter in `juice.cfg`_
+_*alternate locations configured using the `log-file` parameter on the command line_
