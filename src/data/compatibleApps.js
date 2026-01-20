@@ -77,7 +77,7 @@ export const compatibleApps = [
   {
     name: 'Blender',
     category: '3D Modeling',
-    versions: ['4.4'],
+    versions: ['4.5'],
     status: 'Verified',
     os: ['Windows', 'Linux'],
     notes: 'Cycles and EEVEE render.',
@@ -117,6 +117,15 @@ export const compatibleApps = [
     os: ['Windows'],
     notes: 'Latest version on Steam.',
     docLink: '/docs/juice/user-guide/juice-for-graphics/doom'
+  },
+    {
+    name: 'Enscape',
+    category: 'Real-time rendering and virtual reality plugin',
+    versions: ['3.5.3', '4.0.2', 'Latest'],
+    status: 'In Progress',
+    os: ['Windows', 'Linux'],
+    notes: 'Curently being worked on by the Juice team.',
+
   },
   {
     name: 'GPT4All',
@@ -164,10 +173,18 @@ export const compatibleApps = [
   {
     name: 'Maxon Cinema 4D',
     category: '3D Modeling & Animation',
-    versions: ['2024.4'],
+    versions: ['2026', '2025'],
     status: 'Known Issues',
-    os: ['Windows'],
-    notes: 'Currently incompatible with Juice. The team is investigating potential solutions.'
+    os: ['Windows', 'Linux'],
+    notes: 'Performance may vary based on project complexity.'
+  },
+    {
+    name: 'Maxon Redshift',
+    category: '3D Rendering',
+    versions: ['Latest'],
+    status: 'Verified',
+    os: ['Windows', 'Linux'],
+    notes: 'Performance may vary based on the project complexity.'
   },
   {
     name: 'Maxon ZBrush',
@@ -229,10 +246,10 @@ export const compatibleApps = [
   {
     name: 'Rhino 3D',
     category: 'CAD / 3D VModeling',
-    versions: ['Latest'],
+    versions: ['Rhino 7 and 8'],
     status: 'Known Issues',
     os: ['Windows'],
-    notes: 'Currently incompatible with Juice. Contact our support team to request prioritization for this application.'
+    notes: 'Most features work, but some rendering modes may have issues.'
   },
    {
     name: 'Roblox Studio',
@@ -256,15 +273,15 @@ export const compatibleApps = [
     versions: ['Latest'],
     status: 'Verified',
     os: ['Windows', 'Linux'],
-    notes: 'Latest version on Steam. Supports both DirectX 11 and DirectX 12 modes.'
+    notes: 'Latest version on Steam. Bestsupport with DirectX 12 mode.'
   },
   {
     name: 'Siemens NX CAD',
     category: 'CAD / CAM',
     versions: ['Latest'],
-    status: 'In Progress',
+    status: 'Verified',
     os: ['Windows'],
-    notes: 'Currently incompatible. The team is actively working on a solution.'
+    notes: 'Juice provides support for Ray-traced studio within Siemens NX.'
   },
   {
     name: 'Stable Diffusion',
