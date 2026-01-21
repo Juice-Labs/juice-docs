@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.7.0">
 <title data-rh="true">Welcome to Juice | Juice</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://docs.juicelabs.co/docs/juice/intro"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Welcome to Juice | Juice"><meta data-rh="true" name="description" content="What is Juice?"><meta data-rh="true" property="og:description" content="What is Juice?"><link data-rh="true" rel="icon" href="https://app.juicelabs.co/Juice@64px.png"><link data-rh="true" rel="canonical" href="https://docs.juicelabs.co/docs/juice/intro"><link data-rh="true" rel="alternate" href="https://docs.juicelabs.co/docs/juice/intro" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.juicelabs.co/docs/juice/intro" hreflang="x-default"><link rel="stylesheet" href="/assets/css/styles.0a649a6e.css">
-<script src="/assets/js/runtime~main.bc3847e8.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.c326764a.js" defer="defer"></script>
 <script src="/assets/js/main.aa4b627b.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -15,29 +15,22 @@
 <p><img decoding="async" loading="lazy" alt="Juice Components" src="/assets/images/JuiceComponents-e94534d8678bf77f611d131885d2cae1.png" width="1566" height="706" class="img_ev3q"></p>
 <p>Juice is simple to use - it consists of:</p>
 <ul>
-<li>Installable <strong>Client</strong> and <strong>Agent</strong>: software you install on your systems that contains both the <strong>Agent</strong> (for making physical GPUs on that system available remotely in a shared pool) and the <strong>Client</strong> (for running GPU-hungry applications on that system using remote GPU from a shared pool) - this install allows you to run command line (CLI) Juice.</li>
+<li>Installable <strong>Client</strong> and <strong>Agent</strong>: software you install on your systems that contains both the <strong>Agent</strong> (for making physical GPUs on that system available remotely in a shared pool) and the <strong>Client</strong> (for running GPU-hungry applications on that system using remote GPU from a shared pool) - this install allows you to run command line (CLI) Juice, and to run the Windows Desktop app.</li>
 <li>a Juice-hosted <strong>Controller</strong> that governs sharing, pools, and connections among Clients and Agents (we manage the Controller; you don&#x27;t need to worry about that part)</li>
 <li>a browser-based <strong>Admin interface</strong> to the Controller so you can manage users, pools, etc. for your Org (and Org could be a team or company; it&#x27;s how we license Juice to you and organize users, pools, and sharing)</li>
-<li>COMING SOON: a Windows Desktop app for running applications and sharing GPUs</li>
-<li>COMING SOON: a reporting interface that gives admins deep visibility to the activity within their Org</li>
+<li>a Windows Desktop app for running applications and sharing GPUs</li>
+<li>a reporting interface that gives admins visibility to utilization and activity within their Org</li>
 </ul>
 <p>Today Juice works with:</p>
 <ul>
 <li>NVIDIA GPUs</li>
+<li>Windows and Linux</li>
 <li>CUDA-based AI workloads, e.g. those running on top of PyTorch or TensorFlow frameworks</li>
-<li>Many graphics applications*, like:<!-- -->
-<ul>
-<li>Unreal</li>
-<li>Unity</li>
-<li>Blender</li>
-<li>Maya</li>
-<li>Revit</li>
-</ul>
-</li>
-<li>Any physical, virtual, or container-based system</li>
+<li>Many graphics applications*</li>
+<li>Physical, virtual, or container-based systems</li>
 </ul>
 <p>*<em>Graphics applications are not supported on Linux clients yet, but Linux systems can act as agents to provide GPUs for any workload including graphics.</em></p>
-<p>Once Juice is installed, launching an application to use remote GPU is as simple as running it through our command line tool <code>juice</code>. For example:</p>
+<p>Once Juice is installed, launching an application to use remote GPU is as simple as using the Windows Desktop app, or running it through our command line tool <code>juice</code>. For example:</p>
 <p>Run PyTorch-based inference with <code>juice run python pytorch/resnet.py</code></p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="why-juice">Why Juice?<a href="#why-juice" class="hash-link" aria-label="Direct link to Why Juice?" title="Direct link to Why Juice?">​</a></h2>
 <p>GPU use is hampered by a major limitation: a GPU-hungry application can only run in the same physical machine as the GPU itself.  This limitation causes local-resourcing problems -- there&#x27;s either not enough (or none, depending on the size and power needs of the device), or GPU capacity sits idle and wasted (global utilization of GPU capacity is estimated at 15%).</p>
