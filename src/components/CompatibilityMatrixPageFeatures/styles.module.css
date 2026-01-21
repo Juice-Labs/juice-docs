@@ -90,6 +90,9 @@
 .appTable td:nth-child(3) {
   text-align: center;
 }
+.appTable td:last-child {
+  min-width: 200px;
+}
 
 .appTable tbody tr:hover {
   background-color: var(--ifm-color-emphasis-100);

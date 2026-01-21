@@ -132,43 +132,45 @@ export default function CompatibilityMatrix() {
             <tr>
               <th>Application</th>
               <th>Supported Versions</th>
+              <th>Last Verified</th>
               <th>Status</th>
               <th>OS</th>
               <th>Notes</th>
             </tr>
           </thead>
           <tbody>
-            {currentItems.map((app) => (
-              <tr key={`${app.name}-${app.versions.join('-')}`}>
-                <td>
-                  <strong>
-                    {app.docLink ? (
-                      <Link to={app.docLink}>{app.name}</Link>
-                    ) : (
-                      app.name
-                    )}
-                  </strong>
-                  <br />
-                  <small>{app.category}</small>
-                </td>
-                <td>{app.versions.join(', ')}</td>
-                <td>
-                  <span
-                    className={styles.statusBadge}
-                    style={{ backgroundColor: statusDefs[app.status]?.color || '#808080' }}
-                  >
-                    {app.status}
-                  </span>
-                </td>
-                <td className={styles.osCell}>
-                  <div className={styles.osIconContainer}>
-                    {app.os.map(osName => <OsIcon key={osName} os={osName} />)}
-                  </div>
-                </td>
-                <td>{app.notes}</td>
-              </tr>
-            ))}
-          </tbody>
+        {currentItems.map((app) => (
+          <tr key={`${app.name}-${app.versions.join('-')}`}>
+            <td>
+              <strong>
+                {app.docLink ? (
+                  <Link to={app.docLink}>{app.name}</Link>
+                ) : (
+                  app.name
+                )}
+              </strong>
+              <br />
+              <small>{app.category}</small>
+            </td>
+            <td>{app.versions.join(', ')}</td>
+            <td>{app.lastVerified || 'N/A'}</td>
+            <td>
+              <span
+                className={styles.statusBadge}
+                style={{ backgroundColor: statusDefs[app.status]?.color || '#808080' }}
+              >
+                {app.status}
+              </span>
+            </td>
+            <td className={styles.osCell}>
+              <div className={styles.osIconContainer}>
+                {app.os.map(osName => <OsIcon key={osName} os={osName} />)}
+              </div>
+            </td>
+            <td>{app.notes}</td>
+          </tr>
+        ))}
+      </tbody>
         </table>
       )}
 

@@ -26,6 +26,7 @@ export default function AppCard({ app, statusDefs }) {
       <p className={styles.cardCategory}>{app.category}</p>
       <div className={styles.cardBody}>
         <p><strong>Versions:</strong> {app.versions.join(', ')}</p>
+        <p><strong>Last Verified:</strong> {app.lastVerified || 'N/A'}</p> {/* New Line */}
         <p className={styles.cardOsRow}>
           <strong>OS:</strong>
           <span className={styles.osIconContainer}>

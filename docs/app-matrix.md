@@ -1,6 +1,5 @@
 ---
 title: Application Compatibility
-sidebar_class_name: 'hidden'
 
 ---
 
