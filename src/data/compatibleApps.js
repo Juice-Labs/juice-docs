@@ -41,9 +41,9 @@ export const compatibleApps = [
   {
     name: 'ArcGIS Pro',
     category: 'GIS',
-    versions: ['3.3'],
+    versions: ['Latest'],
     lastVerified: '23.0.0-94',
-    status: 'Verified',
+    status: 'Basic Support',
     os: ['Windows'],
     notes: 'Geographic information system software for working with maps and geographic information.',
   },
@@ -77,6 +77,7 @@ export const compatibleApps = [
   {
     name: 'Autodesk Revit',
     category: 'BIM / Architecture',
+    hidden: true, 
     versions: ['2026'],
     lastVerified: '23.0.0-94',
     status: 'Beta Support',
@@ -210,6 +211,7 @@ export const compatibleApps = [
   {
     name: 'Maxon ZBrush',
     category: 'Digital Sculpting',
+    hidden: true,
     versions: ['Latest'],
     lastVerified: '23.0.0-94',
     status: 'Basic Support',
@@ -274,6 +276,7 @@ export const compatibleApps = [
   {
     name: 'Rhino 3D',
     category: 'CAD / 3D Modeling',
+    hidden: true,
     versions: ['Rhino 7 and 8'],
     lastVerified: '23.0.0-94',
     status: 'Beta Support',

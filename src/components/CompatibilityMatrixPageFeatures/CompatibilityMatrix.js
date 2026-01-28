@@ -33,7 +33,7 @@ export default function CompatibilityMatrix() {
   }, []);
 
   const sortedAndFilteredApps = useMemo(() => {
-    let filtered = compatibleApps;
+    let filtered = compatibleApps.filter(app => app.hidden !== true);
     if (searchTerm) {
       filtered = filtered.filter(app => app.name.toLowerCase().includes(searchTerm.toLowerCase()));
     }
