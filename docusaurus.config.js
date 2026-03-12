@@ -27,6 +27,7 @@ const config = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl: 'https://github.com/juice-labs/juice-docs/edit/master/',
+          exclude: ['telemetry-program-setup.md'],
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
