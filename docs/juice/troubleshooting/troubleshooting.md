@@ -49,6 +49,17 @@ To connect to a remote GPU from an application that you are running through juic
 
 Check your Endpoint Security or Antivirus. If you see any warnings about blocked DLLs or executables, add an exception for **C:\Program Files\Juice GPU\juice**. If you are unable to do so, please contact your IT administrator. 
 
+### Linux installer (`get.juicelabs.co`) exits with an error.
+
+If the one-step installer fails, match the output to these common causes:
+
+- `INSTALL_JUICE_TOKEN is not set`: export or inline a valid M2M token in `INSTALL_JUICE_TOKEN`.
+- `Token check failed`: verify token validity and the controller host (default is `electra.juicelabs.co`, override with `INSTALL_JUICE_CONTROLLER`).
+- `Please correct the above errors`: check missing runtime libraries and `glibc` version. The installer requires `glibc >= 2.27`, `libatomic`, and `libnuma`; agent service install also requires `libvulkan`, `libgl`, and `libnvidia-encode`.
+- `Could not install service`: the script could not complete `juice agent service install` (most often missing agent runtime dependencies or invalid pool value).
+
+Common pitfall: if `INSTALL_JUICE_POOL` is not set, the installer still installs binaries but intentionally skips service creation/startup.
+
 ### My agent failed to start.
 
 Check to see if you're already running an agent.

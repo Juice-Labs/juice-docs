@@ -35,6 +35,55 @@ Log in to [app.juicelabs.co](https://app.juicelabs.co):
 
    ...replacing `juice_linux_release` with the filename of the downloaded archive.
 
+## Linux One-Step Installer (Agent Service)
+
+For Linux hosts that should run a persistent Juice agent service, you can use the installer script at `https://get.juicelabs.co`.
+
+### Prerequisites
+
+- `sudo` or root access
+- `systemd` or `openrc`
+- `curl` or `wget`
+- An M2M token (from `app.juicelabs.co`)
+
+### Common install patterns
+
+Install the Juice binary only (no service created):
+
+```bash
+curl https://get.juicelabs.co | INSTALL_JUICE_TOKEN=m2m_xxx sh -
+```
+
+Install and configure the agent service in a pool:
+
+```bash
+curl https://get.juicelabs.co | INSTALL_JUICE_TOKEN=m2m_xxx INSTALL_JUICE_POOL=<pool-id> sh -
+```
+
+Install against a custom controller:
+
+```bash
+curl https://get.juicelabs.co | INSTALL_JUICE_TOKEN=m2m_xxx INSTALL_JUICE_POOL=<pool-id> INSTALL_JUICE_CONTROLLER=<controller-host> sh -
+```
+
+Pass additional agent runtime flags to the service command:
+
+```bash
+curl https://get.juicelabs.co | INSTALL_JUICE_TOKEN=m2m_xxx INSTALL_JUICE_POOL=<pool-id> sh -s - --cache-size=16 --labels region=us-east
+```
+
+### Installer environment variables
+
+| Variable | Required | Notes |
+| --- | --- | --- |
+| `INSTALL_JUICE_TOKEN` | Yes | M2M token used for token validation and download authorization |
+| `INSTALL_JUICE_POOL` | No | Pool ID/name for service install; if omitted, the script installs binaries but does not install/start the agent service |
+| `INSTALL_JUICE_CONTROLLER` | No | Controller host (default: `electra.juicelabs.co`) |
+| `INSTALL_JUICE_VERSION` | No | Version to install (defaults to latest) |
+| `INSTALL_JUICE_USER` | No | Service user (default: `juice`) |
+| `INSTALL_JUICE_SKIP_ENABLE` | No | If `true`, do not enable service at boot |
+| `INSTALL_JUICE_SKIP_START` | No | If `true`, do not start service after install |
+
 ## (Optional) Adding juice to PATH 
 
 #### To enable your system to run `juice` from any directory: 
