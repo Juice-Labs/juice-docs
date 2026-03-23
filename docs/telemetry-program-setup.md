@@ -64,6 +64,9 @@ INSTALL_JUICE_TOKEN=[token] \
 INSTALL_JUICE_POOL=telemetry \
 sh -
 ```
+
+If your organization uses a custom controller hostname, include `INSTALL_JUICE_CONTROLLER=<controller_hostname>`.
+
 For more details on the installer script, see the repository here: [Installer](https://github.com/Juice-Labs/juice-oss/tree/main/installer)
 
 
