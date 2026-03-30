@@ -14,6 +14,11 @@ Both the **Client** and **GPU Agent** are supported on Windows 10 and Windows 11
 
 The client and GPU agent are supported on Debian-based distributions (version 10 and greater, like Ubuntu 18.04) and Red Hat Enterprise Linux (RHEL) 8-based distributions, such as AlmaLinux 8 or greater. Other distributions with similar or newer release dates are also likely supported.
 
+For the Linux one-step installer (`curl https://get.juicelabs.co | ... sh -`), your system must also have:
+- glibc 2.27 or newer
+- either `systemd` or `openrc`
+- either `curl` or `wget`
+
 :::note
 Currently, only the client is supported when running in WSL on Windows.
 :::
