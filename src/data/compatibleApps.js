@@ -97,7 +97,7 @@ export const compatibleApps = [
   {
     name: 'ComfyUI',
     category: 'AI Image Generation',
-    versions: ['Latest'],
+    versions: ['0.16.4', '0.18.2'],
     lastVerified: '28.0.0-47',
     status: 'Verified',
     os: ['Windows', 'Linux'],
