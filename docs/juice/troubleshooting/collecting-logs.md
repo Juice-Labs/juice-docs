@@ -56,4 +56,4 @@ On Linux, the logs are located in a hidden configuration directory in your home 
 ```
 
 ## Step 3: Send the Logs
-The log files are named using patterns like client-*.log, agent_service.log, or agent-*.log. When contacting support, please find the most recently modified log files and attach them to your ticket.
+The log files are named using patterns like *`client-<session-id>.log`*, *`agent_service.log`*, or *`agent-<session-id>.log`*. When contacting support, please find the most recently modified log files and attach them to your ticket.
