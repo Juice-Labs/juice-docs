@@ -97,7 +97,7 @@ This section documents all available CLI commands in the Juice CLI tool.
 **Description**: Install the GPU Sharing agent as a service (not available in WSL)
 
 **Parameters**:
-- `pool-id` (required): ID of the pool to share GPUs with
+- `pool-id` (optional): Pool ID to configure during service installation
 - All parameters from `agent run` command are supported
 - `--cache-size`: Size of the cache
 
