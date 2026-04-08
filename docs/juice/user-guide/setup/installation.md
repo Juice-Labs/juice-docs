@@ -35,6 +35,52 @@ Log in to [app.juicelabs.co](https://app.juicelabs.co):
 
    ...replacing `juice_linux_release` with the filename of the downloaded archive.
 
+### Linux One-Step Installer (Optional)
+
+For Linux systems using `systemd` or `openrc`, you can install with the hosted installer script:
+
+```bash
+curl https://get.juicelabs.co | \
+INSTALL_JUICE_TOKEN=<m2m-token> \
+INSTALL_JUICE_POOL=<pool-id-or-name> \
+sh -
+```
+
+#### Installer Environment Variables
+
+- `INSTALL_JUICE_TOKEN` (required): M2M token used for authentication.
+- `INSTALL_JUICE_POOL` (optional): If provided, the installer creates and configures the agent service for that pool.
+- `INSTALL_JUICE_CONTROLLER` (optional): Overrides the default controller host (`electra.juicelabs.co`).
+
+#### Common Usage Modes
+
+Install client binaries only (no service installed):
+
+```bash
+curl https://get.juicelabs.co | \
+INSTALL_JUICE_TOKEN=<m2m-token> \
+sh -
+```
+
+Install and register the agent service to a specific pool:
+
+```bash
+curl https://get.juicelabs.co | \
+INSTALL_JUICE_TOKEN=<m2m-token> \
+INSTALL_JUICE_POOL=<pool-id-or-name> \
+sh -
+```
+
+Install against a non-default controller:
+
+```bash
+curl https://get.juicelabs.co | \
+INSTALL_JUICE_TOKEN=<m2m-token> \
+INSTALL_JUICE_CONTROLLER=<controller-hostname> \
+INSTALL_JUICE_POOL=<pool-id-or-name> \
+sh -
+```
+
 ## (Optional) Adding juice to PATH 
 
 #### To enable your system to run `juice` from any directory: 
