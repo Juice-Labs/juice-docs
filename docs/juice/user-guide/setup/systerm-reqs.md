@@ -14,6 +14,8 @@ Both the **Client** and **GPU Agent** are supported on Windows 10 and Windows 11
 
 The client and GPU agent are supported on Debian-based distributions (version 10 and greater, like Ubuntu 18.04) and Red Hat Enterprise Linux (RHEL) 8-based distributions, such as AlmaLinux 8 or greater. Other distributions with similar or newer release dates are also likely supported.
 
+For installer-script based installs, `glibc` 2.27 or newer is required.
+
 :::note
 Currently, only the client is supported when running in WSL on Windows.
 :::
@@ -48,6 +50,10 @@ If you're running on a virtual machine with graphics drivers that don't support 
         sudo apt update && sudo apt install libatomic1 libnuma1
         ```
     :::
+
+The Linux installer validates these client-side runtime libraries before install:
+- `libatomic`
+- `libnuma`
 #### AlmaLinux 8 or greater, (RHEL)-based. 
 - The following packages must be installed: 
 
@@ -84,6 +90,8 @@ On all platforms an NVIDIA GPU with an installed driver version 535 or greater, 
 
     - libgl1 
 
+    - `libnvidia-encode` (provided by NVIDIA driver packages)
+
     - libglib2.0-0 
 
 
@@ -95,6 +103,11 @@ On all platforms an NVIDIA GPU with an installed driver version 535 or greater, 
         ```
     :::
 
+The Linux installer validates these additional agent-only libraries when a pool is provided during install:
+- `libvulkan`
+- `libgl`
+- `libnvidia-encode`
+
 #### AlmaLinux 8 or greater, (RHEL)-based. 
 - The following packages must be installed: 
 
@@ -105,6 +118,8 @@ On all platforms an NVIDIA GPU with an installed driver version 535 or greater, 
   - vulkan-loader
   
   - mesa-libGL
+
+  - `libnvidia-encode` (provided by NVIDIA driver packages)
   
   - glib2
 
