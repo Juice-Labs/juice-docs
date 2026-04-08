@@ -41,6 +41,45 @@ juice gpu list
 
 This shows the GPUs you've just shared plus any other GPUs you might have access to through other pools.  Running applications with Juice, without specifying any arguments to limit GPU selection, will choose one of these GPUs to act as the local GPU for that application.
 
+## Linux Agent Installer (Service Mode)
+
+For unattended Linux installs, use the hosted installer script. This installs the `juice` binary and, when a pool is provided, installs and starts the agent service.
+
+```sh
+curl -fsSL https://get.juicelabs.co | \
+INSTALL_JUICE_TOKEN=<m2m_token> \
+INSTALL_JUICE_POOL=<pool-id> \
+sh -
+```
+
+### Installer behavior and constraints
+
+- `INSTALL_JUICE_TOKEN` is required.
+- `INSTALL_JUICE_POOL` is optional.
+- If `INSTALL_JUICE_POOL` is omitted, the script installs the CLI only and does not install/start the agent service.
+- `INSTALL_JUICE_CONTROLLER` can be set to a custom controller hostname; token validation and release downloads use that controller.
+- Extra service flags can be passed as script arguments or through `INSTALL_JUICE_EXEC`.
+
+### Examples
+
+Install CLI only:
+
+```sh
+curl -fsSL https://get.juicelabs.co | \
+INSTALL_JUICE_TOKEN=<m2m_token> \
+sh -
+```
+
+Install agent service against a custom controller:
+
+```sh
+curl -fsSL https://get.juicelabs.co | \
+INSTALL_JUICE_TOKEN=<m2m_token> \
+INSTALL_JUICE_POOL=<pool-id> \
+INSTALL_JUICE_CONTROLLER=<controller-hostname> \
+sh -
+```
+
 ## Run an Application
 
 There are two ways to launch an application using a remote GPU provided by Juice.  The first uses `juice run ...` to launch an executable directly from the command line; the second activates a path beneath which any launched executables will use a Juice GPU.

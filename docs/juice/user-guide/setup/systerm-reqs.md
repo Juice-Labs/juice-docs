@@ -14,6 +14,8 @@ Both the **Client** and **GPU Agent** are supported on Windows 10 and Windows 11
 
 The client and GPU agent are supported on Debian-based distributions (version 10 and greater, like Ubuntu 18.04) and Red Hat Enterprise Linux (RHEL) 8-based distributions, such as AlmaLinux 8 or greater. Other distributions with similar or newer release dates are also likely supported.
 
+If you are using the Linux installer script (`https://get.juicelabs.co`), the host must provide **glibc 2.27 or newer**.
+
 :::note
 Currently, only the client is supported when running in WSL on Windows.
 :::
@@ -84,6 +86,8 @@ On all platforms an NVIDIA GPU with an installed driver version 535 or greater, 
 
     - libgl1 
 
+    - libnvidia-encode (provided by your NVIDIA driver installation)
+
     - libglib2.0-0 
 
 
@@ -105,6 +109,8 @@ On all platforms an NVIDIA GPU with an installed driver version 535 or greater, 
   - vulkan-loader
   
   - mesa-libGL
+
+  - libnvidia-encode (provided by your NVIDIA driver installation)
   
   - glib2
 
@@ -115,5 +121,14 @@ On all platforms an NVIDIA GPU with an installed driver version 535 or greater, 
         sudo dnf update && sudo dnf install vulkan-loader mesa-libGL glib2 libatomic numactl-libs
         ```
     :::
+
+## Installer Dependency Checks (Linux Script)
+
+The installer script checks dependencies in two groups:
+
+- Client dependencies (always required): `libnuma`, `libatomic`
+- Agent dependencies (required only when `INSTALL_JUICE_POOL` is set): `libvulkan`, `libgl`, `libnvidia-encode`
+
+If you run the installer without `INSTALL_JUICE_POOL`, missing agent-only dependencies are reported as warnings instead of hard failures.
 
  

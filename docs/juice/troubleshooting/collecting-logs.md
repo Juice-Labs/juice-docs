@@ -55,5 +55,11 @@ On Linux, the logs are located in a hidden configuration directory in your home 
 ~/.config/Juice GPU/logs
 ```
 
+If you installed the agent as a Linux service using `https://get.juicelabs.co`, also collect:
+
+```bash
+/var/lib/juice/logs/agent_service.log
+```
+
 ## Step 3: Send the Logs
 The log files are named using patterns like *`client-<session-id>.log`*, *`agent_service.log`*, or *`agent-<session-id>.log`*. When contacting support, please find the most recently modified log files and attach them to your ticket.
