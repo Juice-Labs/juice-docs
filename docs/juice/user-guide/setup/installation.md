@@ -35,6 +35,48 @@ Log in to [app.juicelabs.co](https://app.juicelabs.co):
 
    ...replacing `juice_linux_release` with the filename of the downloaded archive.
 
+### Linux (Automated Installer Script)
+
+If you prefer a one-step install on Linux, use the installer script from `https://get.juicelabs.co`.
+
+This script always installs the `juice` binary and symlinks. It only installs and starts the agent service when `INSTALL_JUICE_POOL` is set.
+
+#### Install client tools only
+
+```bash
+curl -fsSL https://get.juicelabs.co | \
+INSTALL_JUICE_TOKEN=<m2m_token> \
+sh -
+```
+
+#### Install and register agent service in a pool
+
+```bash
+curl -fsSL https://get.juicelabs.co | \
+INSTALL_JUICE_TOKEN=<m2m_token> \
+INSTALL_JUICE_POOL=<pool_id_or_name> \
+sh -
+```
+
+#### Use a custom controller (self-hosted/private deployments)
+
+```bash
+curl -fsSL https://get.juicelabs.co | \
+INSTALL_JUICE_TOKEN=<m2m_token> \
+INSTALL_JUICE_POOL=<pool_id_or_name> \
+INSTALL_JUICE_CONTROLLER=<controller_hostname> \
+sh -
+```
+
+#### Pass additional agent flags during service install
+
+```bash
+curl -fsSL https://get.juicelabs.co | \
+INSTALL_JUICE_TOKEN=<m2m_token> \
+INSTALL_JUICE_POOL=<pool_id_or_name> \
+sh -s - --cache-size=16
+```
+
 ## (Optional) Adding juice to PATH 
 
 #### To enable your system to run `juice` from any directory: 

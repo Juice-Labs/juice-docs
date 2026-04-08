@@ -5,7 +5,7 @@ sidebar_position: 2
 
 # Agent in Docker
 
-You can run the Juice Agent as a container on your machine. Juice provides an official docker image for each release or you can build your own based on template.
+You can run the Juice Agent as a container on your machine. Juice provides an official docker image for each release, or you can build your own from the open-source template.
  
 ## Prerequisites
 
@@ -20,7 +20,7 @@ The official agent is published to our [Dockerhub](https://hub.docker.com/r/juic
 
 ## Building a custom agent image:
 
-The Dockerfile for our offical agent is available in our [open source repository](https://github.com/Juice-Labs/juice-oss/tree/main/docker/agent). You can checkout and customize the agent using the following steps:
+The Dockerfile for our official agent is available in our [open source repository](https://github.com/Juice-Labs/juice-oss/tree/main/docker/agent). You can check out and customize the agent using the following steps:
 
 1. Open a terminal and clone the respository
 ```bash
@@ -28,7 +28,16 @@ git clone https://github.com/Juice-Labs/juice-oss.git
 cd juice-oss/docker/agent
 ```
 
-2. Modify the Dockerfile at *docker/agent/Dockerfile*
+2. Put these required build inputs in `docker/agent/`:
+
+- `juice-gpu-linux.tar.gz` from [app.juicelabs.co](https://app.juicelabs.co)
+- NVIDIA Video Codec SDK zip named `Video_Codec_SDK_<version>.zip` (for example `Video_Codec_SDK_12.0.16.zip`) from [NVIDIA Video Codec SDK](https://developer.nvidia.com/nvidia-video-codec-sdk)
+
+The default upstream Dockerfile expects `VIDEOSDK_VERSION=12.0.16`. If you use a different SDK zip version, pass the matching build arg:
+
+```bash
+docker build --build-arg VIDEOSDK_VERSION=<version> -t juice-agent .
+```
 
 3. Build your custom image: 
 
@@ -39,7 +48,7 @@ docker build -t juice-agent .
 4. Once the image is built, you can run a container using your M2M token and pool id:
 
 ```bash
-docker run --rm 
+docker run --rm \
     -p 7865:7865/udp \
     -e JUICE_TOKEN=<YOUR_TOKEN> \
     -e JUICE_POOL=<YOUR_POOL_ID> \
@@ -49,5 +58,10 @@ docker run --rm
     juice-agent
 ```
 
-For detailed information on these parameters and how you can use docker compose to run the agent please see the [README](https://github.com/Juice-Labs/juice-oss/tree/main/docker/agent/README.md)
+### Common build pitfalls
+
+- If build fails on `COPY Video_Codec_SDK_...zip`, the SDK zip is missing or named differently than `VIDEOSDK_VERSION`.
+- If build fails on `ADD juice-gpu-linux.tar.gz`, download the latest Linux tarball and place it in `docker/agent/` before running `docker build`.
+
+For detailed information on these parameters and how to use Docker Compose, see the upstream [README](https://github.com/Juice-Labs/juice-oss/tree/main/docker/agent/README.md).
 

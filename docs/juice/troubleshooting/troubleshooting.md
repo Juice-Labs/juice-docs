@@ -49,6 +49,24 @@ To connect to a remote GPU from an application that you are running through juic
 
 Check your Endpoint Security or Antivirus. If you see any warnings about blocked DLLs or executables, add an exception for **C:\Program Files\Juice GPU\juice**. If you are unable to do so, please contact your IT administrator. 
 
+### Linux installer script fails with missing libraries.
+
+The Linux installer (`curl https://get.juicelabs.co | ... sh -`) validates dependencies before install:
+
+- Always required: `libnuma`, `libatomic`
+- Required for agent service installs (`INSTALL_JUICE_POOL` set): `libvulkan`, `libGL`, `libnvidia-encode`
+
+If you are installing client tools only, omit `INSTALL_JUICE_POOL` and the script will install the binary without creating the agent service.
+
+Verify dependencies with:
+
+```bash
+ldd --version
+ldconfig -p | rg "libnuma|libatomic|libvulkan|libGL|libnvidia-encode"
+```
+
+`glibc` must be `2.27` or newer.
+
 ### My agent failed to start.
 
 Check to see if you're already running an agent.

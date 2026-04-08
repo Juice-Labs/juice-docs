@@ -14,6 +14,8 @@ Both the **Client** and **GPU Agent** are supported on Windows 10 and Windows 11
 
 The client and GPU agent are supported on Debian-based distributions (version 10 and greater, like Ubuntu 18.04) and Red Hat Enterprise Linux (RHEL) 8-based distributions, such as AlmaLinux 8 or greater. Other distributions with similar or newer release dates are also likely supported.
 
+For scripted installation (`install-juice.sh`), the minimum supported `glibc` version is `2.27`.
+
 :::note
 Currently, only the client is supported when running in WSL on Windows.
 :::
@@ -47,6 +49,15 @@ If you're running on a virtual machine with graphics drivers that don't support 
         ```powershell
         sudo apt update && sudo apt install libatomic1 libnuma1
         ```
+    :::
+
+    :::tip
+    Verify glibc and required client libraries:
+
+    ```bash
+    ldd --version
+    ldconfig -p | rg "libnuma|libatomic"
+    ```
     :::
 #### AlmaLinux 8 or greater, (RHEL)-based. 
 - The following packages must be installed: 
@@ -84,6 +95,8 @@ On all platforms an NVIDIA GPU with an installed driver version 535 or greater, 
 
     - libgl1 
 
+    - NVIDIA encode library (`libnvidia-encode.so`) provided by your NVIDIA driver install
+
     - libglib2.0-0 
 
 
@@ -93,6 +106,14 @@ On all platforms an NVIDIA GPU with an installed driver version 535 or greater, 
         ```powershell
         sudo apt update && sudo apt install libvulkan1 libgl1 libglib2.0-0 libatomic1 libnuma1
         ```
+    :::
+
+    :::tip
+    When using the Linux installer with `INSTALL_JUICE_POOL`, verify agent libraries before install:
+
+    ```bash
+    ldconfig -p | rg "libvulkan|libGL|libnvidia-encode"
+    ```
     :::
 
 #### AlmaLinux 8 or greater, (RHEL)-based. 
