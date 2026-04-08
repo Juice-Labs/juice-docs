@@ -35,7 +35,7 @@ If you're running on a virtual machine with graphics drivers that don't support 
 ### Linux 
 
 #### Ubuntu 18.04 or greater, Debian 10 or greater. 
-- The following packages must be installed: 
+- The following packages must be installed for the client:
 
     - libatomic1 
 
@@ -49,7 +49,7 @@ If you're running on a virtual machine with graphics drivers that don't support 
         ```
     :::
 #### AlmaLinux 8 or greater, (RHEL)-based. 
-- The following packages must be installed: 
+- The following packages must be installed for the client:
 
   - libatomic
   
@@ -74,7 +74,8 @@ On all platforms an NVIDIA GPU with an installed driver version 535 or greater, 
 ### Linux 
 
 #### Ubuntu 18.04 or greater, Debian 10 or greater. 
-- The following packages must be installed: 
+- `glibc` 2.27 or newer is required.
+- The following packages must be installed for agent hosting:
 
     - libatomic1 
 
@@ -83,6 +84,8 @@ On all platforms an NVIDIA GPU with an installed driver version 535 or greater, 
     - libvulkan1 
 
     - libgl1 
+
+    - NVIDIA encode runtime library (`libnvidia-encode`)
 
     - libglib2.0-0 
 
@@ -96,7 +99,8 @@ On all platforms an NVIDIA GPU with an installed driver version 535 or greater, 
     :::
 
 #### AlmaLinux 8 or greater, (RHEL)-based. 
-- The following packages must be installed: 
+- `glibc` 2.27 or newer is required.
+- The following packages must be installed for agent hosting:
 
   - libatomic
   
@@ -105,6 +109,8 @@ On all platforms an NVIDIA GPU with an installed driver version 535 or greater, 
   - vulkan-loader
   
   - mesa-libGL
+
+  - NVIDIA encode runtime library (`libnvidia-encode`)
   
   - glib2
 
@@ -115,5 +121,12 @@ On all platforms an NVIDIA GPU with an installed driver version 535 or greater, 
         sudo dnf update && sudo dnf install vulkan-loader mesa-libGL glib2 libatomic numactl-libs
         ```
     :::
+
+:::note Installer behavior
+The Linux installer validates client and agent dependencies separately.
+
+- If `INSTALL_JUICE_POOL` is set, missing agent libraries fail installation.
+- If `INSTALL_JUICE_POOL` is not set, missing agent libraries are reported as warnings because only client binaries are being installed.
+:::
 
  
