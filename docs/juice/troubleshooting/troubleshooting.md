@@ -49,6 +49,45 @@ To connect to a remote GPU from an application that you are running through juic
 
 Check your Endpoint Security or Antivirus. If you see any warnings about blocked DLLs or executables, add an exception for **C:\Program Files\Juice GPU\juice**. If you are unable to do so, please contact your IT administrator. 
 
+### Linux installer completed, but no agent service was created.
+
+If you ran the Linux installer without `INSTALL_JUICE_POOL`, it installs binaries but intentionally skips `agent service install`.
+
+Use a pool ID or name to install and start the agent service:
+
+```bash
+curl https://get.juicelabs.co | \
+INSTALL_JUICE_TOKEN=<m2m_token> \
+INSTALL_JUICE_POOL=<pool_id_or_name> \
+sh -
+```
+
+### Linux installer exits with "Please correct the above errors".
+
+The installer validates Linux dependencies before install. Common missing libraries are:
+- Client: `libnuma`, `libatomic`
+- Agent (required when `INSTALL_JUICE_POOL` is set): `libvulkan`, `libgl`, `libnvidia-encode`
+
+You can inspect currently visible libraries with:
+
+```bash
+ldconfig -p | grep -E "libnuma|libatomic|libvulkan|libGL|libnvidia-encode"
+```
+
+If `libnvidia-encode` is missing, confirm the NVIDIA driver installation is complete and loaded.
+
+### Linux installer fails token check against a non-default controller.
+
+If your organization uses a custom controller hostname, include `INSTALL_JUICE_CONTROLLER`. The installer uses this host for token validation and release download APIs.
+
+```bash
+curl https://get.juicelabs.co | \
+INSTALL_JUICE_TOKEN=<m2m_token> \
+INSTALL_JUICE_POOL=<pool_id_or_name> \
+INSTALL_JUICE_CONTROLLER=<controller_host> \
+sh -
+```
+
 ### My agent failed to start.
 
 Check to see if you're already running an agent.
