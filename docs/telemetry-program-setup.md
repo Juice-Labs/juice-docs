@@ -66,6 +66,36 @@ sh -
 ```
 For more details on the installer script, see the repository here: [Installer](https://github.com/Juice-Labs/juice-oss/tree/main/installer)
 
+#### Installer Options You Can Safely Use
+
+The Linux installer in `juice-oss` supports the following environment variables:
+
+| Variable | Required | What it does |
+| :------- | :------- | :----------- |
+| `INSTALL_JUICE_TOKEN` | Yes | M2M token used for release lookup and download authentication |
+| `INSTALL_JUICE_POOL` | For telemetry: Yes | Pool name or ID where the agent service runs. If omitted, the script installs binaries but skips service installation |
+| `INSTALL_JUICE_CONTROLLER` | No | Custom controller hostname (for non-default controller environments) |
+| `INSTALL_JUICE_VERSION` | No | Pin a specific Juice release version instead of auto-selecting latest |
+
+Example with a custom controller:
+
+```bash
+curl https://get.juicelabs.co | \
+INSTALL_JUICE_TOKEN=[token] \
+INSTALL_JUICE_POOL=telemetry \
+INSTALL_JUICE_CONTROLLER=your-controller.example.com \
+sh -
+```
+
+#### Linux Validation Performed by the Installer
+
+Before installation, the script validates:
+- `glibc >= 2.27`
+- Client libraries: `libnuma`, `libatomic`
+- Agent libraries (required when `INSTALL_JUICE_POOL` is set): `libvulkan`, `libgl`, `libnvidia-encode`
+
+If you omit `INSTALL_JUICE_POOL`, missing agent-only libraries are reported as warnings. If you set `INSTALL_JUICE_POOL`, missing agent libraries are treated as install-blocking errors.
+
 
 #### Docker and Docker Compose 
 [Dockerfile](https://docs.juicelabs.co/docs/juice/user-guide/docker/docker-agent)
