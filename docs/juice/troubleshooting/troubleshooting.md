@@ -49,6 +49,31 @@ To connect to a remote GPU from an application that you are running through juic
 
 Check your Endpoint Security or Antivirus. If you see any warnings about blocked DLLs or executables, add an exception for **C:\Program Files\Juice GPU\juice**. If you are unable to do so, please contact your IT administrator. 
 
+### Linux installer exits with dependency errors.
+
+The Linux installer validates required runtime dependencies before it installs:
+
+- `glibc` must be version `2.27` or newer.
+- Client dependencies must be present: `libnuma` and `libatomic`.
+- Agent dependencies are required when installing a service with `INSTALL_JUICE_POOL`: `libvulkan`, `libgl`, and `libnvidia-encode`.
+
+If you are doing a binary-only install (no `INSTALL_JUICE_POOL`), missing agent-only libraries are reported as warnings instead of hard failures.
+
+### Linux installer says token check failed.
+
+This usually means one of these:
+
+- `INSTALL_JUICE_TOKEN` is invalid or expired.
+- `INSTALL_JUICE_CONTROLLER` points to the wrong controller host.
+- The machine cannot reach the controller over HTTPS.
+
+Verify the token value, confirm the controller hostname, and retry.
+
+### Installer completed but no agent service is running.
+
+When `INSTALL_JUICE_POOL` is omitted, the installer only installs binaries and does not create or start the agent service.
+Re-run the installer with both `INSTALL_JUICE_TOKEN` and `INSTALL_JUICE_POOL` to create the service.
+
 ### My agent failed to start.
 
 Check to see if you're already running an agent.

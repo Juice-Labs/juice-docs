@@ -36,6 +36,17 @@ cd juice-oss/docker/agent
 docker build -t juice-agent . 
 ```
 
+Before running `docker build`, make sure both required build artifacts are present in `docker/agent`:
+
+- `juice-gpu-linux.tar.gz` (download from [app.juicelabs.co](https://app.juicelabs.co))
+- `Video_Codec_SDK_<version>.zip` (download from [NVIDIA Video Codec SDK](https://developer.nvidia.com/nvidia-video-codec-sdk))
+
+By default the Dockerfile expects `Video_Codec_SDK_12.0.16.zip`. If you use a different SDK version, pass the matching build arg:
+
+```bash
+docker build -t juice-agent --build-arg VIDEOSDK_VERSION=<version> .
+```
+
 4. Once the image is built, you can run a container using your M2M token and pool id:
 
 ```bash
