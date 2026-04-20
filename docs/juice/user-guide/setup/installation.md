@@ -35,6 +35,36 @@ Log in to [app.juicelabs.co](https://app.juicelabs.co):
 
    ...replacing `juice_linux_release` with the filename of the downloaded archive.
 
+### Linux Agent Installer (system service)
+
+For Linux servers and VMs that should host GPUs continuously, use the installer script from `https://get.juicelabs.co`.
+The installer can install just the `juice` binary, or install and start the agent service.
+
+```bash
+curl -so install.sh https://get.juicelabs.co
+INSTALL_JUICE_TOKEN=m2m_XXX INSTALL_JUICE_POOL=<pool-id> sh ./install.sh
+```
+
+#### Installer options
+
+| Variable | Required | Purpose |
+| --- | --- | --- |
+| `INSTALL_JUICE_TOKEN` | Yes | M2M token used for release download and service setup. |
+| `INSTALL_JUICE_POOL` | No | Pool name or ID for `agent service install`. If omitted, the script installs binaries but does not create/start the service. |
+| `INSTALL_JUICE_CONTROLLER` | No | Override controller host (default is Juice cloud controller). Useful for custom controller deployments. |
+| `INSTALL_JUICE_VERSION` | No | Specific version to install. |
+
+#### Passing runtime flags to the service
+
+Any extra script arguments are forwarded to the underlying `juice agent run` command used by the service.
+For example:
+
+```bash
+INSTALL_JUICE_TOKEN=m2m_XXX INSTALL_JUICE_POOL=<pool-id> sh ./install.sh --cache-size 128 --log-level warn
+```
+
+Use this when you need non-default service runtime behavior (for example cache sizing or log verbosity).
+
 ## (Optional) Adding juice to PATH 
 
 #### To enable your system to run `juice` from any directory: 
