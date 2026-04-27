@@ -21,6 +21,13 @@ Log in to [app.juicelabs.co](https://app.juicelabs.co):
 
 
 ### Linux
+There are two supported Linux installation flows:
+
+- **Download archive**: Manually download and extract the release from [app.juicelabs.co](https://app.juicelabs.co).
+- **Install script**: Use the Linux installer when you want the installer to download the latest release, create symlinks, or install the GPU agent as a service.
+
+#### Download archive
+
 1. Click the download link for the Linux release. 
 
     :::note
@@ -34,6 +41,52 @@ Log in to [app.juicelabs.co](https://app.juicelabs.co):
     ```
 
    ...replacing `juice_linux_release` with the filename of the downloaded archive.
+
+#### Install script
+
+Use an M2M token with the installer so the host can download the correct release and, if requested, install the agent service.
+
+```bash
+curl https://get.juicelabs.co | INSTALL_JUICE_TOKEN=<m2m-token> sh -
+```
+
+To install Juice and immediately configure the agent service for a pool, include `INSTALL_JUICE_POOL`:
+
+```bash
+curl https://get.juicelabs.co | \
+INSTALL_JUICE_TOKEN=<m2m-token> \
+INSTALL_JUICE_POOL=<pool-id-or-name> \
+sh -
+```
+
+If `INSTALL_JUICE_POOL` is not set, the installer installs the Juice client tools but does not install or start the agent service. This is useful for client-only machines and build images.
+
+The installer supports these environment variables:
+
+| Variable | Purpose |
+| --- | --- |
+| `INSTALL_JUICE_TOKEN` | Required M2M token created in [app.juicelabs.co](https://app.juicelabs.co). |
+| `INSTALL_JUICE_POOL` | Pool name or ID for the agent service. Omit this for a client-only install. |
+| `INSTALL_JUICE_CONTROLLER` | Custom Juice Controller hostname. Defaults to `electra.juicelabs.co`. |
+| `INSTALL_JUICE_VERSION` | Specific Juice version to install. If omitted, the installer uses the latest stable release. |
+| `INSTALL_JUICE_USER` | User that runs the service. Defaults to `juice`. |
+| `INSTALL_JUICE_SKIP_ENABLE` | Set to `true` to install the service without enabling or starting it. |
+| `INSTALL_JUICE_SKIP_START` | Set to `true` to enable the service without starting it immediately. |
+| `INSTALL_JUICE_FORCE_RESTART` | Set to `true` to restart the service even when the service configuration did not change. |
+| `INSTALL_JUICE_SYMLINK` | Controls symlink creation. Use `skip`, `force`, or omit for the default behavior. |
+
+Any arguments after `sh -s -` are passed to the generated agent service command. For example:
+
+```bash
+curl https://get.juicelabs.co | \
+INSTALL_JUICE_TOKEN=<m2m-token> \
+INSTALL_JUICE_POOL=<pool-id-or-name> \
+sh -s - --cache-size=16
+```
+
+:::tip
+For private or self-hosted controller deployments, set `INSTALL_JUICE_CONTROLLER` to the controller hostname only, without `https://`.
+:::
 
 ## (Optional) Adding juice to PATH 
 
