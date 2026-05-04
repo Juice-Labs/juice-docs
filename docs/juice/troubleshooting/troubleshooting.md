@@ -45,9 +45,14 @@ To connect to a remote GPU from an application that you are running through juic
 - Check the latency and bandwidth between your host and client. High latency (\>25ms) and low bandwidth (\<100mbs) will significantly slow down some workloads. 
 
 - Verify that you've set logging level to ERROR in the CLI configuration.
+
 ### My Installation failed.
 
 Check your Endpoint Security or Antivirus. If you see any warnings about blocked DLLs or executables, add an exception for **C:\Program Files\Juice GPU\juice**. If you are unable to do so, please contact your IT administrator. 
+
+For Linux installer failures, check the installer output before rerunning. The installer verifies glibc 2.27 or newer, `curl` or `wget`, and either systemd or OpenRC. If `INSTALL_JUICE_POOL` is set, missing agent libraries such as Vulkan, OpenGL, or NVIDIA encode support are treated as errors. If you only need the client binaries, omit `INSTALL_JUICE_POOL` so the installer skips service creation.
+
+If the installer exits with `Could not install service`, verify that the M2M token is valid, the pool name or ID is correct, and the command is running with privileges to create the service user, write under the install directory, and register a systemd or OpenRC service.
 
 ### My agent failed to start.
 
