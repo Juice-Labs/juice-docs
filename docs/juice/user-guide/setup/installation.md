@@ -35,6 +35,33 @@ Log in to [app.juicelabs.co](https://app.juicelabs.co):
 
    ...replacing `juice_linux_release` with the filename of the downloaded archive.
 
+### Automated Linux Agent Installer
+
+Use the Linux installer when you want to install the Juice binaries and configure the GPU Agent as a `systemd` or `openrc` service in one step. The installer creates the service user, installs the release, writes the service configuration, and starts the service unless instructed otherwise.
+
+```bash
+curl https://get.juicelabs.co | \
+INSTALL_JUICE_TOKEN=<m2m_token> \
+INSTALL_JUICE_POOL="Research Pool" \
+sh -
+```
+
+- `INSTALL_JUICE_TOKEN` is required. Use an M2M token created from the Juice app or with `juice m2m create`.
+- `INSTALL_JUICE_POOL` is the pool name or pool ID where the agent should register. Quote pool names that contain spaces or shell-special characters.
+- Omit `INSTALL_JUICE_POOL` for a client-only install. The installer still installs the binaries and symlinks, but it does not create or start the agent service.
+- Pass agent service flags after `sh -` when you need to customize the generated service command.
+
+For example, to set a cache size for the installed agent service:
+
+```bash
+curl https://get.juicelabs.co | \
+INSTALL_JUICE_TOKEN=<m2m_token> \
+INSTALL_JUICE_POOL=<pool_id> \
+sh - --cache-size 128
+```
+
+Installer behavior is defined in the open-source [agent installer](https://github.com/Juice-Labs/juice-oss/tree/main/installer).
+
 ## (Optional) Adding juice to PATH 
 
 #### To enable your system to run `juice` from any directory: 

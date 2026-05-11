@@ -49,6 +49,21 @@ To connect to a remote GPU from an application that you are running through juic
 
 Check your Endpoint Security or Antivirus. If you see any warnings about blocked DLLs or executables, add an exception for **C:\Program Files\Juice GPU\juice**. If you are unable to do so, please contact your IT administrator. 
 
+### The Linux installer did not create or start an agent service.
+
+The automated Linux installer only creates the `systemd` or `openrc` agent service when `INSTALL_JUICE_POOL` is set. This value can be a pool name or pool ID.
+
+```bash
+curl https://get.juicelabs.co | \
+INSTALL_JUICE_TOKEN=<m2m_token> \
+INSTALL_JUICE_POOL="Research Pool" \
+sh -
+```
+
+Quote pool names that contain spaces. If you omit `INSTALL_JUICE_POOL`, the installer performs a client-only install: it installs the Juice binaries and symlinks, but skips service creation and startup.
+
+If service installation still fails, verify the host has the Linux agent prerequisites installed, including the NVIDIA driver and the agent libraries listed in [System Requirements](../user-guide/setup/systerm-reqs.md).
+
 ### My agent failed to start.
 
 Check to see if you're already running an agent.
