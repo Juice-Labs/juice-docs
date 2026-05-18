@@ -13,7 +13,7 @@ Ensure that (1) the agent is running on the correct Pool (2) the agent has no ac
 
 Verify from the output that the agent is running. You may have to add RenderWin.exe to the *Windows Firewall* rules for incoming UDP connections if you weren’t prompted to do so. 
 
-If you are running an agent from a Docker container, make sure you are using **network=host**. 
+If you are running an agent from a Docker container, make sure UDP port `7865` is reachable from clients. Publish the port with `-p 7865:7865/udp` or use host networking, and set `JUICE_HOST_IP` to an address that clients can reach. If you set a non-default gateway port, set `JUICE_HOST_PORT` to the same port.
 
  
 ### My agent is shutting down when my ssh connection is closed.
@@ -45,9 +45,12 @@ To connect to a remote GPU from an application that you are running through juic
 - Check the latency and bandwidth between your host and client. High latency (\>25ms) and low bandwidth (\<100mbs) will significantly slow down some workloads. 
 
 - Verify that you've set logging level to ERROR in the CLI configuration.
+
 ### My Installation failed.
 
 Check your Endpoint Security or Antivirus. If you see any warnings about blocked DLLs or executables, add an exception for **C:\Program Files\Juice GPU\juice**. If you are unable to do so, please contact your IT administrator. 
+
+On Linux, the installer checks system libraries before installing. Client installs require `libnuma` and `libatomic`. Agent service installs also require `libvulkan`, `libgl`, and `libnvidia-encode`. If you install an agent into a pool whose name contains spaces, quote the pool value, for example `INSTALL_JUICE_POOL='Rendering Pool'`.
 
 ### My agent failed to start.
 

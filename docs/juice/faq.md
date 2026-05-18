@@ -68,7 +68,7 @@ https://juice-artifacts.s3.us-east-2.amazonaws.com
 | OS | Client/Server | Log location |
 |:---:|:---:|---|
 |Linux|Client|`~/.config/Juice GPU/logs/client-<session-id>.log`|
-|Linux|Server|`~/.config/Juice GPU/logs/agent-<session-id>.log`, `~/.config/Juice GPU/logs/agent_service.log`|
+|Linux|Server|`~/.config/Juice GPU/logs/agent-<session-id>.log`, `~/.config/Juice GPU/logs/agent_service.log`, or `/var/lib/juice/logs/agent_service.log` for services installed with the Linux installer|
 |Windows|Client|`%APPDATA%\Juice GPU\logs\client-<session-id>.log`|
 |Windows|Server|`%APPDATA%\Juice GPU\logs\agent-<session-id>.log`, `%APPDATA%\Juice GPU\logs\agent_service.log`|
 

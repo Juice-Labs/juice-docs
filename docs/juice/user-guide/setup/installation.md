@@ -29,11 +29,42 @@ Log in to [app.juicelabs.co](https://app.juicelabs.co):
  
 2. Unzip the downloaded file: 
 
-    ```powershell
+    ```bash
     tar -xf [juice_linux_release].tar 
     ```
 
    ...replacing `juice_linux_release` with the filename of the downloaded archive.
+
+### Linux Installer Script
+
+Use the Linux installer when you want to install the CLI binaries and, optionally, register a persistent GPU agent service. The installer requires an M2M token and can be configured with environment variables.
+
+Install the CLI only:
+
+```bash
+curl -fsSL https://get.juicelabs.co | \
+  INSTALL_JUICE_TOKEN='m2m_your_token' \
+  sh -
+```
+
+Install the CLI and start an agent service for a pool:
+
+```bash
+curl -fsSL https://get.juicelabs.co | \
+  INSTALL_JUICE_TOKEN='m2m_your_token' \
+  INSTALL_JUICE_POOL='Rendering Pool' \
+  sh -s - --cache-size=16
+```
+
+Key options:
+
+- `INSTALL_JUICE_TOKEN` is required and must contain a Juice M2M token.
+- `INSTALL_JUICE_POOL` can be a pool name or pool ID. If it is omitted, the installer installs the binaries but does not install or start the agent service.
+- Quote `INSTALL_JUICE_POOL` values that contain spaces, as shown above.
+- Arguments after `sh -s -` are appended to the service command. Use this for agent options such as `--cache-size` or temporary troubleshooting flags such as `--log-level trace`.
+- `INSTALL_JUICE_CONTROLLER` sets a custom controller host when you are not using the default Juice controller.
+
+By default, the Linux service runs as the `juice` system user, stores service data under `/var/lib/juice`, and writes the service log to `/var/lib/juice/logs/agent_service.log`.
 
 ## (Optional) Adding juice to PATH 
 
@@ -41,13 +72,13 @@ Log in to [app.juicelabs.co](https://app.juicelabs.co):
 
 1. Open your shell's configuration file in a text editor:
 
-    ```powershell
+    ```bash
     nano ~/.bashrc
     ```
 
 2. Add the following at the end of the file:
 
-    ```powershell
+    ```bash
     export PATH=$PATH:/path/to/juice_directory
     ```
 
@@ -60,6 +91,6 @@ Log in to [app.juicelabs.co](https://app.juicelabs.co):
 
 4. Apply the changes to your current session: 
 
-    ```powershell
+    ```bash
     source ~/.bashrc 
     ```
