@@ -35,7 +35,7 @@ cd juice-oss/docker/agent
 
 3. Modify the Dockerfile at *docker/agent/Dockerfile*
 
-4. Build your custom image: 
+4. Build your custom image:
 
 ```bash
 docker build \
