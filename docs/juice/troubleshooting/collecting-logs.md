@@ -32,6 +32,15 @@ juice agent run --log-level trace <poolID>
 juice run --log-level trace python my_script.py
 ```
 
+For a Linux agent installed as a service with the installer script, pass the flag when installing or reinstalling the service:
+
+```bash
+curl -fsSL https://get.juicelabs.co | \
+  INSTALL_JUICE_TOKEN='m2m_your_token' \
+  INSTALL_JUICE_POOL='your_pool_id_or_name' \
+  sh -s - --log-level trace
+```
+
 
 ## Step 2: Locate the Log Files
 
@@ -53,6 +62,12 @@ C:\Users\<user>\AppData\Local\Juice GPU\logs
 On Linux, the logs are located in a hidden configuration directory in your home folder:
 ```
 ~/.config/Juice GPU/logs
+```
+
+Linux services installed with the installer script write the agent service log to:
+
+```bash
+/var/lib/juice/logs/agent_service.log
 ```
 
 ## Step 3: Send the Logs

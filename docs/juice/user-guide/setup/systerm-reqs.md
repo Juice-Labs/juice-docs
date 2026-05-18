@@ -14,6 +14,8 @@ Both the **Client** and **GPU Agent** are supported on Windows 10 and Windows 11
 
 The client and GPU agent are supported on Debian-based distributions (version 10 and greater, like Ubuntu 18.04) and Red Hat Enterprise Linux (RHEL) 8-based distributions, such as AlmaLinux 8 or greater. Other distributions with similar or newer release dates are also likely supported.
 
+The Linux installer checks for glibc 2.27 or newer.
+
 :::note
 Currently, only the client is supported when running in WSL on Windows.
 :::
@@ -44,7 +46,7 @@ If you're running on a virtual machine with graphics drivers that don't support 
     :::tip
     These packages can be installed by running the command: 
         
-        ```powershell
+        ```bash
         sudo apt update && sudo apt install libatomic1 libnuma1
         ```
     :::
@@ -58,7 +60,7 @@ If you're running on a virtual machine with graphics drivers that don't support 
     :::tip
     These packages can be installed by running the command: 
         
-        ```powershell
+        ```bash
         sudo dnf update && sudo dnf install libatomic numactl-libs
         ```
     :::
@@ -86,12 +88,15 @@ On all platforms an NVIDIA GPU with an installed driver version 535 or greater, 
 
     - libglib2.0-0 
 
+    - libnvidia-encode, provided by the NVIDIA driver libraries
+
 
     :::tip
-    These packages can be installed by running the command: 
+    These packages can be installed by running the command below. The package that provides `libnvidia-encode` is tied to your NVIDIA driver version and may already be installed with the driver.
         
-        ```powershell
+        ```bash
         sudo apt update && sudo apt install libvulkan1 libgl1 libglib2.0-0 libatomic1 libnuma1
+        ldconfig -p | grep libnvidia-encode
         ```
     :::
 
@@ -108,11 +113,14 @@ On all platforms an NVIDIA GPU with an installed driver version 535 or greater, 
   
   - glib2
 
+  - libnvidia-encode, provided by the NVIDIA driver libraries
+
     :::tip
-    These packages can be installed by running the command: 
+    These packages can be installed by running the command below. The package that provides `libnvidia-encode` is tied to your NVIDIA driver version and may already be installed with the driver.
         
-        ```powershell
+        ```bash
         sudo dnf update && sudo dnf install vulkan-loader mesa-libGL glib2 libatomic numactl-libs
+        ldconfig -p | grep libnvidia-encode
         ```
     :::
 
