@@ -35,6 +35,48 @@ Log in to [app.juicelabs.co](https://app.juicelabs.co):
 
    ...replacing `juice_linux_release` with the filename of the downloaded archive.
 
+### Automated Linux install
+
+For Linux hosts that will run the Juice agent as a service, use the installer script with an M2M token and the pool name or ID where the agent should register:
+
+```bash
+curl https://get.juicelabs.co | \
+INSTALL_JUICE_TOKEN=<m2m_token> \
+INSTALL_JUICE_POOL="<pool name or id>" \
+sh -
+```
+
+The installer downloads and verifies the Linux release, installs the `juice` binary, and creates a system service when `INSTALL_JUICE_POOL` is set. Pool names with spaces are supported when quoted, as shown above.
+
+If you only need the client binary, omit `INSTALL_JUICE_POOL`:
+
+```bash
+curl https://get.juicelabs.co | \
+INSTALL_JUICE_TOKEN=<m2m_token> \
+sh -
+```
+
+When no pool is provided, the installer skips service creation. It still checks client dependencies and warns if agent-only libraries are missing.
+
+Common installer options:
+
+| Option | Use |
+| --- | --- |
+| `INSTALL_JUICE_CONTROLLER=<host>` | Use a custom Juice controller instead of the default controller. |
+| `INSTALL_JUICE_VERSION=<version>` | Install a specific Juice version. |
+| `INSTALL_JUICE_USER=<user>` | Run the service as a specific local user instead of `juice`. |
+| `INSTALL_JUICE_SKIP_START=true` | Create and enable the service without starting it immediately. |
+| `INSTALL_JUICE_EXEC="<agent flags>"` | Add flags to the generated agent service command. |
+
+You can also pass agent flags after `sh -s -`. For example, this creates a service with a 16 GB cache:
+
+```bash
+curl https://get.juicelabs.co | \
+INSTALL_JUICE_TOKEN=<m2m_token> \
+INSTALL_JUICE_POOL="<pool name or id>" \
+sh -s - --cache-size=16
+```
+
 ## (Optional) Adding juice to PATH 
 
 #### To enable your system to run `juice` from any directory: 

@@ -14,6 +14,8 @@ Both the **Client** and **GPU Agent** are supported on Windows 10 and Windows 11
 
 The client and GPU agent are supported on Debian-based distributions (version 10 and greater, like Ubuntu 18.04) and Red Hat Enterprise Linux (RHEL) 8-based distributions, such as AlmaLinux 8 or greater. Other distributions with similar or newer release dates are also likely supported.
 
+Linux systems must provide glibc 2.27 or newer. The installer checks this before installing Juice.
+
 :::note
 Currently, only the client is supported when running in WSL on Windows.
 :::
@@ -86,6 +88,8 @@ On all platforms an NVIDIA GPU with an installed driver version 535 or greater, 
 
     - libglib2.0-0 
 
+    - NVIDIA driver libraries that provide libnvidia-encode
+
 
     :::tip
     These packages can be installed by running the command: 
@@ -107,6 +111,8 @@ On all platforms an NVIDIA GPU with an installed driver version 535 or greater, 
   - mesa-libGL
   
   - glib2
+
+  - NVIDIA driver libraries that provide libnvidia-encode
 
     :::tip
     These packages can be installed by running the command: 
