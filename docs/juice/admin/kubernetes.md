@@ -25,7 +25,7 @@ helm repo add juicelabs https://juice-labs.github.io/juice
 
 2. Create the kubernetes secret with your M2M token
 ```bash
-kubectl create secret generic juice-crendentials --from-literal=JUICE_TOKEN=<m2m_token> --from-literal=JUICE_POOL=<juice-pool-id>
+kubectl create secret generic juice-credentials --from-literal=JUICE_TOKEN=<m2m_token> --from-literal=JUICE_POOL=<juice-pool-id>
 ```
 
 3. Install the chart
