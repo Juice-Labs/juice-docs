@@ -23,9 +23,11 @@ Runs a daemonset to start a Juice Agent on every node that has a GPU attached.
 helm repo add juicelabs https://juice-labs.github.io/juice
 ```
 
-2. Create the kubernetes secret with your M2M token
+2. Create the Kubernetes secret with your M2M token and pool ID
 ```bash
-kubectl create secret generic juice-crendentials --from-literal=JUICE_TOKEN=<m2m_token> --from-literal=JUICE_POOL=<juice-pool-id>
+kubectl create secret generic juice-credentials \
+  --from-literal=JUICE_TOKEN=<m2m_token> \
+  --from-literal=JUICE_POOL=<juice-pool-id>
 ```
 
 3. Install the chart
@@ -33,5 +35,7 @@ kubectl create secret generic juice-crendentials --from-literal=JUICE_TOKEN=<m2m
 ```bash
 helm install juice juicelabs/agent --set credentials.secretName=juice-credentials
 ```
+
+The chart reads the pool and token from the Kubernetes secret named by `credentials.secretName`. By default, it expects the keys to be named `JUICE_POOL` and `JUICE_TOKEN`. If your secret uses different key names, set `credentials.poolKey` and `credentials.tokenKey`.
 
 For detailed instructions please see the [README](https://github.com/Juice-Labs/juice-oss/tree/main/charts/agent/README.md) and all available options in the [values.yaml](https://github.com/Juice-Labs/juice-oss/tree/main/charts/agent/values.yaml)

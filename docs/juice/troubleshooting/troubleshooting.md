@@ -13,7 +13,7 @@ Ensure that (1) the agent is running on the correct Pool (2) the agent has no ac
 
 Verify from the output that the agent is running. You may have to add RenderWin.exe to the *Windows Firewall* rules for incoming UDP connections if you weren’t prompted to do so. 
 
-If you are running an agent from a Docker container, make sure you are using **network=host**. 
+If you are running an agent from a Docker container, verify that the container can receive UDP traffic on the agent port. Publish `7865/udp` or use host networking, and set `JUICE_HOST_IP` to an address that clients can reach from their network.
 
  
 ### My agent is shutting down when my ssh connection is closed.
