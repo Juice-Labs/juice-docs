@@ -15,6 +15,26 @@ Verify from the output that the agent is running. You may have to add RenderWin.
 
 If you are running an agent from a Docker container, make sure you are using **network=host**. 
 
+### My Linux Agent installer failed or used the wrong pool.
+
+Set `INSTALL_JUICE_POOL` to exactly one pool name or pool ID. If the pool name contains spaces, quote it so the shell passes it as one value:
+
+```bash
+curl https://get.juicelabs.co | INSTALL_JUICE_TOKEN=m2m_XXX INSTALL_JUICE_POOL="Rendering Pool" sh -
+```
+
+If the installer reports a missing library, install or repair the dependency shown in the `- Checking ...` output. Agent service installs require `libvulkan`, `libgl`, and `libnvidia-encode`; client-only installs can omit `INSTALL_JUICE_POOL` and do not start an Agent service.
+
+For a default service install, check service state and logs with:
+
+```bash
+sudo systemctl status juice
+sudo journalctl -u juice -n 100 --no-pager
+sudo less /var/lib/juice/logs/agent_service.log
+```
+
+On OpenRC systems, the installer writes service output to `/var/log/juice.log` by default.
+
  
 ### My agent is shutting down when my ssh connection is closed.
 
