@@ -14,6 +14,8 @@ Both the **Client** and **GPU Agent** are supported on Windows 10 and Windows 11
 
 The client and GPU agent are supported on Debian-based distributions (version 10 and greater, like Ubuntu 18.04) and Red Hat Enterprise Linux (RHEL) 8-based distributions, such as AlmaLinux 8 or greater. Other distributions with similar or newer release dates are also likely supported.
 
+The Linux installer requires `systemd` or OpenRC, `curl` or `wget`, glibc 2.27 or greater, and the runtime libraries listed below. The installer checks libraries through the dynamic linker cache, so repair the relevant OS or NVIDIA driver packages if a dependency is installed but still reported as missing.
+
 :::note
 Currently, only the client is supported when running in WSL on Windows.
 :::
@@ -65,7 +67,9 @@ If you're running on a virtual machine with graphics drivers that don't support 
 
 ## Agent Device Prerequisites for GPU Hosting
 
-On all platforms an NVIDIA GPU with an installed driver version 535 or greater, and a CUDA driver version 12.2 through to 13.0. 
+On all platforms an NVIDIA GPU with an installed driver version 535 or greater, and a CUDA driver version 12.2 through to 13.0.
+
+On Linux, the NVIDIA driver installation must also provide `libnvidia-encode`. The Linux installer treats `libvulkan`, `libgl`, and `libnvidia-encode` as Agent-only dependencies: if you set `INSTALL_JUICE_POOL`, missing Agent libraries stop the service install; if you omit `INSTALL_JUICE_POOL`, the installer can still complete a client-only binary install and warn about the missing Agent libraries.
 
 ### Windows 
 
@@ -85,6 +89,8 @@ On all platforms an NVIDIA GPU with an installed driver version 535 or greater, 
     - libgl1 
 
     - libglib2.0-0 
+
+    - NVIDIA driver libraries that provide `libnvidia-encode`
 
 
     :::tip
@@ -107,6 +113,8 @@ On all platforms an NVIDIA GPU with an installed driver version 535 or greater, 
   - mesa-libGL
   
   - glib2
+
+  - NVIDIA driver libraries that provide `libnvidia-encode`
 
     :::tip
     These packages can be installed by running the command: 
