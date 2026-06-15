@@ -12,7 +12,7 @@ Both the **Client** and **GPU Agent** are supported on Windows 10 and Windows 11
 
 ### Linux
 
-The client and GPU agent are supported on Debian-based distributions (version 10 and greater, like Ubuntu 18.04) and Red Hat Enterprise Linux (RHEL) 8-based distributions, such as AlmaLinux 8 or greater. Other distributions with similar or newer release dates are also likely supported.
+The client and GPU agent are supported on Debian-based distributions (version 10 and greater, like Ubuntu 18.04) and Red Hat Enterprise Linux (RHEL) 8-based distributions, such as AlmaLinux 8 or greater. Other distributions with similar or newer release dates are also likely supported. Linux systems must provide glibc 2.27 or newer.
 
 :::note
 Currently, only the client is supported when running in WSL on Windows.
@@ -35,7 +35,7 @@ If you're running on a virtual machine with graphics drivers that don't support 
 ### Linux 
 
 #### Ubuntu 18.04 or greater, Debian 10 or greater. 
-- The following packages must be installed: 
+- The following packages must be installed:
 
     - libatomic1 
 
@@ -49,7 +49,7 @@ If you're running on a virtual machine with graphics drivers that don't support 
         ```
     :::
 #### AlmaLinux 8 or greater, (RHEL)-based. 
-- The following packages must be installed: 
+- The following packages must be installed:
 
   - libatomic
   
@@ -84,14 +84,14 @@ On all platforms an NVIDIA GPU with an installed driver version 535 or greater, 
 
     - libgl1 
 
-    - libglib2.0-0 
+    - NVIDIA encode runtime library (`libnvidia-encode`)
 
 
     :::tip
-    These packages can be installed by running the command: 
+    Install the NVIDIA encode package that matches your driver branch, for example `libnvidia-encode-535` for a 535-series driver. The other packages can be installed by running the command:
         
         ```powershell
-        sudo apt update && sudo apt install libvulkan1 libgl1 libglib2.0-0 libatomic1 libnuma1
+        sudo apt update && sudo apt install libvulkan1 libgl1 libatomic1 libnuma1
         ```
     :::
 
@@ -106,13 +106,13 @@ On all platforms an NVIDIA GPU with an installed driver version 535 or greater, 
   
   - mesa-libGL
   
-  - glib2
+  - NVIDIA encode runtime library (`libnvidia-encode`)
 
     :::tip
-    These packages can be installed by running the command: 
+    Install the NVIDIA driver package that provides `libnvidia-encode` for your driver branch. The other packages can be installed by running the command:
         
         ```powershell
-        sudo dnf update && sudo dnf install vulkan-loader mesa-libGL glib2 libatomic numactl-libs
+        sudo dnf update && sudo dnf install vulkan-loader mesa-libGL libatomic numactl-libs
         ```
     :::
 

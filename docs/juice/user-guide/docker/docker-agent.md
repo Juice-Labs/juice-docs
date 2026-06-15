@@ -5,49 +5,121 @@ sidebar_position: 2
 
 # Agent in Docker
 
-You can run the Juice Agent as a container on your machine. Juice provides an official docker image for each release or you can build your own based on template.
+You can run the Juice Agent as a container on a Linux GPU host. Juice publishes an official image for each release, and the Dockerfile for custom images is available in the open source repository.
  
 ## Prerequisites
 
 - **Docker**: Ensure you have Docker installed and running on your system. 
 - **NVIDIA Container Toolkit**: Ensure you have the Container Toolkit installed, this makes your GPUs accessible to Docker.<br/>
   See https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html 
+- **M2M token and pool ID**: Create a token with `juice m2m create --description docker`, then choose a pool from `juice pool list`.
 
-## Running the official agent image:
+## Running the official agent image
 
-The official agent is published to our [Dockerhub](https://hub.docker.com/r/juicelabs/agent), please follow the latest instructions there to get started.
+The official Agent image is published on [Docker Hub](https://hub.docker.com/r/juicelabs/agent). The current image is built from Ubuntu 24.04 with CUDA 13 runtime libraries.
 
+Create a `.env` file:
 
-## Building a custom agent image:
+```bash
+VERSION=latest
+JUICE_TOKEN=m2m_XXX
+JUICE_POOL=<pool-id>
+JUICE_HOST_IP=<host-ip-or-csv>
+```
 
-The Dockerfile for our offical agent is available in our [open source repository](https://github.com/Juice-Labs/juice-oss/tree/main/docker/agent). You can checkout and customize the agent using the following steps:
+`JUICE_HOST_IP` is the address, or comma-separated list of addresses, that clients should use to reach the Agent. Use the host's LAN address for local clients, and include a routable external address when clients connect from outside the LAN.
 
-1. Open a terminal and clone the respository
+Create `docker-compose.yaml`:
+
+```yaml
+services:
+  juice-agent:
+    image: juicelabs/agent:${VERSION}
+    container_name: juice-agent
+    environment:
+      - JUICE_TOKEN=${JUICE_TOKEN}
+      - JUICE_POOL=${JUICE_POOL}
+      - JUICE_HOST_IP=${JUICE_HOST_IP}
+    ports:
+      - 7865:7865/udp
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    restart: unless-stopped
+```
+
+Start the Agent and follow logs:
+
+```bash
+docker compose up -d
+docker compose logs -f juice-agent
+```
+
+You can also run the container directly:
+
+```bash
+docker run \
+  --name juice-agent \
+  --gpus all \
+  -p 7865:7865/udp \
+  -e JUICE_TOKEN=m2m_XXX \
+  -e JUICE_POOL=<pool-id> \
+  -e JUICE_HOST_IP=<host-ip-or-csv> \
+  -v ./logs:/home/juice/agent/log \
+  --restart unless-stopped \
+  juicelabs/agent:latest
+```
+
+### Runtime parameters
+
+| Parameter | Required | Description |
+| --- | --- | --- |
+| `JUICE_TOKEN` | Yes | M2M token used by the container to log in. |
+| `JUICE_POOL` | Yes | Pool ID for the Agent. |
+| `JUICE_HOST_IP` | Yes | Comma-separated client-reachable IP addresses advertised by the Agent. |
+| `JUICE_HOST_PORT` | No | UDP gateway port. Defaults to `7865`. |
+| `JUICE_ADDITIONAL_ARGS` | No | Extra arguments appended to `juice agent run`. |
+
+If clients cannot connect, verify that UDP traffic to `JUICE_HOST_PORT` is allowed and that the published Docker port matches that value.
+
+## Building a custom agent image
+
+The Dockerfile for the official Agent is available in the [open source repository](https://github.com/Juice-Labs/juice-oss/tree/main/docker/agent). To customize the image:
+
+1. Clone the repository:
 ```bash
 git clone https://github.com/Juice-Labs/juice-oss.git
 cd juice-oss/docker/agent
 ```
 
-2. Modify the Dockerfile at *docker/agent/Dockerfile*
+2. Add the build inputs expected by the Dockerfile:
 
-3. Build your custom image: 
+   - `juice-gpu-linux.tar.gz`, downloaded from [app.juicelabs.co](https://app.juicelabs.co).
+   - `Video_Codec_SDK_<version>.zip`, downloaded from NVIDIA after accepting the Video Codec SDK license. The default Dockerfile argument is `VIDEOSDK_VERSION=12.0.16`.
+
+3. Modify `docker/agent/Dockerfile` if needed.
+
+4. Build your custom image:
 
 ```bash
-docker build -t juice-agent . 
+docker build -t juice-agent .
 ```
 
-4. Once the image is built, you can run a container using your M2M token and pool id:
+5. Once the image is built, run a container using your M2M token and pool ID:
 
 ```bash
-docker run --rm 
-    -p 7865:7865/udp \
-    -e JUICE_TOKEN=<YOUR_TOKEN> \
-    -e JUICE_POOL=<YOUR_POOL_ID> \
-    -e JUICE_HOST_IP=<YOUR_HOST_IP> \
-    -v ./logs:/home/juice/agent/log \
-    --restart unless-stopped \
-    juice-agent
+docker run \
+  --name juice-agent \
+  --gpus all \
+  -p 7865:7865/udp \
+  -e JUICE_TOKEN=m2m_XXX \
+  -e JUICE_POOL=<pool-id> \
+  -e JUICE_HOST_IP=<host-ip-or-csv> \
+  -v ./logs:/home/juice/agent/log \
+  --restart unless-stopped \
+  juice-agent
 ```
-
-For detailed information on these parameters and how you can use docker compose to run the agent please see the [README](https://github.com/Juice-Labs/juice-oss/tree/main/docker/agent/README.md)
-

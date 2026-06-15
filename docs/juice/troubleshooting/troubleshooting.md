@@ -13,7 +13,9 @@ Ensure that (1) the agent is running on the correct Pool (2) the agent has no ac
 
 Verify from the output that the agent is running. You may have to add RenderWin.exe to the *Windows Firewall* rules for incoming UDP connections if you weren’t prompted to do so. 
 
-If you are running an agent from a Docker container, make sure you are using **network=host**. 
+If you are running an Agent from Docker, publish the Agent UDP port, for example `-p 7865:7865/udp`, or use host networking if your network setup requires it. Make sure `JUICE_HOST_IP` advertises an IP address that the client can actually reach.
+
+If you are running an Agent from Kubernetes, make sure clients can route UDP traffic to the IP advertised by the pod and to the configured `agent.port`. The Helm chart sets `JUICE_HOST_IP` from `status.podIP`; clusters that do not expose pod IPs to clients may need host networking or another networking strategy.
 
  
 ### My agent is shutting down when my ssh connection is closed.
@@ -47,7 +49,9 @@ To connect to a remote GPU from an application that you are running through juic
 - Verify that you've set logging level to ERROR in the CLI configuration.
 ### My Installation failed.
 
-Check your Endpoint Security or Antivirus. If you see any warnings about blocked DLLs or executables, add an exception for **C:\Program Files\Juice GPU\juice**. If you are unable to do so, please contact your IT administrator. 
+Check your Endpoint Security or Antivirus. If you see any warnings about blocked DLLs or executables, add an exception for **C:\Program Files\Juice GPU\juice**. If you are unable to do so, please contact your IT administrator.
+
+On Linux, the installer requires `curl` or `wget`, `systemd` or `openrc`, a valid `INSTALL_JUICE_TOKEN`, and glibc 2.27 or newer. Client-only installs require `libnuma` and `libatomic`. Agent service installs also require Vulkan, OpenGL, and NVIDIA encode runtime libraries; omit `INSTALL_JUICE_POOL` only when you want to install the client binaries without creating or starting the Agent service.
 
 ### My agent failed to start.
 
