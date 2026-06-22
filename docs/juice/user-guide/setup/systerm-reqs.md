@@ -14,6 +14,8 @@ Both the **Client** and **GPU Agent** are supported on Windows 10 and Windows 11
 
 The client and GPU agent are supported on Debian-based distributions (version 10 and greater, like Ubuntu 18.04) and Red Hat Enterprise Linux (RHEL) 8-based distributions, such as AlmaLinux 8 or greater. Other distributions with similar or newer release dates are also likely supported.
 
+The Linux installer verifies that `glibc` is version 2.27 or newer. It checks client libraries for all installs, and checks additional GPU hosting libraries when you set `INSTALL_JUICE_POOL` to install an agent service.
+
 :::note
 Currently, only the client is supported when running in WSL on Windows.
 :::
@@ -86,9 +88,11 @@ On all platforms an NVIDIA GPU with an installed driver version 535 or greater, 
 
     - libglib2.0-0 
 
+    - An NVIDIA driver package that provides `libnvidia-encode.so`
+
 
     :::tip
-    These packages can be installed by running the command: 
+    These packages can be installed by running the command below. The `libnvidia-encode.so` library is usually installed with the NVIDIA driver package; confirm it is present with `ldconfig -p | grep libnvidia-encode`.
         
         ```powershell
         sudo apt update && sudo apt install libvulkan1 libgl1 libglib2.0-0 libatomic1 libnuma1
@@ -108,8 +112,10 @@ On all platforms an NVIDIA GPU with an installed driver version 535 or greater, 
   
   - glib2
 
+  - An NVIDIA driver package that provides `libnvidia-encode.so`
+
     :::tip
-    These packages can be installed by running the command: 
+    These packages can be installed by running the command below. The `libnvidia-encode.so` library is usually installed with the NVIDIA driver package; confirm it is present with `ldconfig -p | grep libnvidia-encode`.
         
         ```powershell
         sudo dnf update && sudo dnf install vulkan-loader mesa-libGL glib2 libatomic numactl-libs
