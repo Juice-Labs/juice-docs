@@ -20,6 +20,41 @@ You can share a GPU with other Juice users by making it available in a Pool.
 
 ### Sharing With Agent Service (Runs as service) 
 
+Use a service when the GPU should be shared after reboot or without an interactive terminal.
+
+#### Install with the Juice Linux installer
+
+The installer can download Juice, create the service user, install the agent service, and start it. It installs only the client binaries if `INSTALL_JUICE_POOL` is omitted; set both `INSTALL_JUICE_TOKEN` and `INSTALL_JUICE_POOL` to configure the agent service.
+
+```bash
+curl https://get.juicelabs.co | \
+INSTALL_JUICE_TOKEN=<m2m_token> \
+INSTALL_JUICE_POOL=<pool_id_or_name> \
+sh -
+```
+
+If the pool name contains spaces, quote the value so the shell passes it as one pool name:
+
+```bash
+curl https://get.juicelabs.co | \
+INSTALL_JUICE_TOKEN=<m2m_token> \
+INSTALL_JUICE_POOL='Rendering Lab' \
+sh -
+```
+
+You can pass supported `juice agent run` options to the service by appending them after `sh -s -`:
+
+```bash
+curl https://get.juicelabs.co | \
+INSTALL_JUICE_TOKEN=<m2m_token> \
+INSTALL_JUICE_POOL=<pool_id> \
+sh -s - --cache-size=16
+```
+
+The Linux installer requires `systemd` or OpenRC, a valid M2M token, and required client libraries (`libnuma`, `libatomic`). When installing an agent service, the host must also have the agent GPU libraries available (`libvulkan`, `libgl`, `libnvidia-encode`).
+
+#### Install with an existing Juice CLI
+
 1. Install the agent service for a specific pool using:
 ```bash
 juice agent service install <poolid>
