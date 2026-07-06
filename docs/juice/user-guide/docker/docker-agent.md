@@ -20,9 +20,9 @@ The official agent is published to our [Dockerhub](https://hub.docker.com/r/juic
 
 ## Building a custom agent image:
 
-The Dockerfile for our offical agent is available in our [open source repository](https://github.com/Juice-Labs/juice-oss/tree/main/docker/agent). You can checkout and customize the agent using the following steps:
+The Dockerfile for our official agent is available in our [open source repository](https://github.com/Juice-Labs/juice-oss/tree/main/docker/agent). You can checkout and customize the agent using the following steps:
 
-1. Open a terminal and clone the respository
+1. Open a terminal and clone the repository
 ```bash
 git clone https://github.com/Juice-Labs/juice-oss.git
 cd juice-oss/docker/agent
@@ -30,16 +30,24 @@ cd juice-oss/docker/agent
 
 2. Modify the Dockerfile at *docker/agent/Dockerfile*
 
-3. Build your custom image: 
+3. Add the required build artifacts to the `docker/agent` directory:
+
+   - The latest `juice-gpu-linux.tar.gz`, downloaded from [app.juicelabs.co](https://app.juicelabs.co).
+   - The NVIDIA Video Codec SDK zip, downloaded from [NVIDIA](https://developer.nvidia.com/nvidia-video-codec-sdk).
+
+   The Dockerfile defaults to `Video_Codec_SDK_12.0.16.zip`. If you use a different SDK version, pass it with `--build-arg VIDEOSDK_VERSION=<version>`.
+
+4. Build your custom image:
 
 ```bash
 docker build -t juice-agent . 
 ```
 
-4. Once the image is built, you can run a container using your M2M token and pool id:
+5. Once the image is built, you can run a container using your M2M token and pool ID:
 
 ```bash
-docker run --rm 
+docker run --rm \
+    --gpus all \
     -p 7865:7865/udp \
     -e JUICE_TOKEN=<YOUR_TOKEN> \
     -e JUICE_POOL=<YOUR_POOL_ID> \
