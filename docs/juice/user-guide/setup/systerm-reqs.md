@@ -14,6 +14,8 @@ Both the **Client** and **GPU Agent** are supported on Windows 10 and Windows 11
 
 The client and GPU agent are supported on Debian-based distributions (version 10 and greater, like Ubuntu 18.04) and Red Hat Enterprise Linux (RHEL) 8-based distributions, such as AlmaLinux 8 or greater. Other distributions with similar or newer release dates are also likely supported.
 
+The Linux installer checks for glibc 2.27 or newer. It always requires the client libraries listed below. When `INSTALL_JUICE_POOL` is set and the installer creates an agent service, missing agent libraries are fatal; without `INSTALL_JUICE_POOL`, agent-only library gaps are reported as warnings because no service is installed.
+
 :::note
 Currently, only the client is supported when running in WSL on Windows.
 :::
@@ -84,11 +86,13 @@ On all platforms an NVIDIA GPU with an installed driver version 535 or greater, 
 
     - libgl1 
 
+    - libnvidia-encode, provided by the installed NVIDIA driver packages
+
     - libglib2.0-0 
 
 
     :::tip
-    These packages can be installed by running the command: 
+    The distribution packages can be installed by running the command below. If the installer reports `missing library libnvidia-encode`, check that the NVIDIA driver is installed and visible to `ldconfig`.
         
         ```powershell
         sudo apt update && sudo apt install libvulkan1 libgl1 libglib2.0-0 libatomic1 libnuma1
@@ -105,11 +109,13 @@ On all platforms an NVIDIA GPU with an installed driver version 535 or greater, 
   - vulkan-loader
   
   - mesa-libGL
+
+  - libnvidia-encode, provided by the installed NVIDIA driver packages
   
   - glib2
 
     :::tip
-    These packages can be installed by running the command: 
+    The distribution packages can be installed by running the command below. If the installer reports `missing library libnvidia-encode`, check that the NVIDIA driver is installed and visible to `ldconfig`.
         
         ```powershell
         sudo dnf update && sudo dnf install vulkan-loader mesa-libGL glib2 libatomic numactl-libs
