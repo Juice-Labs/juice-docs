@@ -9,6 +9,18 @@ You can share a GPU with other Juice users by making it available in a Pool.
 
 ## Linux 
 
+### One-step installer (recommended for persistent agents)
+
+Use the automated installer when you want Juice to download the Linux release for your CPU architecture and create a systemd/OpenRC agent service:
+
+```bash
+curl -fsSL https://get.juicelabs.co | INSTALL_JUICE_TOKEN=m2m_XXX INSTALL_JUICE_POOL='<pool name or id>' sh -
+```
+
+Quote pool names that contain spaces. On Linux hosts that report `aarch64`, set `ARCH=arm64`. See [Installation](../setup/installation.md) for installer options and troubleshooting.
+
+### Foreground agent from a manual install
+
 1. On the download screen from Accessing the application, scroll to the bottom and click the *Linux* tab. 
 
 2. Select a pool beside ***To host a remote GPU…***. 

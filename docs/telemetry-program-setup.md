@@ -59,12 +59,15 @@ Make sure to replace `[token]` with the M2M token you created in Step 2.
 :::
 
 ```bash
-curl https://get.juicelabs.co | \
+curl -fsSL https://get.juicelabs.co | \
 INSTALL_JUICE_TOKEN=[token] \
 INSTALL_JUICE_POOL=telemetry \
 sh -
 ```
-For more details on the installer script, see the repository here: [Installer](https://github.com/Juice-Labs/juice-oss/tree/main/installer)
+
+Quote the pool value if the pool name contains spaces, for example `INSTALL_JUICE_POOL='telemetry pool'`. On Linux hosts that report `aarch64`, set `ARCH=arm64` so the installer can download the arm64 release.
+
+For more details on the installer script, see the [Installation guide](/docs/juice/user-guide/setup/installation) and the repository here: [Installer](https://github.com/Juice-Labs/juice-oss/tree/main/installer)
 
 
 #### Docker and Docker Compose 
