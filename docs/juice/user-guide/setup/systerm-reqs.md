@@ -14,6 +14,17 @@ Both the **Client** and **GPU Agent** are supported on Windows 10 and Windows 11
 
 The client and GPU agent are supported on Debian-based distributions (version 10 and greater, like Ubuntu 18.04) and Red Hat Enterprise Linux (RHEL) 8-based distributions, such as AlmaLinux 8 or greater. Other distributions with similar or newer release dates are also likely supported.
 
+Supported CPU architectures for the Linux automated installer:
+
+- `x86_64` / `amd64`
+- `arm64` (set `ARCH=arm64` if `uname -m` reports `aarch64`)
+
+The Linux automated installer also requires:
+
+- glibc 2.27 or newer
+- `systemd` or OpenRC
+- `curl` or `wget`
+
 :::note
 Currently, only the client is supported when running in WSL on Windows.
 :::
@@ -86,6 +97,8 @@ On all platforms an NVIDIA GPU with an installed driver version 535 or greater, 
 
     - libglib2.0-0 
 
+- NVIDIA drivers must provide `libnvidia-encode` for agent installs. The automated installer treats a missing `libnvidia-encode` as a fatal error when `INSTALL_JUICE_POOL` is set.
+
 
     :::tip
     These packages can be installed by running the command: 
@@ -108,6 +121,8 @@ On all platforms an NVIDIA GPU with an installed driver version 535 or greater, 
   
   - glib2
 
+- NVIDIA drivers must provide `libnvidia-encode` for agent installs. The automated installer treats a missing `libnvidia-encode` as a fatal error when `INSTALL_JUICE_POOL` is set.
+
     :::tip
     These packages can be installed by running the command: 
         
@@ -116,4 +131,8 @@ On all platforms an NVIDIA GPU with an installed driver version 535 or greater, 
         ```
     :::
 
- 
+:::note
+When `INSTALL_JUICE_POOL` is omitted, the installer still requires client libraries (`libnuma`, `libatomic`) and glibc 2.27+, but missing agent-only libraries are warnings rather than hard failures.
+:::
+
+
