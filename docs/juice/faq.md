@@ -60,6 +60,7 @@ https://app.juicelabs.co
 ```
 #### Download software
 ```
+https://get.juicelabs.co
 https://juice-artifacts.s3.us-east-2.amazonaws.com
 ```
 
