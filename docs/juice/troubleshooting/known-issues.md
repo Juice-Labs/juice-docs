@@ -4,7 +4,7 @@ sidebar_position: 12
 ---
 # Known Issues
 
-- Running an agent inside a Docker container requires host networking, which is not supported in some environments (i.e. Docker Desktop, macOS, and VM-based containers). WSL sharing GPUs has the same limitations as Docker WSL and is subnetted with the host machine. 
+- Running an agent inside a Docker container requires accurate client-reachable addresses in `JUICE_HOST_IP` and published UDP access to the agent gateway port (default `7865`). Docker Desktop, macOS, and some VM-based container environments can still block or complicate GPU/passthrough networking. WSL sharing GPUs has the same limitations as Docker WSL and is subnetted with the host machine. 
 
 - DX11/DX12/OpenGL/Vulkan are the only supported graphics APIs. Most graphical software should work out of the box. CUDA 10-12.4 is supported for compute. PyTorch and TensorFlow binaries also work out of the box. 
 
