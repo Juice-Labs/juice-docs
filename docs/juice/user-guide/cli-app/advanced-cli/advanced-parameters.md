@@ -97,6 +97,26 @@ Juice offers several advanced parameters to fine-tune your GPU sessions and appl
     ```
  
 
+- --vram \<size\>
+
+    Requests a VRAM slice instead of the full GPU. The value is GiB by default and also accepts suffixes such as `MiB` or `B`. See [GPU Slicing](../gpu-slicing.md).
+
+    **Example**:
+
+    ```powershell
+    juice run --ephemeral --vram 2 python script.py
+    ```
+
+- --vram-strict
+
+    Requires the session to receive at least the exact `--vram` request. Without this flag, Juice may accept a slightly smaller allocation (at least 93% of the request) so GPUs whose capacity is not a whole number of GiB are easier to slice.
+
+    **Example**:
+
+    ```powershell
+    juice session request --vram 4 --vram-strict
+    ```
+
 - --wait-for \<uint\>
 
     Sets the maximum time (in seconds) to wait for GPU availability. Use to prevent indefinite waits in resource-constrained environments or for time-sensitive applications.  

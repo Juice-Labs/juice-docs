@@ -19,7 +19,9 @@ sidebar_position: 1
 
 **Pool**: A group of shared GPUs within an organization. Pools are used to organize and manage GPU resources and control user access.
 
-**Session**: An active connection between a user and a shared GPU, established when a user runs an application or requests GPU resources.
+**Session**: An active connection between a user and a shared GPU, established when a user runs an application or requests GPU resources. Slurm integration exports the reserved session to a shared file and imports it on the compute node.
+
+**VRAM slice**: A reservation of part of a GPU's memory (`--vram`) so multiple compute jobs can share one physical GPU. See [GPU Slicing](../user-guide/cli-app/gpu-slicing.md).
 
 **Taints**: Attributes applied to Agents to repel certain workloads unless they explicitly tolerate the taint, used for specialized hardware or compliance requirements.
 

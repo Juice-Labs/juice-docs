@@ -85,6 +85,7 @@ This section documents all available CLI commands in the Juice CLI tool.
 - `--force-relay`: Force using relay server
 - `--gateway-port`: Gateway port number (1-65535)
 - `--gateway-ips`: Comma-separated list of gateway IP addresses
+- `--metrics-address`: Bind address for Prometheus metrics (for example `127.0.0.1:9090`). See [Prometheus](../../../admin/prometheus.md).
 
 ### agent service
 **Command**: `agent service`
@@ -192,6 +193,9 @@ This section documents all available CLI commands in the Juice CLI tool.
 - `--relaxed-api`: Enables a relaxed API conformance mode which allows for greater performance at expense of compatibility
 - `--listen-ip`: IPv4 address to bind to when listening for connections
 - `--disable-uvm-kernel-synchronization`: Disable synchronizing UVM memory before/after kernel launches
+- `--vram`: Reserve a VRAM slice (GiB by default; suffixes such as `MiB` and `B` are accepted). See [GPU Slicing](../gpu-slicing.md).
+- `--vram-strict`: Require the exact `--vram` request instead of allowing a slightly smaller allocation
+- `--import-session`: Load a previously exported session file (used by the [Slurm](../../../admin/slurm.md) plugin)
 
 **Note**: The following options are mutually exclusive: session, query, gpu-ids, pool-ids, match-labels, tolerates, num-gpus, ephemeral
 
@@ -226,11 +230,20 @@ This section documents all available CLI commands in the Juice CLI tool.
 - `--wait-for`: Maximum number of seconds to wait for a GPU (default: 0)
 - `--no-version-check`: Disables version checking when allocating the session requirements
 - `--num-gpus`: Number of GPUs required (default: 1)
+- `--vram`: Reserve a VRAM slice (GiB by default; suffixes such as `MiB` and `B` are accepted)
+- `--vram-strict`: Require the exact `--vram` request instead of allowing a slightly smaller allocation
+- `--export-session`: Write the reserved session to a file for later `--import-session` (used by the [Slurm](../../../admin/slurm.md) hooks)
+- `--import-session`: Operate on a session previously written with `--export-session`
 - `--session-timeout`: Time for the session to be automatically returned to the pool if not in use (default: -1)
 - `--watch-pid`: Watch the specified process and stop the session when it exits (default: -1)
 - `--dump-config`: Dumps the client configuration to the console in JSON format
 
 **Note**: The following options are mutually exclusive: gpu-ids, query
+
+### session add-path / session remove-path
+**Command**: `session add-path <path>` / `session remove-path <path>`
+
+**Description**: Windows only. While a session is active, mark an executable or directory so launches under that path use the Juice GPU. Paths reset when the session is released. See [Manually Managing Sessions](../manual-sessions.md).
 
 ## User Management
 

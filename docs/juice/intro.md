@@ -22,6 +22,7 @@ Juice is simple to use - it consists of:
 - a browser-based **Admin interface** to the Controller so you can manage users, pools, etc. for your Org (and Org could be a team or company; it's how we license Juice to you and organize users, pools, and sharing)
 - a Windows Desktop app for running applications and sharing GPUs
 - a reporting interface that gives admins visibility to utilization and activity within their Org
+- optional cluster integrations: a [Helm chart](admin/kubernetes.md) for Kubernetes agents and a [Slurm plugin](admin/slurm.md) that reserves Juice GPUs for batch jobs
 
 Today Juice works with:
 
