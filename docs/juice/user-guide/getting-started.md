@@ -8,7 +8,7 @@ sidebar_position: 2
 
 Once you've installed Juice you're all set to start sharing your GPUs over the network.  These examples give you some quick steps to get started quickly.
 
-The examples all assume you are running from a command prompt or shell with the `juice` executable available in the path, e.g. with the Juice install directory `C:\Program Files\Juice GPU` listed in the `PATH` environment variable.
+The examples all assume you are running from a command prompt or shell with the `juice` executable available in the path, e.g. with the Juice install directory `C:\Program Files\Juice GPU` listed in the `PATH` environment variable. On Linux, the [automated installer](setup/installation.md) can also place `juice` on the path and install a persistent agent service.
 
 ## Log In or Sign Up
 

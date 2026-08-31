@@ -7,7 +7,9 @@ sidebar_position: 6
 You can share a GPU with other Juice users by making it available in a Pool.
 
 
-## Linux 
+## Linux
+
+For a persistent Linux agent, prefer the [automated installer](../setup/installation.md), which installs `juice` and a systemd or OpenRC service when `INSTALL_JUICE_POOL` is set.
 
 1. On the download screen from Accessing the application, scroll to the bottom and click the *Linux* tab. 
 

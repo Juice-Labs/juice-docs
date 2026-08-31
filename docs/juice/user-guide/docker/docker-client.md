@@ -18,77 +18,76 @@ You can run the Juice client within a Docker container to leverage remote GPUs w
 
 1. Create a Dockerfile in your working directory.
 
+The Linux tarball extracts to a `juice/` directory that contains the `juice` binary. Place `juice-gpu-linux.tar.gz` and `run.sh` next to this Dockerfile.
+
 #### Example
 
-```powershell
-# Use Ubuntu 24.04 as the base image 
-FROM ubuntu:24.04 
+```dockerfile
+FROM ubuntu:24.04
 
-# Install necessary packages 
-RUN apt-get update && \ 
-    apt-get upgrade -y && \ 
-    DEBIAN_FRONTEND=noninteractive apt-get install -y \ 
-    ca-certificates \ 
-    libnuma1 \ 
-    libatomic1 && \ 
-    rm -rf /var/lib/apt/lists/* 
+RUN apt-get update && \
+    apt-get upgrade -y && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y \
+    ca-certificates \
+    libnuma1 \
+    libatomic1 && \
+    rm -rf /var/lib/apt/lists/*
 
-# Set working directory inside the container 
-WORKDIR /home/ubuntu 
+WORKDIR /home/ubuntu
 
-# Copy the juice tarball and the run script 
-ADD juice-gpu-linux.tar.gz /home/ubuntu
-COPY --chown=ubuntu:ubuntu --chmod=777 run.sh . 
+# Extracts to /home/ubuntu/juice/juice, matching the official agent image layout
+ADD juice-gpu-linux.tar.gz /home/ubuntu/juice
+COPY --chmod=755 run.sh /home/ubuntu/run.sh
 
-# Define the entry point for the container 
-ENTRYPOINT ["/bin/bash", "-c", "/root/run.sh ${@}", "--"] 
+ENTRYPOINT ["/home/ubuntu/run.sh"]
 ```
 
-2. Create a file named run.sh in the same directory as your Dockerfile with the following contents:
+2. Create a file named `run.sh` in the same directory as your Dockerfile with the following contents:
 
-```powershell
-#!/bin/bash 
-# Check if at least one argument is provided (M2M token) 
-if [ $# -eq 0 ]; then 
-    echo "Usage: $0 <m2m_token> [run_args...]" 
-    exit 1 
-fi 
+```bash
+#!/bin/bash
+if [ $# -eq 0 ]; then
+    echo "Usage: $0 <m2m_token> [juice run args...]"
+    exit 1
+fi
 
-# The first argument is the M2M token 
-m2m_token="$1" 
+m2m_token="$1"
+shift
 
-# Shift the arguments to remove the M2M token 
-shift 
+JUICE_BIN=/home/ubuntu/juice/juice
 
-# Log in to juice using the M2M token 
-./juice login --token "$m2m_token" 
-
-# Execute the juice run command with the remaining arguments 
-./juice run "$@" 
+"$JUICE_BIN" login --token "$m2m_token"
+exec "$JUICE_BIN" run "$@"
 ```
 
-3. Open a terminal, navigate to the directory containing your Dockerfile, run.sh, and execute the following command: 
+If your tarball extracts the binary to a different path, update `JUICE_BIN` after inspecting the archive (`tar -tzf juice-gpu-linux.tar.gz`).
 
-```powershell
-docker build -t juice-client . 
+3. Open a terminal, navigate to the directory containing your Dockerfile, `run.sh`, and `juice-gpu-linux.tar.gz`, then run:
+
+```bash
+docker build -t juice-client .
 ```
 
 This builds a Docker image tagged *juice-client* using the instructions in your Dockerfile.
 
 ## Running the Docker container 
 
-Once the image is built, you can run a container using your M2M token and desired juice run arguments:
+Once the image is built, you can run a container using your M2M token and desired `juice run` arguments:
 
-```powershell
-docker run -it juice-client <your_m2m_token> <juice_run_args>
+```bash
+docker run -it juice-client <your_m2m_token> [juice run flags] <application> [<application args>]
 ```
 
 #### Example
 
-This command launches an interactive container, logs in using your M2M token, and executes the bash command inside the container. You can replace bash with any other juice command or application you want to run remotely. 
+This command launches an interactive container, logs in using your M2M token, and runs `bash` through `juice run` against a specific pool. Replace the token, pool ID, and application as needed.
 
-```powershell
-docker run -it juice-client m2m_e6q_87LwpLY1dwh4FpX --pool-ids <your_pool_id> bash  
+```bash
+docker run -it juice-client m2m_YOUR_TOKEN --pool-ids <your_pool_id> bash
 ```
 
 Applications and commands executed within the container utilize the remote GPU resources provided by juice. Refer to the [User Guide](/docs/juice/user-guide/cli-app) for detailed information about available commands, options, and troubleshooting.
+
+:::note
+`run.sh` always invokes `juice run`. Pool selection must use `--pool-ids`, not a bare pool ID as the first argument.
+:::
