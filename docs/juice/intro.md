@@ -37,6 +37,8 @@ Once Juice is installed, launching an application to use remote GPU is as simple
 
 Run PyTorch-based inference with `juice run python pytorch/resnet.py`
 
+Deploy an Agent with the [Linux installer](./user-guide/setup/installation.md), [Docker](./user-guide/docker/docker-agent.md), [Kubernetes](./admin/kubernetes.md), or [Slurm](./admin/slurm.md).
+
 ## Why Juice?
 
 GPU use is hampered by a major limitation: a GPU-hungry application can only run in the same physical machine as the GPU itself.  This limitation causes local-resourcing problems -- there's either not enough (or none, depending on the size and power needs of the device), or GPU capacity sits idle and wasted (global utilization of GPU capacity is estimated at 15%).

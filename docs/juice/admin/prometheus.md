@@ -9,13 +9,37 @@ Juice Agents expose a number of metrics that can be ingested by Prometheus or Vi
 
 ## Enabling Metrics
 
-To enable Prometheus metrics, add --metrics-address to the command line options when starting the agent:
+To enable Prometheus metrics, add `--metrics-address` to the command line options when starting the agent:
 
 ```bash
 juice agent run --metrics-address 127.0.0.1:9090 ...
 ```
 
 This enables the metrics, which can be verified by visiting the address in a web browser.
+
+For the official Docker agent, pass the flag through `JUICE_ADDITIONAL_ARGS` and publish the metrics port:
+
+```bash
+docker run \
+   --gpus all \
+   -p 7865:7865/udp \
+   -p 9090:9090 \
+   -e JUICE_TOKEN=<YOUR_TOKEN> \
+   -e JUICE_POOL=<YOUR_POOL_ID> \
+   -e JUICE_HOST_IP=<YOUR_HOST_IP> \
+   -e JUICE_ADDITIONAL_ARGS="--metrics-address 0.0.0.0:9090" \
+   --restart unless-stopped \
+   juicelabs/agent:latest
+```
+
+On Kubernetes, add the same variable with Helm `env`:
+
+```yaml
+env:
+  JUICE_ADDITIONAL_ARGS: "--metrics-address 0.0.0.0:9090"
+```
+
+The chart does not create a Service, so scrape the pod IP (or configure your own Service/PodMonitor). See [Agent in Docker](../user-guide/docker/docker-agent.md) and [Kubernetes](./kubernetes.md).
 
 
 ## Available Metrics

@@ -19,7 +19,7 @@ sidebar_position: 1
 
 **Pool**: A group of shared GPUs within an organization. Pools are used to organize and manage GPU resources and control user access.
 
-**Session**: An active connection between a user and a shared GPU, established when a user runs an application or requests GPU resources.
+**Session**: An active connection between a user and a shared GPU, established when a user runs an application or requests GPU resources. A session can be written to a file with `--export-session` and reused with `--import-session` (used by the Slurm hooks).
 
 **Taints**: Attributes applied to Agents to repel certain workloads unless they explicitly tolerate the taint, used for specialized hardware or compliance requirements.
 
