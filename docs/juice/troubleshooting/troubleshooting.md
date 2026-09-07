@@ -13,7 +13,7 @@ Ensure that (1) the agent is running on the correct Pool (2) the agent has no ac
 
 Verify from the output that the agent is running. You may have to add RenderWin.exe to the *Windows Firewall* rules for incoming UDP connections if you weren’t prompted to do so. 
 
-If you are running an agent from a Docker container, make sure you are using **network=host**. 
+If you are running an agent from a Docker container, set `JUICE_HOST_IP` to addresses clients can reach and publish the UDP gateway port (default `7865`). The official image does not require `--network=host`. See [Agent in Docker](../user-guide/docker/docker-agent.md). 
 
  
 ### My agent is shutting down when my ssh connection is closed.
@@ -52,3 +52,15 @@ Check your Endpoint Security or Antivirus. If you see any warnings about blocked
 ### My agent failed to start.
 
 Check to see if you're already running an agent.
+
+### The Linux installer failed.
+
+The automated installer at `https://get.juicelabs.co` requires `INSTALL_JUICE_TOKEN` and glibc 2.27+. Missing `libnuma` / `libatomic` is always fatal. Missing `libvulkan` / `libgl` / `libnvidia-encode` is fatal only when `INSTALL_JUICE_POOL` is set. See [Installation](../user-guide/setup/installation.md) and [System Requirements](../user-guide/setup/systerm-reqs.md).
+
+### My Helm agent pods stay Pending.
+
+If you set a custom `nodeSelector`, the chart drops its default `nvidia.com/gpu` toleration. Add matching `tolerations`, or leave `nodeSelector` empty so the chart can use `nodeSelectorPreset`. The chart also spreads at most one agent pod per node; extra replicas stay `Pending`. See [Kubernetes](../admin/kubernetes.md).
+
+### My Slurm job never reaches the compute node.
+
+Confirm `PrologSlurmctld` can reach the Juice controller with the M2M token in `juice-config.sh`, and that `--juice-pool` is set. A failed `juice session request` makes the prolog exit non-zero. Check `JUICE_ERROR_LOG` (default `/tmp/juice.log`) on the controller. The job flag is `--juice-num-gpus`, not `--juice-gpu-count`. See [Slurm](../admin/slurm.md).

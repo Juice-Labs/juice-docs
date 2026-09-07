@@ -35,7 +35,7 @@ _Yes!  Take a look at the [instructions for Docker](./user-guide/docker/docker-c
 
 ### Can I run the Juice Server inside a virtual machine or a container?
 
-_Yes, as long as the server software has access to the attached physical GPU._
+_Yes, as long as the server software has access to the attached physical GPU. For Docker, set `JUICE_HOST_IP` and publish UDP `7865`; host networking is optional. See [Agent in Docker](./user-guide/docker/docker-agent.md)._
 
 ### Does anything about the Juice Client and Juice Server operating environments need to match?
 
