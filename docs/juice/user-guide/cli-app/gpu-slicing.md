@@ -58,3 +58,5 @@ For example:
 juice run --ephemeral --vram 2 python script_1.py
 juice run --ephemeral --vram 2 python script_2.py
 ```
+
+Slurm jobs can request a slice with `--juice-vram=<integer-GiB>`. That flag is parsed with `atoi`, so only whole-GiB values work there. See [Slurm](../../admin/slurm.md).

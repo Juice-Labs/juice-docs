@@ -50,10 +50,20 @@ C:\Users\<user>\AppData\Local\Juice GPU\logs
 ```
 
 ### Linux
-On Linux, the logs are located in a hidden configuration directory in your home folder:
+
+On Linux, interactive CLI and manually started agents write logs to a hidden configuration directory in your home folder:
+
 ```
 ~/.config/Juice GPU/logs
 ```
+
+The automated Linux installer redirects the systemd/OpenRC agent to:
+
+```
+/var/lib/juice/logs/agent_service.log
+```
+
+Official Docker agents log to container stdout (`docker logs` / `docker compose logs`). Helm agents use the same image entrypoint, so use `kubectl logs`.
 
 ## Step 3: Send the Logs
 The log files are named using patterns like *`client-<session-id>.log`*, *`agent_service.log`*, or *`agent-<session-id>.log`*. When contacting support, please find the most recently modified log files and attach them to your ticket.
