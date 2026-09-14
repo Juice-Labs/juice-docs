@@ -35,7 +35,7 @@ _Yes!  Take a look at the [instructions for Docker](./user-guide/docker/docker-c
 
 ### Can I run the Juice Server inside a virtual machine or a container?
 
-_Yes, as long as the server software has access to the attached physical GPU._
+_Yes, as long as the server software has access to the attached physical GPU. For Docker, set `JUICE_HOST_IP` and publish UDP `7865`; host networking is optional. See [Agent in Docker](./user-guide/docker/docker-agent.md)._
 
 ### Does anything about the Juice Client and Juice Server operating environments need to match?
 
@@ -43,7 +43,7 @@ _No, you can run any combination of Client and Server (Windows or Ubuntu, physic
 
 ### I'm running out of disk space - how can I clear (part of) the Juice Server cache?
 
-_In_ `JuiceServer-*\agent\juicecache` _, you will see a directory for each application you've tried via Juice. You can safely clear or remove these directories, and the cache will refill as needed through usage._
+_On Linux, look under `~/.cache/Juice/cache`. On Windows, look under `%LocalAppData%\Juice GPU\cache` and `C:\Windows\ServiceProfiles\juice\AppData\Local\Juice GPU\cache`. Helm agents store cache in an `emptyDir` at `/home/juice/.cache/Juice GPU`. You can safely delete these numbered directories while the agent is not sharing a GPU; the cache will refill as needed. See [Cache](./user-guide/cli-app/cache.md)._
 
 ### I'm behind a proxy or firewall, which hosts should I add to my allow list?
 
@@ -68,8 +68,9 @@ https://juice-artifacts.s3.us-east-2.amazonaws.com
 | OS | Client/Server | Log location |
 |:---:|:---:|---|
 |Linux|Client|`~/.config/Juice GPU/logs/client-<session-id>.log`|
-|Linux|Server|`~/.config/Juice GPU/logs/agent-<session-id>.log`, `~/.config/Juice GPU/logs/agent_service.log`|
-|Windows|Client|`%APPDATA%\Juice GPU\logs\client-<session-id>.log`|
-|Windows|Server|`%APPDATA%\Juice GPU\logs\agent-<session-id>.log`, `%APPDATA%\Juice GPU\logs\agent_service.log`|
+|Linux|Server (interactive)|`~/.config/Juice GPU/logs/agent-<session-id>.log`, `~/.config/Juice GPU/logs/agent_service.log`|
+|Linux|Server (installer service)|`/var/lib/juice/logs/agent_service.log`|
+|Windows|Client|`%LocalAppData%\Juice GPU\logs\client-<session-id>.log`|
+|Windows|Server|`%LocalAppData%\Juice GPU\logs\agent-<session-id>.log`, `%LocalAppData%\Juice GPU\logs\agent_service.log`|
 
-_*alternate locations configured using the `log-file` parameter on the command line_
+_*alternate locations configured using the `log-file` parameter on the command line. Docker/Helm agents log to container stdout._

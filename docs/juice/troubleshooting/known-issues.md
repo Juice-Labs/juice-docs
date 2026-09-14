@@ -4,9 +4,9 @@ sidebar_position: 12
 ---
 # Known Issues
 
-- Running an agent inside a Docker container requires host networking, which is not supported in some environments (i.e. Docker Desktop, macOS, and VM-based containers). WSL sharing GPUs has the same limitations as Docker WSL and is subnetted with the host machine. 
+- The official Docker agent advertises `JUICE_HOST_IP` and listens on a published UDP port (default `7865`). Host networking is optional, not required. Clients must be able to reach the advertised address. WSL sharing GPUs has the same limitations as Docker WSL and is subnetted with the host machine.
 
-- DX11/DX12/OpenGL/Vulkan are the only supported graphics APIs. Most graphical software should work out of the box. CUDA 10-12.4 is supported for compute. PyTorch and TensorFlow binaries also work out of the box. 
+- DX11/DX12/OpenGL/Vulkan are the only supported graphics APIs. Most graphical software should work out of the box. Agent hosts need an NVIDIA driver 535 or greater and a CUDA driver from 12.2 through 13.0. The official Docker agent image is built on CUDA 13. PyTorch and TensorFlow binaries also work out of the box. 
 
 - Resolutions beyond 4K may have questionable performance due to video encoder/decoder limitations. This will be addressed with a software encoder in the future. 
 

@@ -36,12 +36,12 @@ RUN apt-get update && \
 # Set working directory inside the container 
 WORKDIR /home/ubuntu 
 
-# Copy the juice tarball and the run script 
+# Copy the juice tarball and the run script
 ADD juice-gpu-linux.tar.gz /home/ubuntu
-COPY --chown=ubuntu:ubuntu --chmod=777 run.sh . 
+COPY --chown=ubuntu:ubuntu --chmod=777 run.sh /home/ubuntu/run.sh
 
-# Define the entry point for the container 
-ENTRYPOINT ["/bin/bash", "-c", "/root/run.sh ${@}", "--"] 
+# Define the entry point for the container
+ENTRYPOINT ["/bin/bash", "-c", "/home/ubuntu/run.sh ${@}", "--"]
 ```
 
 2. Create a file named run.sh in the same directory as your Dockerfile with the following contents:
@@ -88,7 +88,11 @@ docker run -it juice-client <your_m2m_token> <juice_run_args>
 This command launches an interactive container, logs in using your M2M token, and executes the bash command inside the container. You can replace bash with any other juice command or application you want to run remotely. 
 
 ```powershell
-docker run -it juice-client m2m_e6q_87LwpLY1dwh4FpX --pool-ids <your_pool_id> bash  
+docker run -it juice-client m2m_YOUR_TOKEN --pool-ids <your_pool_id> bash
 ```
 
 Applications and commands executed within the container utilize the remote GPU resources provided by juice. Refer to the [User Guide](/docs/juice/user-guide/cli-app) for detailed information about available commands, options, and troubleshooting.
+
+:::note
+`run.sh` always invokes `juice run`. Pool selection must use `--pool-ids`. A bare pool ID as the first argument is treated as the application name.
+:::

@@ -118,6 +118,26 @@ Juice offers several advanced parameters to fine-tune your GPU sessions and appl
     juice run --tolerates "high-priority=true" my_critical_task.py
     ```
 
+- --vram \<size\>
+
+    Requests a VRAM slice instead of the full GPU. The CLI accepts GiB by default and suffixes such as `MiB` and `B`. See [GPU Slicing](../gpu-slicing.md).
+
+    **Example**:
+
+    ```powershell
+    juice run --ephemeral --vram 2 my_inference.py
+    ```
+
+- --import-session \<path\>
+
+    Runs against a session previously written with `juice session request --export-session`. Used by the [Slurm](../../../admin/slurm.md) plugin so compute nodes reuse the reservation created in the prolog.
+
+    **Example**:
+
+    ```powershell
+    juice run --import-session /opt/juice/.data/sessions/job-123.cfg python train.py
+    ```
+
 ## Global Command Options
 
 - --log-file

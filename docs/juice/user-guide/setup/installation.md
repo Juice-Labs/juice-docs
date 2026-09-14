@@ -21,19 +21,108 @@ Log in to [app.juicelabs.co](https://app.juicelabs.co):
 
 
 ### Linux
-1. Click the download link for the Linux release. 
+
+Choose the path that matches how you want to use Juice:
+
+- **Manual archive install**: unpack the Linux release when you only need the `juice` binary.
+- **Automated installer**: install the binary and, when a pool is supplied, create a persistent GPU Agent service (systemd or OpenRC).
+
+The automated installer supports `amd64`/`x86_64` and `arm64`. Other architectures fail with `Unsupported architecture`.
+
+#### Manual archive install
+
+1. Click the download link for the Linux release.
 
     :::note
-    Depending on your Linux configuration, you may need to download the file on a different system and transfer it to the Linux system where you intend to run Juice. 
+    Depending on your Linux configuration, you may need to download the file on a different system and transfer it to the Linux system where you intend to run Juice.
     :::
- 
-2. Unzip the downloaded file: 
 
-    ```powershell
-    tar -xf [juice_linux_release].tar 
+2. Unzip the downloaded file:
+
+    ```bash
+    tar -xf [juice_linux_release].tar
     ```
 
    ...replacing `juice_linux_release` with the filename of the downloaded archive.
+
+#### Automated Linux installer
+
+The one-step installer is served from `https://get.juicelabs.co` ([source](https://github.com/Juice-Labs/juice-oss/blob/main/installer/install-juice.sh)). It always requires an M2M token. The pool is optional: omit it to install the client binary only.
+
+Install the agent as a service:
+
+```bash
+curl https://get.juicelabs.co | \
+  INSTALL_JUICE_TOKEN=m2m_XXX \
+  INSTALL_JUICE_POOL="GPU Lab Pool" \
+  sh -
+```
+
+Quote pool names that contain spaces. The installer passes that value through to `juice agent service install`.
+
+Client-only install (no systemd/OpenRC unit):
+
+```bash
+curl https://get.juicelabs.co | INSTALL_JUICE_TOKEN=m2m_XXX sh -
+```
+
+Pass extra `juice agent run` flags after `sh -s -`, or set `INSTALL_JUICE_EXEC`. These are equivalent:
+
+```bash
+curl https://get.juicelabs.co | \
+  INSTALL_JUICE_TOKEN=m2m_XXX \
+  INSTALL_JUICE_POOL="GPU Lab Pool" \
+  sh -s - --cache-size 128
+
+curl https://get.juicelabs.co | \
+  INSTALL_JUICE_TOKEN=m2m_XXX \
+  INSTALL_JUICE_POOL="GPU Lab Pool" \
+  INSTALL_JUICE_EXEC="--cache-size=16" \
+  sh -s -
+```
+
+##### Installer options
+
+Only options the script actually reads:
+
+| Option | Required | Purpose |
+| --- | --- | --- |
+| `INSTALL_JUICE_TOKEN` | Yes | M2M token used to call `/v1/status` and download the release. |
+| `INSTALL_JUICE_POOL` | No | Pool ID or name for the agent service. If omitted, no service is installed. |
+| `INSTALL_JUICE_CONTROLLER` | No | Custom controller host. Defaults to `electra.juicelabs.co`. |
+| `INSTALL_JUICE_VERSION` | No | Specific Juice version. Defaults to the latest release available to the token. |
+| `INSTALL_JUICE_USER` | No | System user for the service. Defaults to `juice`. Created if missing. |
+| `INSTALL_JUICE_EXEC` | No | Extra `juice agent run` flags. Arguments after `sh -s -` are appended. |
+| `INSTALL_JUICE_SKIP_ENABLE` | No | `true` skips enabling and starting the service. |
+| `INSTALL_JUICE_SKIP_START` | No | `true` enables the service without starting it. |
+| `INSTALL_JUICE_FORCE_RESTART` | No | `true` restarts even when binary and service files are unchanged. |
+| `INSTALL_JUICE_SYMLINK` | No | `skip` avoids `/usr/local/bin/juice`; `force` overwrites an existing symlink. |
+| `INSTALL_JUICE_SYSTEMD_DIR` | No | Directory for the unit and env files. Defaults to `/etc/systemd/system`. |
+
+The installed service name is `juice`. `ExecStart` runs `juice agent run --service --service-config /var/lib/juice/agent_service.cfg --config-directory /var/lib/juice --log-file stdout --stderr stdout --stdout /var/lib/juice/logs/agent_service.log`. There is no default `--log-level`.
+
+If `/usr/local` is not writable, binaries land in `/opt/juice` and data stays under `/var/lib/juice`. OpenRC is used when systemd is absent (`/sbin/openrc-run`).
+
+:::note
+`INSTALL_JUICE_NAME` appears in the script header but is unused: `SYSTEM_NAME` is hardcoded to `juice`. `INSTALL_JUICE_INSTALL_DIR` is also unused after setup: the script always assigns `INSTALL_DIR=${INSTALL_ROOT}/juice`. The header comment about preserving `JUICE_*` environment variables for systemd has no matching implementation.
+:::
+
+##### Installer troubleshooting
+
+- `INSTALL_JUICE_TOKEN is not set` or `Token check failed`: check the M2M token, controller reachability, and `INSTALL_JUICE_CONTROLLER`.
+- `Unsupported architecture`: only `amd64`/`x86_64` and `arm64` are supported.
+- `missing library libnuma` or `libatomic`: install the Linux client packages from [System Requirements](./systerm-reqs.md).
+- `missing library libvulkan`, `libgl`, or `libnvidia-encode`: required when `INSTALL_JUICE_POOL` is set. Client-only installs warn instead of failing.
+- `Can not find systemd or openrc`: service install needs one of those supervisors.
+- `Could not install service`: confirm the token can use the pool, and quote pool names that contain spaces.
+
+Uninstall a default install with:
+
+```bash
+sudo /usr/local/juice/uninstall.sh
+```
+
+If the installer fell back to `/opt`, use `/opt/juice/uninstall.sh`. Agent service logs for the automated install are at `/var/lib/juice/logs/agent_service.log`.
 
 ## (Optional) Adding juice to PATH 
 
@@ -51,7 +140,7 @@ Log in to [app.juicelabs.co](https://app.juicelabs.co):
     export PATH=$PATH:/path/to/juice_directory
     ```
 
-...replacing `/path/to/juice_directory` with the actual path to the directory containing the Juice executable. 
+...replacing `/path/to/juice_directory` with the actual path to the directory containing the Juice executable. The automated installer creates `/usr/local/bin/juice` unless you set `INSTALL_JUICE_SYMLINK=skip`. 
 
 3. Save and exit the editor. 
     :::tip

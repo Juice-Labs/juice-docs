@@ -35,6 +35,8 @@ juice agent service start
 juice agent service enable
 ```
 
+On Linux, the [automated installer](../setup/installation.md) can install and enable that service in one step when `INSTALL_JUICE_POOL` is set.
+
 
 ## Windows 
 
@@ -65,7 +67,7 @@ juice agent service start
     :::tip
     To stop sharing, use:
     ```bash
-    agent service stop
+    juice agent service stop
     ```
     :::
 
