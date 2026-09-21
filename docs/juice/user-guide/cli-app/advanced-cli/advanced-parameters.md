@@ -118,6 +118,48 @@ Juice offers several advanced parameters to fine-tune your GPU sessions and appl
     juice run --tolerates "high-priority=true" my_critical_task.py
     ```
 
+- --vram \<size\> / --vram-strict
+
+    Request a slice of VRAM instead of a whole GPU. On the Juice CLI this accepts decimals and suffixes (`2.5`, `2.5GiB`, `2560MiB`). See [GPU Slicing](../gpu-slicing.md). The Slurm plugin flag `--juice-vram` is different: integer GiB via `atoi` only.
+
+    **Example**:
+
+    ```powershell
+    juice run --ephemeral --vram 4 python train.py
+    ```
+
+- --import-session \<path\> / session request --export-session \<path\>
+
+    Export a session file from `juice session request` and import it later with `juice run --import-session` or `juice session release --import-session`. The [Slurm](/docs/juice/admin/slurm.md) hooks use this pair with a per-job encryption key.
+
+    **Example**:
+
+    ```powershell
+    juice session request --pool-ids pool-1 --export-session /tmp/job.cfg
+    juice run --import-session /tmp/job.cfg python train.py
+    juice session release --import-session /tmp/job.cfg
+    ```
+
+- --cache-size (agent)
+
+    Sets the per-connection cache size on `juice agent run` (and the Linux installer via `INSTALL_JUICE_EXEC` or extra script args). Docker/Helm pass it in `JUICE_ADDITIONAL_ARGS`. See [Cache](../cache.md).
+
+    **Example**:
+
+    ```powershell
+    juice agent run --cache-size 32 <pool-id>
+    ```
+
+- --metrics-address (agent)
+
+    Binds the Prometheus metrics endpoint. See [Prometheus](/docs/juice/admin/prometheus.md).
+
+    **Example**:
+
+    ```powershell
+    juice agent run --metrics-address 0.0.0.0:9090 <pool-id>
+    ```
+
 ## Global Command Options
 
 - --log-file

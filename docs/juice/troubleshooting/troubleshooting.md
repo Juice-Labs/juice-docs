@@ -13,25 +13,23 @@ Ensure that (1) the agent is running on the correct Pool (2) the agent has no ac
 
 Verify from the output that the agent is running. You may have to add RenderWin.exe to the *Windows Firewall* rules for incoming UDP connections if you weren’t prompted to do so. 
 
-If you are running an agent from a Docker container, make sure you are using **network=host**. 
+If you are running an agent from a Docker container, publish UDP **7865** and set **JUICE_HOST_IP** to an address clients can reach. The official image does not require `network=host`. Confirm `JUICE_TOKEN` and `JUICE_POOL` are set, and read `docker logs` (`start-agent.sh` uses `--log-file stdout`). `--rm` cannot be combined with `--restart`.
+
+If you installed with the one-step Linux installer, check `systemctl status juice` (or `/etc/init.d/juice status` on OpenRC) and the service log at `/var/lib/juice/logs/agent_service.log` (systemd) or `/var/log/juice.log` (OpenRC). 
 
  
 ### My agent is shutting down when my ssh connection is closed.
 
-In order to have a linux agent run persistently, launch it using *daemonize*.
+Prefer the one-step installer or `juice agent service install` so the agent runs under systemd/OpenRC. If you must run it from a shell, use `tmux`/`screen` or *daemonize* so it outlives SSH.
+
 :::tip
-    You can install *daemonize* with the command:
-        ```powershell
-        sudo apt install daemonize
-        ```
-
-:::
-
-#### Example:
+You can install *daemonize* with:
 
 ```powershell
-daemonize [Path/to/juice]/agent … 
+sudo apt install daemonize
+daemonize /path/to/juice agent run <pool-id>
 ```
+:::
  
 
 ### My machine asked for a firewall exception/warning for an application that does not connect to the internet.

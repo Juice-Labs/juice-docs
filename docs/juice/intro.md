@@ -33,7 +33,7 @@ Today Juice works with:
  
 *_Graphics applications are not supported on Linux clients yet, but Linux systems can act as agents to provide GPUs for any workload including graphics._
 
-Once Juice is installed, launching an application to use remote GPU is as simple as using the Windows Desktop app, or running it through our command line tool `juice`. For example:
+Once Juice is installed, launching an application to use remote GPU is as simple as using the Windows Desktop app, or running it through our command line tool `juice`. On Linux GPU hosts, the supported unattended install is the one-step installer at [get.juicelabs.co](https://get.juicelabs.co) — see [Installation](/docs/juice/user-guide/setup/installation.md). Slurm sites can attach jobs with the [SPANK plugin](/docs/juice/admin/slurm.md). For example:
 
 Run PyTorch-based inference with `juice run python pytorch/resnet.py`
 

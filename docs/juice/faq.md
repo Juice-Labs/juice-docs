@@ -43,7 +43,7 @@ _No, you can run any combination of Client and Server (Windows or Ubuntu, physic
 
 ### I'm running out of disk space - how can I clear (part of) the Juice Server cache?
 
-_In_ `JuiceServer-*\agent\juicecache` _, you will see a directory for each application you've tried via Juice. You can safely clear or remove these directories, and the cache will refill as needed through usage._
+_On Windows, cache directories live under `%LocalAppData%\Juice GPU\cache` and `C:\Windows\ServiceProfiles\juice\AppData\Local\Juice GPU\cache`. On Linux, look in `~/.cache/Juice/cache`. You can safely delete those numbered directories while the agent is not sharing a GPU, and the cache will refill as needed. See [Cache](./user-guide/cli-app/cache.md)._
 
 ### I'm behind a proxy or firewall, which hosts should I add to my allow list?
 
@@ -68,8 +68,11 @@ https://juice-artifacts.s3.us-east-2.amazonaws.com
 | OS | Client/Server | Log location |
 |:---:|:---:|---|
 |Linux|Client|`~/.config/Juice GPU/logs/client-<session-id>.log`|
-|Linux|Server|`~/.config/Juice GPU/logs/agent-<session-id>.log`, `~/.config/Juice GPU/logs/agent_service.log`|
-|Windows|Client|`%APPDATA%\Juice GPU\logs\client-<session-id>.log`|
-|Windows|Server|`%APPDATA%\Juice GPU\logs\agent-<session-id>.log`, `%APPDATA%\Juice GPU\logs\agent_service.log`|
+|Linux|Server (user session)|`~/.config/Juice GPU/logs/agent-<session-id>.log`, `~/.config/Juice GPU/logs/agent_service.log`|
+|Linux|Server (one-step installer, systemd)|`/var/lib/juice/logs/agent_service.log`|
+|Linux|Server (one-step installer, OpenRC)|`/var/log/juice.log`|
+|Linux|Server (Docker / Helm)|container stdout (`docker logs` / `kubectl logs`); `--log-file stdout`|
+|Windows|Client|`%LocalAppData%\Juice GPU\logs\client-<session-id>.log`|
+|Windows|Server|`%LocalAppData%\Juice GPU\logs\agent-<session-id>.log`, `%LocalAppData%\Juice GPU\logs\agent_service.log`|
 
 _*alternate locations configured using the `log-file` parameter on the command line_

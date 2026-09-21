@@ -13,7 +13,7 @@ You can share a GPU with other Juice users by making it available in a Pool.
 
 2. Select a pool beside ***To host a remote GPU…***. 
 
-3. Copy the command line code below, then paste and run the code from inside the directory you extracted the file from on setup. 
+3. Copy the command line code below, then paste and run the code from inside the directory you extracted the file from on setup. For unattended Linux hosts, prefer the [one-step installer](/docs/juice/user-guide/setup/installation.md). 
 
 4. While this agent is running, GPUs on this system are available within your default pool.  Visit the [juice admin guides](/docs/juice/admin/managing-pools/creating-pool.md) for information on advanced pooling. 
  
@@ -65,7 +65,7 @@ juice agent service start
     :::tip
     To stop sharing, use:
     ```bash
-    agent service stop
+    juice agent service stop
     ```
     :::
 
