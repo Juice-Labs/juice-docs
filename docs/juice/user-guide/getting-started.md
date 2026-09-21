@@ -6,7 +6,7 @@ sidebar_position: 2
 
 # Getting Started
 
-Once you've installed Juice you're all set to start sharing your GPUs over the network.  These examples give you some quick steps to get started quickly.
+Once you've installed Juice you're all set to start sharing your GPUs over the network.  These examples give you some quick steps to get started quickly. Linux GPU hosts can use the [one-step installer](setup/installation.md) instead of extracting the archive by hand.
 
 The examples all assume you are running from a command prompt or shell with the `juice` executable available in the path, e.g. with the Juice install directory `C:\Program Files\Juice GPU` listed in the `PATH` environment variable.
 
