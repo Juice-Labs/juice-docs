@@ -19,6 +19,8 @@ sidebar_position: 1
 
 **Pool**: A group of shared GPUs within an organization. Pools are used to organize and manage GPU resources and control user access.
 
+**`--pool-ids`**: Flag on `juice run` and `juice session request` that selects one or more pools. The first positional argument to `juice run` is the application, not a pool id.
+
 **Session**: An active connection between a user and a shared GPU, established when a user runs an application or requests GPU resources.
 
 **Taints**: Attributes applied to Agents to repel certain workloads unless they explicitly tolerate the taint, used for specialized hardware or compliance requirements.

@@ -76,7 +76,7 @@ This section documents all available CLI commands in the Juice CLI tool.
 - `--disable-gpu-metrics`: Disable GPU metrics collection
 - `--gpu-metrics-interval-ms`: GPU metrics collection interval in milliseconds
 - `--listen-ip`: IP address to listen on
-- `--cache-size`: Size of the cache
+- `--cache-size`: Size of the cache (for example `--cache-size=16`; passed through the Linux installer as a script argument or `INSTALL_JUICE_EXEC`)
 - `--gpu-ids`: Comma-separated list of GPU UUIDs to share
 - `--labels`: Comma-separated list of key=value labels
 - `--taints`: Comma-separated list of key=value taints
@@ -85,6 +85,10 @@ This section documents all available CLI commands in the Juice CLI tool.
 - `--force-relay`: Force using relay server
 - `--gateway-port`: Gateway port number (1-65535)
 - `--gateway-ips`: Comma-separated list of gateway IP addresses
+- `--metrics-address`: Bind address for Prometheus metrics (see [Prometheus](/docs/juice/admin/prometheus.md))
+- `--service`: Run as a supervised service (used by the Linux installer unit)
+- `--service-config`: Path to the agent service config file
+- `--config-directory`: Directory for agent config (installer uses `/var/lib/juice`)
 
 ### agent service
 **Command**: `agent service`
@@ -99,7 +103,13 @@ This section documents all available CLI commands in the Juice CLI tool.
 **Parameters**:
 - `pool-id` (required): ID of the pool to share GPUs with
 - All parameters from `agent run` command are supported
-- `--cache-size`: Size of the cache
+- `--config-directory`: Directory for agent config
+- `--desktop-user`: Numeric uid the installer passes when creating the service user
+
+#### agent service start / stop / enable
+**Commands**: `agent service start`, `agent service stop`, `agent service enable`
+
+**Description**: Start, stop, or enable the installed agent service. On Linux the one-step installer may manage the equivalent systemd/OpenRC unit (`juice.service` / `/etc/init.d/juice`) instead of this CLI.
 
 ## GPU Management
 
@@ -183,8 +193,13 @@ This section documents all available CLI commands in the Juice CLI tool.
 **Description**: Starts an application using the GPU(s) available to the user
 
 **Parameters**:
-- `application` (required): The application to run
+- `application` (required): The application to run. This is the first positional argument; do not pass a pool id here
+- `--pool-ids`: Comma-separated list of pool IDs to allocate from
+- `--gpu-ids`: Comma-separated list of GPU IDs
+- `--num-gpus`: Number of GPUs required (default: 1). All GPUs must be on the same agent
+- `--vram` / `--vram-strict`: GPU slice size; see [GPU Slicing](/docs/juice/user-guide/cli-app/gpu-slicing.md)
 - `--ephemeral`: Always requests a new session for the application
+- `--import-session`: Path to a session file created with `session request --export-session` (used by the [Slurm](/docs/juice/admin/slurm.md) plugin)
 - `--on-queue-timeout`: When a queue timeout happens, [fail, continue] (default: fail)
 - `--on-connection-error`: When a connection error happens, [fail, continue] (default: fail)
 - `--disable-compression`: Disables compression
@@ -213,6 +228,9 @@ This section documents all available CLI commands in the Juice CLI tool.
 
 **Description**: Releases the active session
 
+**Parameters**:
+- `--import-session`: Release the session described by an exported session file (Slurm epilog uses this)
+
 ### session request
 **Command**: `session request`
 
@@ -226,11 +244,18 @@ This section documents all available CLI commands in the Juice CLI tool.
 - `--wait-for`: Maximum number of seconds to wait for a GPU (default: 0)
 - `--no-version-check`: Disables version checking when allocating the session requirements
 - `--num-gpus`: Number of GPUs required (default: 1)
+- `--vram` / `--vram-strict`: Request a VRAM slice instead of a whole GPU
+- `--export-session`: Write an encrypted session file for later `--import-session` (Slurm prolog uses this)
 - `--session-timeout`: Time for the session to be automatically returned to the pool if not in use (default: -1)
 - `--watch-pid`: Watch the specified process and stop the session when it exits (default: -1)
 - `--dump-config`: Dumps the client configuration to the console in JSON format
 
 **Note**: The following options are mutually exclusive: gpu-ids, query
+
+### session add-path / remove-path (Windows)
+**Commands**: `session add-path <path>`, `session remove-path <path>`
+
+**Description**: Bind executables or directories to the current session so they launch with Juice automatically. Paths reset when the session is released.
 
 ## User Management
 

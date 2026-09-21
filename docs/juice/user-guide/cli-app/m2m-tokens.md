@@ -52,7 +52,7 @@ By default a token will last 30 days, but by specifying the --expire-days parame
 
     ./juice login -t 'my_m2m_token_xyz' 
 
-    ./juice run --pool-id nightly_pool my_nightly_job.py 
+    ./juice run --pool-ids nightly_pool my_nightly_job.py 
     ```
 
 - **CI/CD Pipeline Integration**: In your CI/CD configuration (e.g., GitLab CI): 

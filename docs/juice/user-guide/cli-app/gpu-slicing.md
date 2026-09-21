@@ -58,3 +58,5 @@ For example:
 juice run --ephemeral --vram 2 python script_1.py
 juice run --ephemeral --vram 2 python script_2.py
 ```
+
+The [Slurm plugin](/docs/juice/admin/slurm.md) exposes slicing as `--juice-vram`. That flag is integer GiB parsed with `atoi` and does not accept the suffixes shown above.
