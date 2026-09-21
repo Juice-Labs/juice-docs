@@ -17,6 +17,19 @@ juice agent run --metrics-address 127.0.0.1:9090 ...
 
 This enables the metrics, which can be verified by visiting the address in a web browser.
 
+Docker and Helm do not take a dedicated metrics flag. Pass it through `JUICE_ADDITIONAL_ARGS` (see [Agent in Docker](/docs/juice/user-guide/docker/docker-agent.md) and [Kubernetes](/docs/juice/admin/kubernetes.md)):
+
+```bash
+# Docker
+-e JUICE_ADDITIONAL_ARGS="--metrics-address 0.0.0.0:9090"
+
+# Helm values
+env:
+  JUICE_ADDITIONAL_ARGS: "--metrics-address 0.0.0.0:9090"
+```
+
+Bind `0.0.0.0` (not `127.0.0.1`) if Prometheus scrapes from outside the container. The official image and Helm chart still do not publish a metrics Service; scrape the pod IP or add your own Service/pod annotation.
+
 
 ## Available Metrics
 

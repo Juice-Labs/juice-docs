@@ -40,8 +40,8 @@ WORKDIR /home/ubuntu
 ADD juice-gpu-linux.tar.gz /home/ubuntu
 COPY --chown=ubuntu:ubuntu --chmod=777 run.sh . 
 
-# Define the entry point for the container 
-ENTRYPOINT ["/bin/bash", "-c", "/root/run.sh ${@}", "--"] 
+# Define the entry point for the container (run.sh is copied to WORKDIR /home/ubuntu)
+ENTRYPOINT ["/bin/bash", "-c", "/home/ubuntu/run.sh ${@}", "--"] 
 ```
 
 2. Create a file named run.sh in the same directory as your Dockerfile with the following contents:
